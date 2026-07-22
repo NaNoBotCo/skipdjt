@@ -365,8 +365,9 @@ CSS = """
   --meh:#9a6b00;      /* amber  = no saving, but a fair option */
   --meh-bg:#fdf3d9;
   --on-meh:#fff;
-  --avoid:#c0392b;    /* red    = DJT, the airport you're avoiding */
-  --avoid-bg:#fdecea;
+  --avoid:#c0521a;    /* carrot = DJT, the airport you're avoiding */
+  --avoid-bg:#fdeee4;
+  --carrot:#c0521a;   /* same hue, used for brand voice (the tagline) */
 }
 @media (prefers-color-scheme:dark){
   :root{--bg:#17110d;--ink:#f6ece2;--muted:#b39d8c;--card:#221913;
@@ -376,12 +377,12 @@ CSS = """
            them left light-mode tints behind light text -- the DJT price and
            the highlighted date were effectively invisible. */
         --win:#5fd39b;--win-bg:#12301f;--meh:#e8b84b;--meh-bg:#2e2410;
-        --avoid:#ff7b6b;--avoid-bg:#331612;--on-win:#08251a;--on-meh:#2b1c14}
+        --avoid:#ff9a5c;--avoid-bg:#33200f;--carrot:#ff9a5c;--teal:#57c9c9;--on-win:#08251a;--on-meh:#2b1c14}
 }
 :root[data-theme=dark]{--bg:#17110d;--ink:#f6ece2;--muted:#b39d8c;--card:#221913;
   --line:#3a2b21;--shadow:0 2px 14px rgba(0,0,0,.35);--good:#5fd39b;
   --win:#5fd39b;--win-bg:#12301f;--meh:#e8b84b;--meh-bg:#2e2410;
-  --avoid:#ff7b6b;--avoid-bg:#331612;--on-win:#08251a;--on-meh:#2b1c14}
+  --avoid:#ff9a5c;--avoid-bg:#33200f;--carrot:#ff9a5c;--teal:#57c9c9;--on-win:#08251a;--on-meh:#2b1c14}
 :root[data-theme=light]{--bg:#fff8f0;--ink:#2b1c14;--muted:#7a6558;--card:#fff;
   --line:#f0ddc9;--shadow:0 2px 14px rgba(80,40,20,.08);--good:#1a7a4c}
 body{background:var(--bg);color:var(--ink);
@@ -394,7 +395,7 @@ h1{font-size:clamp(34px,7vw,54px);line-height:1.05;letter-spacing:-.02em;
   font-weight:800}
 h1 .strike{text-decoration:line-through;text-decoration-color:var(--avoid);
   text-decoration-thickness:5px;opacity:.55}
-.tag{font-size:clamp(19px,3.6vw,25px);color:var(--win);font-weight:700;
+.tag{font-size:clamp(19px,3.6vw,25px);color:var(--carrot);font-weight:700;
   margin-top:10px}
 .sub{color:var(--muted);margin-top:14px;font-size:16px}
 .hero{background:var(--card);border:2px solid var(--win);border-radius:20px;
@@ -470,6 +471,12 @@ tr.bestrow td{background:color-mix(in srgb, var(--good) 12%, transparent);
 .note{background:var(--card);border:1px solid var(--line);border-radius:14px;
   padding:18px;color:var(--muted);font-size:14.5px}
 .note strong{color:var(--ink)}
+/* PROSE links only. A bare `.card a` also matches the Book buttons and every
+   dated-fare cell, and would repaint them teal. */
+.card p a,.note p a,.note li a{color:var(--teal);
+  text-decoration-color:color-mix(in srgb,var(--teal) 45%,transparent);
+  text-underline-offset:2px;font-weight:650}
+.card p a:hover,.note p a:hover,.note li a:hover{text-decoration-color:var(--teal)}
 .note ul{margin:9px 0 0 20px}
 .note li{margin:5px 0}
 footer{text-align:center;color:var(--muted);font-size:13.5px;margin-top:34px;
@@ -948,8 +955,8 @@ body{{width:1200px;height:630px;background:#fff8f0;position:relative;
 .plane{{font-size:54px;margin-bottom:6px}}
 h1{{font-size:112px;font-weight:800;color:#2b1c14;letter-spacing:-.03em;
   line-height:1}}
-h1 s{{color:#c0392b;text-decoration-thickness:9px}}
-.tag{{font-size:50px;font-weight:700;color:#1a7a4c;margin-top:12px}}
+h1 s{{color:#c0521a;text-decoration-thickness:9px}}
+.tag{{font-size:50px;font-weight:700;color:#c0521a;margin-top:12px}}
 .stat{{margin-top:34px;background:#fff;border:3px solid #1a7a4c;
   border-radius:20px;padding:20px 40px;font-size:37px;font-weight:750;
   color:#2b1c14}}
@@ -1024,8 +1031,8 @@ def render_card(s):
 <rect width="1200" height="630" fill="#fff8f0"/>
 <rect x="0" y="0" width="1200" height="14" fill="#1a7a4c"/>
 <text x="600" y="150" font-family="system-ui,sans-serif" font-size="60" text-anchor="middle" fill="#7a6558">✈️</text>
-<text x="600" y="270" font-family="system-ui,sans-serif" font-size="104" font-weight="800" text-anchor="middle" fill="#2b1c14">Skip <tspan fill="#c0392b" text-decoration="line-through">DJT</tspan></text>
-<text x="600" y="345" font-family="system-ui,sans-serif" font-size="52" font-weight="700" text-anchor="middle" fill="#1a7a4c">It's cheaper anyway.</text>
+<text x="600" y="270" font-family="system-ui,sans-serif" font-size="104" font-weight="800" text-anchor="middle" fill="#2b1c14">Skip <tspan fill="#c0521a" text-decoration="line-through">DJT</tspan></text>
+<text x="600" y="345" font-family="system-ui,sans-serif" font-size="52" font-weight="700" text-anchor="middle" fill="#c0521a">It's cheaper anyway.</text>
 <text x="600" y="440" font-family="system-ui,sans-serif" font-size="38" text-anchor="middle" fill="#2b1c14">Cheaper on {s['routes_cheaper']} of {s['routes_compared']} routes we checked</text>
 <text x="600" y="500" font-family="system-ui,sans-serif" font-size="32" text-anchor="middle" fill="#7a6558">Median ${s['median_saving']} · up to ${s['max_saving']} · Fort Lauderdale &amp; Miami</text>
 <text x="600" y="580" font-family="system-ui,sans-serif" font-size="28" text-anchor="middle" fill="#0d8a8a">{SITE_URL.replace('https://', '')}</text>
