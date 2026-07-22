@@ -38,4 +38,4 @@ derived from https://nanobotco.github.io/skipdjt/data.json, which is CORS-open a
 - Booking links are affiliate links (Travelpayouts).
 - Not affiliated with any airport, airline, or political organisation.
 - Support: https://ko-fi.com/defiantchiangmai
-- Built: 2026-07-22 05:07 UTC
+- Built: 2026-07-22 07:23 UTC
