@@ -468,6 +468,22 @@ tr.bestrow td{background:color-mix(in srgb, var(--good) 12%, transparent);
   text-decoration:none;font-weight:750;border-radius:14px;padding:15px;
   margin:26px 0;box-shadow:var(--shadow)}
 .kofi:hover{filter:brightness(1.05)}
+/* The inline card above is easy to scroll past — it sat 95% down the page.
+   This one follows you. Small enough to ignore, present enough to find. */
+/* BOTTOM-LEFT on purpose. The Book buttons are right-aligned inside every
+   card, and the PWA "Install app" prompt also parks bottom-right — a float on
+   that side covered a booking CTA, i.e. sat on top of the one control that
+   earns anything. */
+.kofloat{position:fixed;left:16px;bottom:16px;z-index:60;display:inline-flex;
+  align-items:center;gap:8px;background:var(--sun);color:#2b1c14;
+  text-decoration:none;font-weight:800;font-size:15px;border-radius:999px;
+  padding:12px 18px;box-shadow:0 6px 22px rgba(0,0,0,.28)}
+.kofloat:hover{filter:brightness(1.06)}
+@media(max-width:520px){.kofloat{padding:11px 15px;font-size:14px}}
+.sharewrap{margin:22px 0 6px;text-align:center}
+.sharelead{font-size:16px;color:var(--muted);font-weight:650;margin-bottom:10px}
+.share{gap:8px}
+.share a,.share button{padding:9px 15px;font-size:14.5px}
 .note{background:var(--card);border:1px solid var(--line);border-radius:14px;
   padding:18px;color:var(--muted);font-size:14.5px}
 .note strong{color:var(--ink)}
@@ -502,14 +518,20 @@ def render(rows, s, built):
         f"Save up to ${s['best_deal_amount']} \u2014 and hours of your life"
         if s["pairs_total"] else "Comparing fares from three airports"
     )
+    # Short enough to survive a repost, with the joke first and the number
+    # right behind it. The old version was three clauses of methodology — true,
+    # but nobody reposts a paragraph.
     share_text = (
-        f"Don't want to fly out of DJT? You usually don't have to pay for the "
-        f"privilege — leaving from Fort Lauderdale or Miami came out cheaper on "
-        f"{s['pairs_cheaper']} of {s['pairs_total']} same-day comparisons, "
-        f"typically ${s['median_saving']} and up to ${s['max_saving']}."
+        f"They put Trump's name on Palm Beach airport. Flying out of Fort "
+        f"Lauderdale or Miami instead is usually cheaper — up to "
+        f"${s['best_deal_amount']} on the same day, and often faster."
     )
+    share_short = (f"Skip DJT. Same trip from Fort Lauderdale, "
+                   f"up to ${s['best_deal_amount']} cheaper.")
     share_q = urllib.parse.quote(share_text)
-    url_q = urllib.parse.quote(SITE_URL)
+    subject_q = urllib.parse.quote("Skip DJT — it's cheaper anyway")
+    share_js = json.dumps(share_short)
+    url_q = urllib.parse.quote(SITE_URL + "/")
 
     cards = []
     for r in rows:
@@ -746,6 +768,9 @@ def render(rows, s, built):
   because DJT often means a connection.</div>
 </div>
 
+<a class="kofloat" href="https://ko-fi.com/{KOFI}" target="_blank" rel="noopener"
+   aria-label="Support this on Ko-fi">&#9749; Buy me a coffee</a>
+
 <div class="chips">
   <span class="chip">🛣️ FLL · 50 mi</span>
   <span class="chip">🛣️ MIA · 70 mi</span>
@@ -755,16 +780,41 @@ def render(rows, s, built):
   <span class="chip">🔄 Updated {esc(built[:10])}</span>
 </div>
 
-<div class="share">
-  <a href="https://twitter.com/intent/tweet?text={share_q}&url={url_q}"
-     target="_blank" rel="noopener">Share on X</a>
-  <a href="https://bsky.app/intent/compose?text={share_q}%20{url_q}"
-     target="_blank" rel="noopener">Bluesky</a>
-  <a href="https://www.facebook.com/sharer/sharer.php?u={url_q}"
-     target="_blank" rel="noopener">Facebook</a>
-  <button onclick="navigator.clipboard.writeText('{SITE_URL}');this.textContent='Copied ✓'">
-    Copy link</button>
+<div class="sharewrap">
+  <div class="sharelead">Know someone who&rsquo;d rather not fly from there?</div>
+  <div class="share">
+    <button id="natshare" hidden>&#10148; Share</button>
+    <a href="https://twitter.com/intent/tweet?text={share_q}&url={url_q}"
+       target="_blank" rel="noopener">X</a>
+    <a href="https://bsky.app/intent/compose?text={share_q}%20{url_q}"
+       target="_blank" rel="noopener">Bluesky</a>
+    <a href="https://www.threads.net/intent/post?text={share_q}%20{url_q}"
+       target="_blank" rel="noopener">Threads</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={url_q}"
+       target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.reddit.com/submit?url={url_q}&title={share_q}"
+       target="_blank" rel="noopener">Reddit</a>
+    <a href="https://api.whatsapp.com/send?text={share_q}%20{url_q}"
+       target="_blank" rel="noopener">WhatsApp</a>
+    <a href="sms:?&body={share_q}%20{url_q}">Text</a>
+    <a href="mailto:?subject={subject_q}&body={share_q}%0A%0A{url_q}">Email</a>
+    <button onclick="navigator.clipboard.writeText('{SITE_URL}/');this.textContent='Copied \u2713'">
+      Copy link</button>
+  </div>
 </div>
+<script>
+// The OS share sheet is the one people actually use on a phone; show the button
+// only where it exists rather than offering a dead control everywhere else.
+(function(){{
+  var b = document.getElementById('natshare');
+  if (!b || !navigator.share) return;
+  b.hidden = false;
+  b.onclick = function(){{
+    navigator.share({{title: 'Skip DJT', text: {share_js}, url: '{SITE_URL}/'}})
+      .catch(function(){{}});
+  }};
+}})();
+</script>
 
 <h2>Where are you going?</h2>
 {"".join(cards)}
@@ -937,43 +987,84 @@ def render_llms(rows, s, built):
     return "\n".join(lines)
 
 
-def render_card_html(s):
-    """The share card as real HTML, so headless Chrome rasterises it with the
-    same fonts the site uses. Rendered to card.png -- X and Facebook frequently
-    refuse SVG social cards, so a raster is the only reliable option."""
+def render_card_html(s, rows=None):
+    """The share card. It has to answer, in one glance and with no caption,
+    'what is this?' — so it shows the actual comparison the site makes, using a
+    real route and real numbers, rather than a logo and a tagline.
+
+    The snark is doing a job: the joke is the reason someone clicks, and the
+    price underneath is the reason they stay. Both have to be on the card.
+    """
+    deal = None
+    if rows:
+        cands = [r for r in rows if r.get("best_deal")]
+        if cands:
+            r = max(cands, key=lambda x: x["best_deal"]["saving"])
+            deal = {"city": r["city"], "djt": r["best_deal"]["djt_price"],
+                    "alt": r["best_deal"]["alt_price"],
+                    "ap": r["best_deal"]["alt_airport"],
+                    "save": r["best_deal"]["saving"],
+                    "when": r["best_deal"]["pretty"],
+                    "mins": r["best_deal"].get("mins_saved") or 0}
+    if not deal:
+        deal = {"city": "Washington", "djt": 476, "alt": 192, "ap": "FLL",
+                "save": s.get("best_deal_amount", 284), "when": "", "mins": 0}
+
+    faster = ""
+    if deal["mins"] > 0:
+        h, m = divmod(int(deal["mins"]), 60)
+        faster = f"and {h}h {m:02d}m sooner" if h else f"and {m}m sooner"
+
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>
 *{{margin:0;padding:0;box-sizing:border-box}}
-body{{width:1200px;height:630px;background:#fff8f0;position:relative;
-  font-family:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,
-  "Segoe UI",system-ui,sans-serif;overflow:hidden}}
-.bar{{position:absolute;top:0;left:0;right:0;height:16px;background:#1a7a4c}}
-.sun{{position:absolute;width:520px;height:520px;border-radius:50%;
-  background:radial-gradient(circle,#f5a62333 0%,#f5a62300 70%);
-  right:-120px;top:-90px}}
-.pad{{position:absolute;inset:0;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;padding:0 70px}}
-.plane{{font-size:54px;margin-bottom:6px}}
-h1{{font-size:112px;font-weight:800;color:#2b1c14;letter-spacing:-.03em;
-  line-height:1}}
-h1 s{{color:#c0521a;text-decoration-thickness:9px}}
-.tag{{font-size:50px;font-weight:700;color:#c0521a;margin-top:12px}}
-.stat{{margin-top:34px;background:#fff;border:3px solid #1a7a4c;
-  border-radius:20px;padding:20px 40px;font-size:37px;font-weight:750;
-  color:#2b1c14}}
-.sub{{margin-top:20px;font-size:29px;color:#7a6558}}
-.dom{{position:absolute;bottom:34px;left:0;right:0;text-align:center;
-  font-size:27px;color:#0d8a8a;font-weight:700}}
+body{{width:1200px;height:630px;background:#fff8f0;position:relative;overflow:hidden;
+  font-family:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}}
+.bar{{position:absolute;top:0;left:0;right:0;height:14px;background:#1a7a4c}}
+.L{{position:absolute;left:64px;top:96px;width:560px}}
+.plane{{font-size:40px}}
+h1{{font-size:92px;font-weight:800;color:#2b1c14;letter-spacing:-.03em;line-height:1;margin-top:4px}}
+h1 s{{color:#c0521a;text-decoration-thickness:8px}}
+.tag{{font-size:38px;font-weight:700;color:#c0521a;margin-top:10px}}
+.snark{{font-size:27px;color:#5d4a3f;margin-top:26px;line-height:1.35;font-weight:500}}
+.R{{position:absolute;right:64px;top:104px;width:470px}}
+.row{{display:flex;align-items:center;gap:16px;background:#fff;border:2px solid #eadfd0;
+  border-radius:16px;padding:16px 20px;margin-bottom:12px}}
+.row .ap{{font-size:26px;font-weight:800;width:74px}}
+.row .pr{{font-size:40px;font-weight:800;margin-left:auto}}
+.bad{{border-color:#c0521a;background:#fdeee4}}
+.bad .ap,.bad .pr{{color:#c0521a}}
+.bad .pr{{text-decoration:line-through;text-decoration-thickness:4px}}
+.good{{border-color:#1a7a4c;background:#e8f6ee}}
+.good .ap,.good .pr{{color:#1a7a4c}}
+.row .note{{font-size:17px;color:#7a6558;font-weight:600}}
+.save{{background:#1a7a4c;color:#fff;border-radius:16px;padding:18px 22px;text-align:center;margin-top:6px}}
+.save b{{display:block;font-size:44px;font-weight:800;line-height:1}}
+.save span{{font-size:21px;font-weight:600;opacity:.95}}
+.foot{{position:absolute;left:64px;bottom:44px;font-size:24px;color:#0d8a8a;font-weight:700}}
 </style></head><body>
-<div class="bar"></div><div class="sun"></div>
-<div class="pad">
-  <div class="plane">✈️</div>
+<div class="bar"></div>
+<div class="L">
+  <div class="plane">&#9992;&#65039;</div>
   <h1>Skip <s>DJT</s></h1>
-  <div class="tag">It's cheaper anyway.</div>
-  <div class="stat">Cheaper on {s['routes_cheaper']} of {s['routes_compared']} routes we checked</div>
-  <div class="sub">Fort Lauderdale &amp; Miami · median ${s['median_saving']} · up to ${s['max_saving']}</div>
+  <div class="tag">It&#8217;s cheaper anyway.</div>
+  <div class="snark">They put his name on the airport.<br>
+  Fort Lauderdale is 50 miles away<br>and charges you less for the privilege.</div>
 </div>
-<div class="dom">{SITE_URL.replace('https://', '')}</div>
+<div class="R">
+  <div class="row bad"><span class="ap">DJT</span>
+    <span class="note">{esc_min(deal["city"])}{(" &#183; " + deal["when"]) if deal["when"] else ""}</span>
+    <span class="pr">${deal["djt"]}</span></div>
+  <div class="row good"><span class="ap">{deal["ap"]}</span>
+    <span class="note">same day, same trip</span>
+    <span class="pr">${deal["alt"]}</span></div>
+  <div class="save"><b>SAVE ${deal["save"]}</b><span>{faster or "on this one route alone"}</span></div>
+</div>
+<div class="foot">{SITE_URL.replace("https://", "")}</div>
 </body></html>"""
+
+
+def esc_min(t):
+    return str(t).replace("&", "&amp;").replace("<", "&lt;")
 
 
 def build_card_png():
@@ -1225,7 +1316,7 @@ def main():
         ("llms.txt", render_llms(rows, s, built)),
         ("robots.txt", ROBOTS),
         ("card.svg", render_card(s)),
-        ("card.html", render_card_html(s)),
+        ("card.html", render_card_html(s, rows)),
         ("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n'
                         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                         f'<url><loc>{SITE_URL}/</loc>'

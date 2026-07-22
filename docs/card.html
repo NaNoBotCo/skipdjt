@@ -1,33 +1,46 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{width:1200px;height:630px;background:#fff8f0;position:relative;
-  font-family:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,
-  "Segoe UI",system-ui,sans-serif;overflow:hidden}
-.bar{position:absolute;top:0;left:0;right:0;height:16px;background:#1a7a4c}
-.sun{position:absolute;width:520px;height:520px;border-radius:50%;
-  background:radial-gradient(circle,#f5a62333 0%,#f5a62300 70%);
-  right:-120px;top:-90px}
-.pad{position:absolute;inset:0;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;padding:0 70px}
-.plane{font-size:54px;margin-bottom:6px}
-h1{font-size:112px;font-weight:800;color:#2b1c14;letter-spacing:-.03em;
-  line-height:1}
-h1 s{color:#c0521a;text-decoration-thickness:9px}
-.tag{font-size:50px;font-weight:700;color:#c0521a;margin-top:12px}
-.stat{margin-top:34px;background:#fff;border:3px solid #1a7a4c;
-  border-radius:20px;padding:20px 40px;font-size:37px;font-weight:750;
-  color:#2b1c14}
-.sub{margin-top:20px;font-size:29px;color:#7a6558}
-.dom{position:absolute;bottom:34px;left:0;right:0;text-align:center;
-  font-size:27px;color:#0d8a8a;font-weight:700}
+body{width:1200px;height:630px;background:#fff8f0;position:relative;overflow:hidden;
+  font-family:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+.bar{position:absolute;top:0;left:0;right:0;height:14px;background:#1a7a4c}
+.L{position:absolute;left:64px;top:96px;width:560px}
+.plane{font-size:40px}
+h1{font-size:92px;font-weight:800;color:#2b1c14;letter-spacing:-.03em;line-height:1;margin-top:4px}
+h1 s{color:#c0521a;text-decoration-thickness:8px}
+.tag{font-size:38px;font-weight:700;color:#c0521a;margin-top:10px}
+.snark{font-size:27px;color:#5d4a3f;margin-top:26px;line-height:1.35;font-weight:500}
+.R{position:absolute;right:64px;top:104px;width:470px}
+.row{display:flex;align-items:center;gap:16px;background:#fff;border:2px solid #eadfd0;
+  border-radius:16px;padding:16px 20px;margin-bottom:12px}
+.row .ap{font-size:26px;font-weight:800;width:74px}
+.row .pr{font-size:40px;font-weight:800;margin-left:auto}
+.bad{border-color:#c0521a;background:#fdeee4}
+.bad .ap,.bad .pr{color:#c0521a}
+.bad .pr{text-decoration:line-through;text-decoration-thickness:4px}
+.good{border-color:#1a7a4c;background:#e8f6ee}
+.good .ap,.good .pr{color:#1a7a4c}
+.row .note{font-size:17px;color:#7a6558;font-weight:600}
+.save{background:#1a7a4c;color:#fff;border-radius:16px;padding:18px 22px;text-align:center;margin-top:6px}
+.save b{display:block;font-size:44px;font-weight:800;line-height:1}
+.save span{font-size:21px;font-weight:600;opacity:.95}
+.foot{position:absolute;left:64px;bottom:44px;font-size:24px;color:#0d8a8a;font-weight:700}
 </style></head><body>
-<div class="bar"></div><div class="sun"></div>
-<div class="pad">
-  <div class="plane">✈️</div>
+<div class="bar"></div>
+<div class="L">
+  <div class="plane">&#9992;&#65039;</div>
   <h1>Skip <s>DJT</s></h1>
-  <div class="tag">It's cheaper anyway.</div>
-  <div class="stat">Cheaper on 11 of 11 routes we checked</div>
-  <div class="sub">Fort Lauderdale &amp; Miami · median $106 · up to $284</div>
+  <div class="tag">It&#8217;s cheaper anyway.</div>
+  <div class="snark">They put his name on the airport.<br>
+  Fort Lauderdale is 50 miles away<br>and charges you less for the privilege.</div>
 </div>
-<div class="dom">nanobotco.github.io/skipdjt</div>
+<div class="R">
+  <div class="row bad"><span class="ap">DJT</span>
+    <span class="note">Washington Dulles &#183; Jul 27</span>
+    <span class="pr">$476</span></div>
+  <div class="row good"><span class="ap">FLL</span>
+    <span class="note">same day, same trip</span>
+    <span class="pr">$192</span></div>
+  <div class="save"><b>SAVE $284</b><span>and 1h 39m sooner</span></div>
+</div>
+<div class="foot">nanobotco.github.io/skipdjt</div>
 </body></html>
