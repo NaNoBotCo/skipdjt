@@ -95,12 +95,20 @@ card/route parity, enough attributed links, **zero unattributed booking links**,
 and the method note still present. A partial API failure fails the job instead of
 overwriting a good site with a degraded one.
 
-The token lives in GitHub Secrets as `TP_TOKEN`. **If you rotate the Travelpayouts
-token, update both** `.tp_token` locally and the secret:
+The token lives in two places: `.tp_token` locally and GitHub Secrets as
+`TP_TOKEN`. Changing one without the other makes the Monday job fail silently.
+
+**Use `~/Desktop/Rotate Skip DJT Token.command`** — it opens the token page,
+verifies the new token against the API *before* changing anything, updates both
+locations, rebuilds, and rolls back if the rebuild fails. Manual equivalent:
 
 ```
 gh secret set TP_TOKEN --repo NaNoBotCo/skipdjt --body "<new token>"
 ```
+
+The token is read-only price access. It cannot reach the account, payouts, or
+money — the marker earns, and the marker is public by design. Rotation is
+hygiene, not urgency.
 
 Run it by hand any time from the Actions tab, or `gh workflow run "Weekly fare refresh"`.
 
