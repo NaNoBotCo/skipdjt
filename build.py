@@ -44,6 +44,10 @@ SITE = os.path.join(HERE, "docs")   # docs/ = what GitHub Pages serves
 API = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates"
 
 # ---- CONFIG -- edit these ---------------------------------------------------
+# No trailing slash here -- it is concatenated as f"{SITE_URL}/data.json".
+# But every SELF-reference (canonical, og:url, share links, JSON-LD url) must
+# add the slash: GitHub Pages 301s /skipdjt to /skipdjt/, and a canonical that
+# redirects makes Facebook report the 301 instead of unfurling the card.
 SITE_URL = "https://nanobotco.github.io/skipdjt"
 KOFI = "defiantchiangmai"                 # ko-fi.com/<this>
 MARKER = "749581"                         # Travelpayouts affiliate ID
@@ -712,7 +716,7 @@ def render(rows, s, built):
             "Cached round-trip airfares from Palm Beach (PBI/DJT) compared "
             "against Fort Lauderdale (FLL) and Miami (MIA) across "
             f"{s['routes_total']} destinations."),
-        "url": SITE_URL,
+        "url": SITE_URL + "/",
         "dateModified": built,
         "creator": {"@type": "Person", "name": "Skip DJT"},
         "distribution": [{
@@ -732,11 +736,11 @@ def render(rows, s, built):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Skip DJT — it's cheaper anyway</title>
 <meta name="description" content="{esc(share_text)} Compare live fares from Palm Beach, Fort Lauderdale and Miami.">
-<link rel="canonical" href="{SITE_URL}">
+<link rel="canonical" href="{SITE_URL}/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Skip DJT — it's cheaper anyway">
 <meta property="og:description" content="{esc(share_text)}">
-<meta property="og:url" content="{SITE_URL}">
+<meta property="og:url" content="{SITE_URL}/">
 <meta property="og:image" content="{SITE_URL}/card.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Skip DJT — it's cheaper anyway">
