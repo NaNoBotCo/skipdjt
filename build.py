@@ -774,9 +774,22 @@ def build_card_png():
     Rendered at 2x then downsampled so text stays crisp. Returns True on
     success; a missing Chrome is not fatal -- the SVG card remains as fallback.
     """
-    chrome = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-    if not os.path.exists(chrome):
-        print("  ! Chrome not found — keeping SVG card only.")
+    import shutil
+    # macOS first (local builds), then the names Linux CI images use.
+    candidates = [
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        "/Applications/Chromium.app/Contents/MacOS/Chromium",
+    ]
+    chrome = next((c for c in candidates if os.path.exists(c)), None)
+    if not chrome:
+        for name in ("google-chrome", "google-chrome-stable", "chromium",
+                     "chromium-browser"):
+            found = shutil.which(name)
+            if found:
+                chrome = found
+                break
+    if not chrome:
+        print("  ! No Chrome/Chromium found — keeping SVG card only.")
         return False
     src = os.path.join(SITE, "card.html")
     out = os.path.join(SITE, "card.png")
