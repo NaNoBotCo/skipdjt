@@ -1,0 +1,7 @@
+# Credentials — never commit
+.tp_token
+.amadeus_creds
+*.token
+
+# macOS
+.DS_Store

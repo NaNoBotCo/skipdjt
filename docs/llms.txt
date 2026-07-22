@@ -1,0 +1,37 @@
+# Skip DJT
+
+> Fare comparison for travellers who would rather not fly from President
+> Donald J. Trump International Airport (PBI/DJT) in Palm Beach, Florida.
+> Compares cheapest cached round-trip fares across 21
+> destinations against Fort Lauderdale (FLL, 50 miles) and Miami (MIA, 70 miles).
+
+**Agents: read the JSON, not the HTML.** Every fact on the page is
+derived from https://nanobotco.github.io/skipdjt/data.json, which is CORS-open and GET-only.
+
+## Data
+- [Fare data](https://nanobotco.github.io/skipdjt/data.json): every route, all three airports,
+  prices, stops, durations, departure dates, and computed savings
+
+## Key findings
+- Destinations surveyed: 21
+- Routes where DJT had a comparable fare: 11
+- Of those, cheaper to fly from FLL or MIA: 11
+- Median saving: $58; largest: $341
+- Routes also involving less flying time: 4
+
+## Method and limits
+- Source: Travelpayouts / Aviasales cached-fare Data API. Not live availability.
+- Cached fares are sparse, so compared prices may fall on different dates.
+  Each price carries its own departure date; treat cross-date gaps with care.
+- DJT has fewer cached fares than FLL or MIA. The minimum of a small sample
+  runs high, so raw savings are likely overstated. The DIRECTION is the
+  supported claim, not the magnitude.
+- Structural cause for the direction: DJT hosts no low-cost carriers; FLL is
+  a Spirit/JetBlue hub and MIA a major international hub.
+- IATA code changes PBI -> DJT on 2026-08-18. Both codes are queried and merged.
+
+## Disclosure
+- Booking links are affiliate links (Travelpayouts).
+- Not affiliated with any airport, airline, or political organisation.
+- Support: https://ko-fi.com/defiantchiangmai
+- Built: 2026-07-22 04:14 UTC
