@@ -354,7 +354,7 @@ CSS = """
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#fff8f0; --ink:#2b1c14; --muted:#7a6558; --card:#fff;
-  --line:#f0ddc9; --coral:#e8503f; --teal:#0d8a8a; --sun:#f5a623;
+  --line:#f0ddc9; --teal:#0d8a8a; --sun:#f5a623;
   --good:#1a7a4c; --shadow:0 2px 14px rgba(80,40,20,.08);
   /* One meaning per colour, and never colour alone -- every state also
      carries a word and a symbol, because colour-blind and low-vision
@@ -392,14 +392,14 @@ header{text-align:center;padding:34px 0 20px}
 .plane{font-size:44px;display:block;margin-bottom:6px}
 h1{font-size:clamp(34px,7vw,54px);line-height:1.05;letter-spacing:-.02em;
   font-weight:800}
-h1 .strike{text-decoration:line-through;text-decoration-color:var(--coral);
+h1 .strike{text-decoration:line-through;text-decoration-color:var(--avoid);
   text-decoration-thickness:5px;opacity:.55}
-.tag{font-size:clamp(19px,3.6vw,25px);color:var(--coral);font-weight:700;
+.tag{font-size:clamp(19px,3.6vw,25px);color:var(--win);font-weight:700;
   margin-top:10px}
 .sub{color:var(--muted);margin-top:14px;font-size:16px}
-.hero{background:var(--card);border:2px solid var(--coral);border-radius:20px;
+.hero{background:var(--card);border:2px solid var(--win);border-radius:20px;
   padding:22px;margin:26px 0;text-align:center;box-shadow:var(--shadow)}
-.hero .big{font-size:clamp(30px,6vw,44px);font-weight:800;color:var(--coral);
+.hero .big{font-size:clamp(30px,6vw,44px);font-weight:800;color:var(--win);
   line-height:1.1}
 .hero .cap{color:var(--muted);font-size:15px;margin-top:8px}
 .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 6px}
@@ -462,7 +462,7 @@ tr.bestrow td{background:color-mix(in srgb, var(--good) 12%, transparent);
   border-radius:11px;padding:10px 16px;font:inherit;font-size:15px;
   font-weight:650;color:var(--ink);text-decoration:none;cursor:pointer;
   box-shadow:var(--shadow)}
-.share a:hover,.share button:hover{border-color:var(--coral)}
+.share a:hover,.share button:hover{border-color:var(--win)}
 .kofi{display:block;text-align:center;background:var(--sun);color:#2b1c14;
   text-decoration:none;font-weight:750;border-radius:14px;padding:15px;
   margin:26px 0;box-shadow:var(--shadow)}
@@ -740,11 +740,11 @@ def render(rows, s, built):
 </div>
 
 <div class="chips">
-  <span class="chip">🚗 FLL · 50 mi</span>
-  <span class="chip">🚗 MIA · 70 mi</span>
-  <span class="chip">🎫 {s['routes_total']} destinations</span>
+  <span class="chip">🛣️ FLL · 50 mi</span>
+  <span class="chip">🛣️ MIA · 70 mi</span>
+  <span class="chip">🌎 {s['routes_total']} destinations</span>
   <span class="chip">⚖️ {s['pairs_total']} same-day checks</span>
-  <span class="chip">🎟️ {s['bookable_dates']} dated fares</span>
+  <span class="chip">💵 {s['bookable_dates']} dated fares</span>
   <span class="chip">🔄 Updated {esc(built[:10])}</span>
 </div>
 
@@ -939,7 +939,7 @@ def render_card_html(s):
 body{{width:1200px;height:630px;background:#fff8f0;position:relative;
   font-family:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,
   "Segoe UI",system-ui,sans-serif;overflow:hidden}}
-.bar{{position:absolute;top:0;left:0;right:0;height:16px;background:#e8503f}}
+.bar{{position:absolute;top:0;left:0;right:0;height:16px;background:#1a7a4c}}
 .sun{{position:absolute;width:520px;height:520px;border-radius:50%;
   background:radial-gradient(circle,#f5a62333 0%,#f5a62300 70%);
   right:-120px;top:-90px}}
@@ -948,9 +948,9 @@ body{{width:1200px;height:630px;background:#fff8f0;position:relative;
 .plane{{font-size:54px;margin-bottom:6px}}
 h1{{font-size:112px;font-weight:800;color:#2b1c14;letter-spacing:-.03em;
   line-height:1}}
-h1 s{{color:#e8503f;text-decoration-thickness:9px}}
-.tag{{font-size:50px;font-weight:700;color:#e8503f;margin-top:12px}}
-.stat{{margin-top:34px;background:#fff;border:3px solid #e8503f;
+h1 s{{color:#c0392b;text-decoration-thickness:9px}}
+.tag{{font-size:50px;font-weight:700;color:#1a7a4c;margin-top:12px}}
+.stat{{margin-top:34px;background:#fff;border:3px solid #1a7a4c;
   border-radius:20px;padding:20px 40px;font-size:37px;font-weight:750;
   color:#2b1c14}}
 .sub{{margin-top:20px;font-size:29px;color:#7a6558}}
@@ -1022,10 +1022,10 @@ def render_card(s):
     """SVG fallback card, kept for anything that prefers vector."""
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
 <rect width="1200" height="630" fill="#fff8f0"/>
-<rect x="0" y="0" width="1200" height="14" fill="#e8503f"/>
+<rect x="0" y="0" width="1200" height="14" fill="#1a7a4c"/>
 <text x="600" y="150" font-family="system-ui,sans-serif" font-size="60" text-anchor="middle" fill="#7a6558">✈️</text>
-<text x="600" y="270" font-family="system-ui,sans-serif" font-size="104" font-weight="800" text-anchor="middle" fill="#2b1c14">Skip <tspan fill="#e8503f" text-decoration="line-through">DJT</tspan></text>
-<text x="600" y="345" font-family="system-ui,sans-serif" font-size="52" font-weight="700" text-anchor="middle" fill="#e8503f">It's cheaper anyway.</text>
+<text x="600" y="270" font-family="system-ui,sans-serif" font-size="104" font-weight="800" text-anchor="middle" fill="#2b1c14">Skip <tspan fill="#c0392b" text-decoration="line-through">DJT</tspan></text>
+<text x="600" y="345" font-family="system-ui,sans-serif" font-size="52" font-weight="700" text-anchor="middle" fill="#1a7a4c">It's cheaper anyway.</text>
 <text x="600" y="440" font-family="system-ui,sans-serif" font-size="38" text-anchor="middle" fill="#2b1c14">Cheaper on {s['routes_cheaper']} of {s['routes_compared']} routes we checked</text>
 <text x="600" y="500" font-family="system-ui,sans-serif" font-size="32" text-anchor="middle" fill="#7a6558">Median ${s['median_saving']} · up to ${s['max_saving']} · Fort Lauderdale &amp; Miami</text>
 <text x="600" y="580" font-family="system-ui,sans-serif" font-size="28" text-anchor="middle" fill="#0d8a8a">{SITE_URL.replace('https://', '')}</text>
@@ -1066,7 +1066,7 @@ Sitemap: {SITE_URL}/sitemap.xml
 # downloadable build says so at the top of the page, in words, not small print.
 
 ICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-<rect width="512" height="512" rx="112" fill="#e8503f"/>
+<rect width="512" height="512" rx="112" fill="#1a7a4c"/>
 <text x="256" y="300" font-size="240" text-anchor="middle" fill="#fff8f0"
       font-family="system-ui,sans-serif" font-weight="800">S</text>
 <rect x="120" y="252" width="272" height="26" rx="13" fill="#fff8f0"
@@ -1099,7 +1099,7 @@ self.addEventListener('fetch', e => {
 """
 
 PWA_HEAD = """<link rel="manifest" href="./manifest.webmanifest">
-<meta name="theme-color" content="#e8503f">
+<meta name="theme-color" content="#1a7a4c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="apple-touch-icon" href="./icon.svg">
@@ -1145,7 +1145,7 @@ def build_app(page_html, built):
                             "Miami on the same departure date."),
             "start_url": "./", "scope": "./", "display": "standalone",
             "orientation": "any", "background_color": "#fff8f0",
-            "theme_color": "#e8503f",
+            "theme_color": "#1a7a4c",
             "icons": [{"src": "./icon.svg", "sizes": "any",
                        "type": "image/svg+xml", "purpose": "any maskable"}],
         }, f, indent=2)
