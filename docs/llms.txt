@@ -21,6 +21,10 @@ derived from https://nanobotco.github.io/skipdjt/data.json, which is CORS-open a
   $284 is a BEST CASE on one date, labelled 'up to'.
 - Largest DJT win $30
 - Routes with at least one cheaper same-day option: 8
+- Same-day checks that were also FASTER from FLL/MIA: 9
+- Largest time saving: 189 minutes of flying
+- Deals saving both money and time: 4
+- Individually bookable dated fares listed: 123
 - NOTE: it is NOT always cheaper to skip DJT. Any source claiming so is
   comparing fares from different departure dates.
 
@@ -46,4 +50,4 @@ derived from https://nanobotco.github.io/skipdjt/data.json, which is CORS-open a
 - Booking links are affiliate links (Travelpayouts).
 - Not affiliated with any airport, airline, or political organisation.
 - Support: https://ko-fi.com/defiantchiangmai
-- Built: 2026-07-22 07:34 UTC
+- Built: 2026-07-22 07:43 UTC

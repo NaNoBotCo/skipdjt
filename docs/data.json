@@ -1,5 +1,5 @@
 {
-  "built": "2026-07-22 07:34 UTC",
+  "built": "2026-07-22 07:43 UTC",
   "source": "Travelpayouts / Aviasales cached-fare Data API",
   "avoided_airport": {
     "codes": [
@@ -35,6 +35,10 @@
     "horizon_days": 30,
     "routes_with_deal": 8,
     "best_deal_amount": 284,
+    "pairs_faster": 9,
+    "best_mins_saved": 189,
+    "deals_also_faster": 4,
+    "bookable_dates": 123,
     "routes_compared": 11,
     "routes_cheaper": 11,
     "anydate_median": 58,
@@ -92,6 +96,9 @@
           "alt_price": 187,
           "alt_airport": "MIA",
           "saving": 142,
+          "djt_minutes": 169,
+          "alt_minutes": 192,
+          "mins_saved": -23,
           "alt_url": "https://www.aviasales.com/search/MIA2207JFK19081?t=AA17847451801784756700000192MIAJFK17871189001787130240000189JFKMIA_e7082fda66c3c6ec8c49691b48d8f227_14686&search_date=20072026&expected_price_uuid=019f81f5-eb1a-8040-6dc5-69a7b09ffb36&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Y4WTUIW2yxMkHQc6idt3QQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=187&marker=749581"
         },
         {
@@ -102,6 +109,9 @@
           "alt_price": 213,
           "alt_airport": "MIA",
           "saving": 65,
+          "djt_minutes": 245,
+          "alt_minutes": 188,
+          "mins_saved": 57,
           "alt_url": "https://www.aviasales.com/search/MIA2307JFK27071?t=AA17848434601784854740000188MIAJFK17851782001785190920000212JFKMIA_0fc4bc7b9a0edb01f6a5ba5edb56f727_16622&search_date=19072026&expected_price_uuid=019f77bc-2668-8040-2f5d-363160b2af5d&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=eEnobhuL6mZb_8GTI5pdgA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=213&marker=749581"
         },
         {
@@ -112,6 +122,9 @@
           "alt_price": 452,
           "alt_airport": "FLL",
           "saving": -25,
+          "djt_minutes": 172,
+          "alt_minutes": 287,
+          "mins_saved": -115,
           "alt_url": "https://www.aviasales.com/search/FLL2507JFK26071?t=F917849595001784980200000345FLLATLJFK17851014001785185520001402JFKDCAIADFLL_ab8d102eeba6cee92e16f8ad8d16b5d4_35301&search_date=16072026&expected_price_uuid=019f6c52-da67-8040-668d-66d7c7f4304a&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=GVpFfWXk8KsfjNNxV5glrw&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=452&marker=749581"
         },
         {
@@ -122,6 +135,9 @@
           "alt_price": 241,
           "alt_airport": "FLL",
           "saving": -8,
+          "djt_minutes": 164,
+          "alt_minutes": 244,
+          "mins_saved": -80,
           "alt_url": "https://www.aviasales.com/search/FLL1309JFK16091?t=AA17892792001789298940000329FLLCLTJFK17895455401789563180000294JFKCLTFLL_f0b2ed1161228a2d0d6745f4534255a2_18920&search_date=21072026&expected_price_uuid=019f8697-7f96-8040-ae48-49fd0c9444c2&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=qQ4C6VzAALRcKfN9ZeYb9A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=241&marker=749581"
         }
       ],
@@ -134,6 +150,9 @@
           "alt_price": 187,
           "alt_airport": "MIA",
           "saving": 142,
+          "djt_minutes": 169,
+          "alt_minutes": 192,
+          "mins_saved": -23,
           "alt_url": "https://www.aviasales.com/search/MIA2207JFK19081?t=AA17847451801784756700000192MIAJFK17871189001787130240000189JFKMIA_e7082fda66c3c6ec8c49691b48d8f227_14686&search_date=20072026&expected_price_uuid=019f81f5-eb1a-8040-6dc5-69a7b09ffb36&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Y4WTUIW2yxMkHQc6idt3QQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=187&marker=749581"
         },
         {
@@ -144,6 +163,9 @@
           "alt_price": 213,
           "alt_airport": "MIA",
           "saving": 65,
+          "djt_minutes": 245,
+          "alt_minutes": 188,
+          "mins_saved": 57,
           "alt_url": "https://www.aviasales.com/search/MIA2307JFK27071?t=AA17848434601784854740000188MIAJFK17851782001785190920000212JFKMIA_0fc4bc7b9a0edb01f6a5ba5edb56f727_16622&search_date=19072026&expected_price_uuid=019f77bc-2668-8040-2f5d-363160b2af5d&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=eEnobhuL6mZb_8GTI5pdgA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=213&marker=749581"
         },
         {
@@ -154,6 +176,9 @@
           "alt_price": 452,
           "alt_airport": "FLL",
           "saving": -25,
+          "djt_minutes": 172,
+          "alt_minutes": 287,
+          "mins_saved": -115,
           "alt_url": "https://www.aviasales.com/search/FLL2507JFK26071?t=F917849595001784980200000345FLLATLJFK17851014001785185520001402JFKDCAIADFLL_ab8d102eeba6cee92e16f8ad8d16b5d4_35301&search_date=16072026&expected_price_uuid=019f6c52-da67-8040-668d-66d7c7f4304a&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=GVpFfWXk8KsfjNNxV5glrw&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=452&marker=749581"
         }
       ],
@@ -165,8 +190,93 @@
         "alt_price": 187,
         "alt_airport": "MIA",
         "saving": 142,
+        "djt_minutes": 169,
+        "alt_minutes": 192,
+        "mins_saved": -23,
         "alt_url": "https://www.aviasales.com/search/MIA2207JFK19081?t=AA17847451801784756700000192MIAJFK17871189001787130240000189JFKMIA_e7082fda66c3c6ec8c49691b48d8f227_14686&search_date=20072026&expected_price_uuid=019f81f5-eb1a-8040-6dc5-69a7b09ffb36&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Y4WTUIW2yxMkHQc6idt3QQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=187&marker=749581"
       },
+      "best_days": [
+        {
+          "date": "2026-07-22",
+          "days_out": 0,
+          "pretty": "Jul 22",
+          "price": 187,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 192,
+          "url": "https://www.aviasales.com/search/MIA2207JFK19081?t=AA17847451801784756700000192MIAJFK17871189001787130240000189JFKMIA_e7082fda66c3c6ec8c49691b48d8f227_14686&search_date=20072026&expected_price_uuid=019f81f5-eb1a-8040-6dc5-69a7b09ffb36&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Y4WTUIW2yxMkHQc6idt3QQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=187&marker=749581"
+        },
+        {
+          "date": "2026-08-04",
+          "days_out": 13,
+          "pretty": "Aug 4",
+          "price": 187,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 192,
+          "url": "https://www.aviasales.com/search/MIA0408JFK10081?t=AA17858593801785870900000192MIAJFK17863956001786407600000200JFKMIA_565f773019d495bbf233a1fc827d0a22_14618&search_date=18072026&expected_price_uuid=019f7620-ae11-8040-64fc-780fe0f7fc32&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=ACxj6MP4yVn8sCQPboP3LQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=187&marker=749581"
+        },
+        {
+          "date": "2026-07-24",
+          "days_out": 2,
+          "pretty": "Jul 24",
+          "price": 204,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 183,
+          "url": "https://www.aviasales.com/search/FLL2407JFK26071?t=B617849313001784942280000183FLLJFK17850486001785059880000188JFKFLL_26636564e113f04c2a9ed0aa6c49cb74_15803&search_date=15072026&expected_price_uuid=019f66f7-de13-8010-2f21-b4d679c51fd3&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=PNRO3pgOh8OXRadFyk6fPw&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=204&marker=749581"
+        },
+        {
+          "date": "2026-08-20",
+          "days_out": 29,
+          "pretty": "Aug 20",
+          "price": 213,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 246,
+          "url": "https://www.aviasales.com/search/FLL2008JFK23081?t=AA17872056001787225400000330FLLCLTJFK17874669001787490240000389JFKCLTFLL_70c2c76c262e34ed1842d93e23038482_16484&search_date=15072026&expected_price_uuid=019f6728-c397-8010-66f4-3fc473f7a1bb&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=PE2YSWT4-9O4Q3cOo-svqQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=213&marker=749581"
+        },
+        {
+          "date": "2026-07-23",
+          "days_out": 1,
+          "pretty": "Jul 23",
+          "price": 213,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 188,
+          "url": "https://www.aviasales.com/search/MIA2307JFK27071?t=AA17848434601784854740000188MIAJFK17851782001785190920000212JFKMIA_0fc4bc7b9a0edb01f6a5ba5edb56f727_16622&search_date=19072026&expected_price_uuid=019f77bc-2668-8040-2f5d-363160b2af5d&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=eEnobhuL6mZb_8GTI5pdgA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=213&marker=749581"
+        },
+        {
+          "date": "2026-08-17",
+          "days_out": 26,
+          "pretty": "Aug 17",
+          "price": 261,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 179,
+          "url": "https://www.aviasales.com/search/FLL1708JFK27081?t=B617869500601786960800000179FLLJFK17878608001787872980000203JFKFLL_1bf2aae82d2976c180e8437208bb4b9f_20492&search_date=20072026&expected_price_uuid=019f7f4f-cc27-8030-e2bf-bfa5dca35e67&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=pLo_LCrxO0SenSz77E94rA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=261&marker=749581"
+        },
+        {
+          "date": "2026-08-03",
+          "days_out": 12,
+          "pretty": "Aug 3",
+          "price": 272,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 183,
+          "url": "https://www.aviasales.com/search/FLL0308JFK20081?t=B617857953001785806280000183FLLJFK17872050001787215800000180JFKFLL_b236f4da82b7e6405b61078d6c3e9354_21350&search_date=21072026&expected_price_uuid=019f8393-2fc5-8030-ecd1-16a34e419b0d&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=hCLc3z7V43TcpnDx-jn2sw&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=272&marker=749581"
+        },
+        {
+          "date": "2026-08-13",
+          "days_out": 22,
+          "pretty": "Aug 13",
+          "price": 273,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 179,
+          "url": "https://www.aviasales.com/search/FLL1308JFK16081?t=B617866044601786615200000179FLLJFK17869104001786922580000203JFKFLL_d09a6f24fb6b7ab50d08770d301c2f23_21420&search_date=20072026&expected_price_uuid=019f80dc-3243-8040-2a8b-8d9ec85e221f&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=BXc2--CU7tvPgWm_q7UQfQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=273&marker=749581"
+        }
+      ],
       "faster_min": -10
     },
     {
@@ -214,6 +324,9 @@
           "alt_price": 220,
           "alt_airport": "MIA",
           "saving": 53,
+          "djt_minutes": 364,
+          "alt_minutes": 273,
+          "mins_saved": 91,
           "alt_url": "https://www.aviasales.com/search/MIA2207LGA19081?t=F917847191401784760180000684MIAATLLGA17871585001787180700000370LGAATLMIA_e053bc1ae5547cd313172e72bfaf623d_17265&search_date=20072026&expected_price_uuid=019f81f5-eb1a-8040-6dc5-69a7b09ffb36&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=vTQ-G3ozam02LNpF3rNNAQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=220&marker=749581"
         },
         {
@@ -224,6 +337,9 @@
           "alt_price": 254,
           "alt_airport": "MIA",
           "saving": 19,
+          "djt_minutes": 232,
+          "alt_minutes": 185,
+          "mins_saved": 47,
           "alt_url": "https://www.aviasales.com/search/MIA2307LGA27071?t=AA17848332001784844300000185MIALGA17851320001785143700000195LGAMIA_6684d4fbf281c3b390ad6f3a59cb9e1b_19815&search_date=19072026&expected_price_uuid=019f77bc-2668-8040-2f5d-363160b2af5d&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=dYmtTJ-7xJZyC92jL14uXg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=254&marker=749581"
         },
         {
@@ -234,6 +350,9 @@
           "alt_price": 277,
           "alt_airport": "MIA",
           "saving": 113,
+          "djt_minutes": 168,
+          "alt_minutes": 281,
+          "mins_saved": -113,
           "alt_url": "https://www.aviasales.com/search/MIA2507LGA08081?t=F917849682001785008520000672MIAATLLGA17861705401786197180000444LGAATLMIA_13e5b89f71cca9d4e184de45184c46cf_21710&search_date=21072026&expected_price_uuid=019f8678-91be-8040-27b1-b92625a7c1fe&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=kPRi3_itui8R0X4LHV3LTg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=277&marker=749581"
         },
         {
@@ -244,6 +363,9 @@
           "alt_price": 222,
           "alt_airport": "FLL",
           "saving": -13,
+          "djt_minutes": 165,
+          "alt_minutes": 176,
+          "mins_saved": -11,
           "alt_url": "https://www.aviasales.com/search/FLL1309LGA16091?t=AA17893207801789331340000176FLLLGA17895455401789556640000185LGAFLL_19f98fcfbdeae851c4f3f33a8b900563_17384&search_date=21072026&expected_price_uuid=019f8697-7f96-8040-ae48-49fd0c9444c2&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=e3Ugndd37Q-jw-kBJ6VXKw&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=222&marker=749581"
         }
       ],
@@ -256,6 +378,9 @@
           "alt_price": 220,
           "alt_airport": "MIA",
           "saving": 53,
+          "djt_minutes": 364,
+          "alt_minutes": 273,
+          "mins_saved": 91,
           "alt_url": "https://www.aviasales.com/search/MIA2207LGA19081?t=F917847191401784760180000684MIAATLLGA17871585001787180700000370LGAATLMIA_e053bc1ae5547cd313172e72bfaf623d_17265&search_date=20072026&expected_price_uuid=019f81f5-eb1a-8040-6dc5-69a7b09ffb36&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=vTQ-G3ozam02LNpF3rNNAQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=220&marker=749581"
         },
         {
@@ -266,6 +391,9 @@
           "alt_price": 254,
           "alt_airport": "MIA",
           "saving": 19,
+          "djt_minutes": 232,
+          "alt_minutes": 185,
+          "mins_saved": 47,
           "alt_url": "https://www.aviasales.com/search/MIA2307LGA27071?t=AA17848332001784844300000185MIALGA17851320001785143700000195LGAMIA_6684d4fbf281c3b390ad6f3a59cb9e1b_19815&search_date=19072026&expected_price_uuid=019f77bc-2668-8040-2f5d-363160b2af5d&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=dYmtTJ-7xJZyC92jL14uXg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=254&marker=749581"
         },
         {
@@ -276,6 +404,9 @@
           "alt_price": 277,
           "alt_airport": "MIA",
           "saving": 113,
+          "djt_minutes": 168,
+          "alt_minutes": 281,
+          "mins_saved": -113,
           "alt_url": "https://www.aviasales.com/search/MIA2507LGA08081?t=F917849682001785008520000672MIAATLLGA17861705401786197180000444LGAATLMIA_13e5b89f71cca9d4e184de45184c46cf_21710&search_date=21072026&expected_price_uuid=019f8678-91be-8040-27b1-b92625a7c1fe&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=kPRi3_itui8R0X4LHV3LTg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=277&marker=749581"
         }
       ],
@@ -287,8 +418,93 @@
         "alt_price": 277,
         "alt_airport": "MIA",
         "saving": 113,
+        "djt_minutes": 168,
+        "alt_minutes": 281,
+        "mins_saved": -113,
         "alt_url": "https://www.aviasales.com/search/MIA2507LGA08081?t=F917849682001785008520000672MIAATLLGA17861705401786197180000444LGAATLMIA_13e5b89f71cca9d4e184de45184c46cf_21710&search_date=21072026&expected_price_uuid=019f8678-91be-8040-27b1-b92625a7c1fe&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=kPRi3_itui8R0X4LHV3LTg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=277&marker=749581"
       },
+      "best_days": [
+        {
+          "date": "2026-08-04",
+          "days_out": 13,
+          "pretty": "Aug 4",
+          "price": 175,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 281,
+          "url": "https://www.aviasales.com/search/MIA0408LGA10081?t=F917858322001785865860000561MIAATLLGA17863866001786482300001595LGACLTMIA_29001e0093392ef46a34353983513566_13682&search_date=18072026&expected_price_uuid=019f7620-ae11-8040-64fc-780fe0f7fc32&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=WevIUuP4B5RuRbvnABJT6Q&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=175&marker=749581"
+        },
+        {
+          "date": "2026-07-24",
+          "days_out": 2,
+          "pretty": "Jul 24",
+          "price": 201,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 305,
+          "url": "https://www.aviasales.com/search/FLL2407LGA26071?t=WN17848881001784908800000345FLLMDWLGA17850468001785075600000480LGAMCIFLL_6594598220e892d2b7eec3a26d40ca29_15565&search_date=15072026&expected_price_uuid=019f66f7-de13-8010-2f21-b4d679c51fd3&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=3akkf9dgeLhOVyCDVZ0P4w&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=201&marker=749581"
+        },
+        {
+          "date": "2026-07-22",
+          "days_out": 0,
+          "pretty": "Jul 22",
+          "price": 220,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 273,
+          "url": "https://www.aviasales.com/search/MIA2207LGA19081?t=F917847191401784760180000684MIAATLLGA17871585001787180700000370LGAATLMIA_e053bc1ae5547cd313172e72bfaf623d_17265&search_date=20072026&expected_price_uuid=019f81f5-eb1a-8040-6dc5-69a7b09ffb36&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=vTQ-G3ozam02LNpF3rNNAQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=220&marker=749581"
+        },
+        {
+          "date": "2026-08-20",
+          "days_out": 29,
+          "pretty": "Aug 20",
+          "price": 251,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 272,
+          "url": "https://www.aviasales.com/search/FLL2008LGA23081?t=F917872380001787259540000359FLLATLLGA17874658801787509080000720LGAATLFLL_dbb66b86f43c56354c419092684f4d89_19474&search_date=15072026&expected_price_uuid=019f6728-c397-8010-66f4-3fc473f7a1bb&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=jIVmx0i1tiQ_w-SJhl0DIA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=251&marker=749581"
+        },
+        {
+          "date": "2026-07-23",
+          "days_out": 1,
+          "pretty": "Jul 23",
+          "price": 254,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 185,
+          "url": "https://www.aviasales.com/search/MIA2307LGA27071?t=AA17848332001784844300000185MIALGA17851320001785143700000195LGAMIA_6684d4fbf281c3b390ad6f3a59cb9e1b_19815&search_date=19072026&expected_price_uuid=019f77bc-2668-8040-2f5d-363160b2af5d&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=dYmtTJ-7xJZyC92jL14uXg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=254&marker=749581"
+        },
+        {
+          "date": "2026-08-05",
+          "days_out": 14,
+          "pretty": "Aug 5",
+          "price": 254,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 173,
+          "url": "https://www.aviasales.com/search/FLL0508LGA07081?t=B617859102001785920580000173FLLLGA17861400001786177980000633LGAATLFLL_ac6bf2a2ea342b8fbf8a3f4bd28d5958_19897&search_date=21072026&expected_price_uuid=019f8624-2156-8030-229a-817d508d2d55&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=4WWqjAHJDqFsls3GC6FIsg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=254&marker=749581"
+        },
+        {
+          "date": "2026-07-29",
+          "days_out": 7,
+          "pretty": "Jul 29",
+          "price": 264,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 273,
+          "url": "https://www.aviasales.com/search/MIA2907LGA04081?t=F917853239401785347460000392MIAATLLGA17858249401785851580000444LGAATLMIA_54db6932f5a21242d8f365f696ecb3ef_20460&search_date=16072026&expected_price_uuid=019f68e9-e541-8010-2026-84c439d0b374&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=8pgbn-HpXqSYG-y9B6HspA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=264&marker=749581"
+        },
+        {
+          "date": "2026-08-13",
+          "days_out": 22,
+          "pretty": "Aug 13",
+          "price": 266,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 173,
+          "url": "https://www.aviasales.com/search/FLL1308LGA16081?t=B617866014001786611780000173FLLLGA17868600001786870800000180LGAFLL_a416ec4a1c9dd514ec1af1c6ca680374_20922&search_date=20072026&expected_price_uuid=019f80dc-3243-8040-2a8b-8d9ec85e221f&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=AsPuRvvvLsgLSqscEUh3jA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=266&marker=749581"
+        }
+      ],
       "faster_min": -11
     },
     {
@@ -336,6 +552,9 @@
           "alt_price": 170,
           "alt_airport": "MIA",
           "saving": 106,
+          "djt_minutes": 231,
+          "alt_minutes": 184,
+          "mins_saved": 47,
           "alt_url": "https://www.aviasales.com/search/MIA2207EWR19081?t=UA17847040201784715060000184MIAEWR17871538801787165520000194EWRMIA_dbf6517328d49df07bf0047888ae378e_13373&search_date=20072026&expected_price_uuid=019f81f5-eb1a-8040-6dc5-69a7b09ffb36&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=YcK9R54frQ7fxwJc05-w-A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=170&marker=749581"
         },
         {
@@ -346,6 +565,9 @@
           "alt_price": 203,
           "alt_airport": "MIA",
           "saving": 75,
+          "djt_minutes": 240,
+          "alt_minutes": 184,
+          "mins_saved": 56,
           "alt_url": "https://www.aviasales.com/search/MIA2307EWR27071?t=UA17847904201784801460000184MIAEWR17851572001785168960000196EWRMIA_8bb2a84f46e51e80c6c3c6bea24da2b8_15832&search_date=19072026&expected_price_uuid=019f77bc-2668-8040-2f5d-363160b2af5d&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=wlUsORlTGEgXf7tSwGgcuA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=203&marker=749581"
         },
         {
@@ -356,6 +578,9 @@
           "alt_price": 468,
           "alt_airport": "FLL",
           "saving": -30,
+          "djt_minutes": 166,
+          "alt_minutes": 184,
+          "mins_saved": -18,
           "alt_url": "https://www.aviasales.com/search/FLL2507EWR26071?t=UA17849661601784977200000184FLLEWR17850549001785066000000185EWRFLL_f02b0e3ce6157f6f8dc30d618fc36e6b_36551&search_date=16072026&expected_price_uuid=019f6c52-da67-8040-668d-66d7c7f4304a&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=3Q1dDfkVR_GXU-h5oO-7KQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=468&marker=749581"
         },
         {
@@ -366,6 +591,9 @@
           "alt_price": 226,
           "alt_airport": "FLL",
           "saving": -28,
+          "djt_minutes": 171,
+          "alt_minutes": 276,
+          "mins_saved": -105,
           "alt_url": "https://www.aviasales.com/search/FLL1309EWR16091?t=F917893267801789347540000346FLLATLEWR17895977401789637160000657EWRATLFLL_70eaf5590aa24c598f5d6465f3f36a13_17702&search_date=21072026&expected_price_uuid=019f8697-7f96-8040-ae48-49fd0c9444c2&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=M2p4TKURiRcAy9b6WkEAdQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=226&marker=749581"
         }
       ],
@@ -378,6 +606,9 @@
           "alt_price": 170,
           "alt_airport": "MIA",
           "saving": 106,
+          "djt_minutes": 231,
+          "alt_minutes": 184,
+          "mins_saved": 47,
           "alt_url": "https://www.aviasales.com/search/MIA2207EWR19081?t=UA17847040201784715060000184MIAEWR17871538801787165520000194EWRMIA_dbf6517328d49df07bf0047888ae378e_13373&search_date=20072026&expected_price_uuid=019f81f5-eb1a-8040-6dc5-69a7b09ffb36&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=YcK9R54frQ7fxwJc05-w-A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=170&marker=749581"
         },
         {
@@ -388,6 +619,9 @@
           "alt_price": 203,
           "alt_airport": "MIA",
           "saving": 75,
+          "djt_minutes": 240,
+          "alt_minutes": 184,
+          "mins_saved": 56,
           "alt_url": "https://www.aviasales.com/search/MIA2307EWR27071?t=UA17847904201784801460000184MIAEWR17851572001785168960000196EWRMIA_8bb2a84f46e51e80c6c3c6bea24da2b8_15832&search_date=19072026&expected_price_uuid=019f77bc-2668-8040-2f5d-363160b2af5d&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=wlUsORlTGEgXf7tSwGgcuA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=203&marker=749581"
         },
         {
@@ -398,6 +632,9 @@
           "alt_price": 468,
           "alt_airport": "FLL",
           "saving": -30,
+          "djt_minutes": 166,
+          "alt_minutes": 184,
+          "mins_saved": -18,
           "alt_url": "https://www.aviasales.com/search/FLL2507EWR26071?t=UA17849661601784977200000184FLLEWR17850549001785066000000185EWRFLL_f02b0e3ce6157f6f8dc30d618fc36e6b_36551&search_date=16072026&expected_price_uuid=019f6c52-da67-8040-668d-66d7c7f4304a&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=3Q1dDfkVR_GXU-h5oO-7KQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=468&marker=749581"
         }
       ],
@@ -409,8 +646,93 @@
         "alt_price": 170,
         "alt_airport": "MIA",
         "saving": 106,
+        "djt_minutes": 231,
+        "alt_minutes": 184,
+        "mins_saved": 47,
         "alt_url": "https://www.aviasales.com/search/MIA2207EWR19081?t=UA17847040201784715060000184MIAEWR17871538801787165520000194EWRMIA_dbf6517328d49df07bf0047888ae378e_13373&search_date=20072026&expected_price_uuid=019f81f5-eb1a-8040-6dc5-69a7b09ffb36&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=YcK9R54frQ7fxwJc05-w-A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=170&marker=749581"
       },
+      "best_days": [
+        {
+          "date": "2026-08-04",
+          "days_out": 13,
+          "pretty": "Aug 4",
+          "price": 168,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 295,
+          "url": "https://www.aviasales.com/search/MIA0408EWR10081?t=F917858644801785891780000455MIAATLEWR17863413001786369980000478EWRATLMIA_3e072996448247aa8f965b8af84070ac_13100&search_date=18072026&expected_price_uuid=019f7620-ae11-8040-64fc-780fe0f7fc32&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=58gvWIByuEUyRYV4mj0WiA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=168&marker=749581"
+        },
+        {
+          "date": "2026-07-22",
+          "days_out": 0,
+          "pretty": "Jul 22",
+          "price": 170,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 184,
+          "url": "https://www.aviasales.com/search/MIA2207EWR19081?t=UA17847040201784715060000184MIAEWR17871538801787165520000194EWRMIA_dbf6517328d49df07bf0047888ae378e_13373&search_date=20072026&expected_price_uuid=019f81f5-eb1a-8040-6dc5-69a7b09ffb36&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=YcK9R54frQ7fxwJc05-w-A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=170&marker=749581"
+        },
+        {
+          "date": "2026-07-23",
+          "days_out": 1,
+          "pretty": "Jul 23",
+          "price": 203,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 184,
+          "url": "https://www.aviasales.com/search/MIA2307EWR27071?t=UA17847904201784801460000184MIAEWR17851572001785168960000196EWRMIA_8bb2a84f46e51e80c6c3c6bea24da2b8_15832&search_date=19072026&expected_price_uuid=019f77bc-2668-8040-2f5d-363160b2af5d&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=wlUsORlTGEgXf7tSwGgcuA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=203&marker=749581"
+        },
+        {
+          "date": "2026-08-20",
+          "days_out": 29,
+          "pretty": "Aug 20",
+          "price": 219,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 273,
+          "url": "https://www.aviasales.com/search/FLL2008EWR23081?t=F917872380001787274180000603FLLATLEWR17874645001787493900000490EWRATLFLL_7c63aeb7cfced505509ed5a25f8eae33_16963&search_date=15072026&expected_price_uuid=019f6728-c397-8010-66f4-3fc473f7a1bb&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=mxuUV5OPj3PtB5HNtJLAfA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=219&marker=749581"
+        },
+        {
+          "date": "2026-07-24",
+          "days_out": 2,
+          "pretty": "Jul 24",
+          "price": 239,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 187,
+          "url": "https://www.aviasales.com/search/FLL2407EWR26071?t=UA17849083201784919540000187FLLEWR17850492001785060300000185EWRFLL_5e2adb4903f3a1ce34f7bbe19fea57f8_18540&search_date=15072026&expected_price_uuid=019f66f7-de13-8010-2f21-b4d679c51fd3&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=OhslDSpQuhkezoskrfKM9Q&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=239&marker=749581"
+        },
+        {
+          "date": "2026-07-29",
+          "days_out": 7,
+          "pretty": "Jul 29",
+          "price": 262,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 295,
+          "url": "https://www.aviasales.com/search/MIA2907EWR04081?t=F917853460801785373380000455MIAATLEWR17858229001785851580000478EWRATLMIA_3323392bc275798a4c890b44a887b018_20305&search_date=16072026&expected_price_uuid=019f68e9-e541-8010-2026-84c439d0b374&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=58gvWIByuEUyRYV4mj0WiA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=262&marker=749581"
+        },
+        {
+          "date": "2026-08-13",
+          "days_out": 22,
+          "pretty": "Aug 13",
+          "price": 324,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 177,
+          "url": "https://www.aviasales.com/search/FLL1308EWR16081?t=B617866026001786613220000177FLLEWR17868597001786888800000485EWRATLFLL_adbe1971f26d9017837261e25c791d55_25452&search_date=20072026&expected_price_uuid=019f80dc-3243-8040-2a8b-8d9ec85e221f&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=kd046jU1MNSBlrefype_Vg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=324&marker=749581"
+        },
+        {
+          "date": "2026-07-31",
+          "days_out": 9,
+          "pretty": "Jul 31",
+          "price": 331,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 184,
+          "url": "https://www.aviasales.com/search/FLL3107EWR02081?t=UA17854809001785491940000184FLLEWR17857034401785715140000195EWRFLL_4156eb1978e78185b050b17e19474fe6_25851&search_date=16072026&expected_price_uuid=019f6c67-9286-8040-6e4b-609d38b52692&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=3i3qleRNHIl4qhTPxtLHHg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=331&marker=749581"
+        }
+      ],
       "faster_min": -5
     },
     {
@@ -452,6 +774,88 @@
       "same_date": [],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-08-13",
+          "days_out": 22,
+          "pretty": "Aug 13",
+          "price": 230,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 293,
+          "url": "https://www.aviasales.com/search/FLL1308BOS21081?t=F917866552801786693560000638FLLATLBOS17873163001787359440000719BOSATLFLL_05776d9c7d12e23580a1c8c41d584b9f_18091&search_date=20072026&expected_price_uuid=019f81e7-5be7-8040-aaa8-24dfea0099cd&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=WOZhXY_W8UUt_pzzj5Y9UA&expected_price_source=share&expected_price_currency=usd&expected_price=230&marker=749581"
+        },
+        {
+          "date": "2026-08-21",
+          "days_out": 30,
+          "pretty": "Aug 21",
+          "price": 290,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 260,
+          "url": "https://www.aviasales.com/search/FLL2108BOS31081?t=B617873044801787323380000315FLLJFKBOS17881803001788223440000719BOSATLFLL_639b444607f4a666f29a5c71b5cf6be7_22738&search_date=19072026&expected_price_uuid=019f7b11-29d3-8040-2c18-6764f449f6ef&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=ETboqdziZXtW_oPSzNffkw&expected_price_source=share&expected_price_currency=usd&expected_price=290&marker=749581"
+        },
+        {
+          "date": "2026-08-07",
+          "days_out": 16,
+          "pretty": "Aug 7",
+          "price": 358,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 293,
+          "url": "https://www.aviasales.com/search/FLL0708BOS09081?t=F917861392201786174920000595FLLATLBOS17862581401786409040002515BOSPHLATLFLL_9b24d67083d98ccfe7afe207432ffdbe_27969&search_date=18072026&expected_price_uuid=019f7759-3aee-8040-20b7-b782461b41eb&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=4SqQfJJKhxjRgacv9fYPNg&expected_price_source=share&expected_price_currency=usd&expected_price=358&marker=749581"
+        },
+        {
+          "date": "2026-07-23",
+          "days_out": 1,
+          "pretty": "Jul 23",
+          "price": 360,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 270,
+          "url": "https://www.aviasales.com/search/MIA2307BOS25071?t=WN17848192201784891040001197MIARDUBOS17849586001784981100000375BOSSTLMIA_d8e425cd98bc04db0992a7cdd686aca2_28143&search_date=17072026&expected_price_uuid=019f71e3-42b1-8040-a67e-41803a4f4794&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=aUtcvHdUbK16Oq3nCG9s3Q&expected_price_source=share&expected_price_currency=usd&expected_price=360&marker=749581"
+        },
+        {
+          "date": "2026-08-04",
+          "days_out": 13,
+          "pretty": "Aug 4",
+          "price": 362,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 264,
+          "url": "https://www.aviasales.com/search/FLL0408BOS08081?t=B617858446201785863820000320FLLJFKBOS17862186601786264380000762BOSATLFLL_987aa799a8b07daecf5ed0e3cabcf278_28086&search_date=15072026&expected_price_uuid=019f6778-dd62-8010-ac4c-b8b2006dd834&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=5EUMBbdzUy_YygXdxugWJw&expected_price_source=share&expected_price_currency=usd&expected_price=362&marker=749581"
+        },
+        {
+          "date": "2026-07-24",
+          "days_out": 2,
+          "pretty": "Jul 24",
+          "price": 388,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 260,
+          "url": "https://www.aviasales.com/search/MIA2407BOS27071?t=WN17849190001784938200000320MIABWIBOS17851299001785153600000395BOSMDWMIA_00d3aabc0a89d3149ab14fee551db58a_30450&search_date=20072026&expected_price_uuid=019f80b1-ea19-8040-2a6a-f5dfd9ea5040&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=4suk6fLBqwkxfsyZV4ZMEQ&expected_price_source=share&expected_price_currency=usd&expected_price=388&marker=749581"
+        },
+        {
+          "date": "2026-07-31",
+          "days_out": 9,
+          "pretty": "Jul 31",
+          "price": 415,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 205,
+          "url": "https://www.aviasales.com/search/MIA3107BOS03081?t=AA17855220001785534300000205MIABOS17857338001785746280000208BOSMIA_987acdeb5ff199abba7cc9ffd50de50f_32494&search_date=22072026&expected_price_uuid=019f883f-a995-8040-a9b7-0a03de1dd87e&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=NC-Z5OeAzN6FVzHXsHPajQ&expected_price_source=share&expected_price_currency=usd&expected_price=415&marker=749581"
+        },
+        {
+          "date": "2026-07-22",
+          "days_out": 0,
+          "pretty": "Jul 22",
+          "price": 598,
+          "airport": "FLL",
+          "stops": 2,
+          "minutes": 416,
+          "url": "https://www.aviasales.com/search/FLL2207BOS28071?t=F917847419401784816580001244FLLATLMDWORDBOS17852395201785285720000770BOSATLFLL_a6d1ebf7656403165e39e7f5b0f4d9c4_46867&search_date=21072026&expected_price_uuid=019f8604-3eaf-8040-a7b0-c61aa47e7a00&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Jh-t9Ec_BqYuG0Djl6p0oA&expected_price_source=share&expected_price_currency=usd&expected_price=598&marker=749581"
+        }
+      ],
       "faster_min": -27
     },
     {
@@ -499,6 +903,9 @@
           "alt_price": 238,
           "alt_airport": "FLL",
           "saving": 135,
+          "djt_minutes": 144,
+          "alt_minutes": 320,
+          "mins_saved": -176,
           "alt_url": "https://www.aviasales.com/search/FLL2707DCA28071?t=WN17851293001785167400000635FLLMCIDCA17852493001785258900000160DCAFLL_9bac506cfa355abf752fcd73ca82453c_18702&search_date=20072026&expected_price_uuid=019f80fa-d239-8040-ab6c-25fa05fc65bc&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=TAIiONbrGtkFmKpvoYua8A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=238&marker=749581"
         }
       ],
@@ -511,6 +918,9 @@
           "alt_price": 238,
           "alt_airport": "FLL",
           "saving": 135,
+          "djt_minutes": 144,
+          "alt_minutes": 320,
+          "mins_saved": -176,
           "alt_url": "https://www.aviasales.com/search/FLL2707DCA28071?t=WN17851293001785167400000635FLLMCIDCA17852493001785258900000160DCAFLL_9bac506cfa355abf752fcd73ca82453c_18702&search_date=20072026&expected_price_uuid=019f80fa-d239-8040-ab6c-25fa05fc65bc&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=TAIiONbrGtkFmKpvoYua8A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=238&marker=749581"
         }
       ],
@@ -522,8 +932,83 @@
         "alt_price": 238,
         "alt_airport": "FLL",
         "saving": 135,
+        "djt_minutes": 144,
+        "alt_minutes": 320,
+        "mins_saved": -176,
         "alt_url": "https://www.aviasales.com/search/FLL2707DCA28071?t=WN17851293001785167400000635FLLMCIDCA17852493001785258900000160DCAFLL_9bac506cfa355abf752fcd73ca82453c_18702&search_date=20072026&expected_price_uuid=019f80fa-d239-8040-ab6c-25fa05fc65bc&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=TAIiONbrGtkFmKpvoYua8A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=238&marker=749581"
       },
+      "best_days": [
+        {
+          "date": "2026-08-19",
+          "days_out": 28,
+          "pretty": "Aug 19",
+          "price": 149,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 221,
+          "url": "https://www.aviasales.com/search/FLL1908DCA26081?t=AA17871633601787183940000343FLLCLTDCA17877311401787740860000162DCAFLL_86ba1bae40c2771402b4d1e1cc2e2dda_11659&search_date=20072026&expected_price_uuid=019f8005-4528-8040-6e59-e741b54ad67d&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=imZ6c8wB3n0-LxEs4RkcQQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=149&marker=749581"
+        },
+        {
+          "date": "2026-07-27",
+          "days_out": 5,
+          "pretty": "Jul 27",
+          "price": 238,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 320,
+          "url": "https://www.aviasales.com/search/FLL2707DCA28071?t=WN17851293001785167400000635FLLMCIDCA17852493001785258900000160DCAFLL_9bac506cfa355abf752fcd73ca82453c_18702&search_date=20072026&expected_price_uuid=019f80fa-d239-8040-ab6c-25fa05fc65bc&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=TAIiONbrGtkFmKpvoYua8A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=238&marker=749581"
+        },
+        {
+          "date": "2026-08-11",
+          "days_out": 20,
+          "pretty": "Aug 11",
+          "price": 265,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 474,
+          "url": "https://www.aviasales.com/search/MIA1108DCA13081?t=F917864280001786467540000659MIADENDCA17866440001786686660000711DCADENMIA_e643e27e2ab3ba6c6b5d1a1cab4b57cf_20570&search_date=15072026&expected_price_uuid=019f673e-6f9b-8010-2beb-9beee90d1dbb&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=ZHIvjxOQQs2GYk-gpLRXBw&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=265&marker=749581"
+        },
+        {
+          "date": "2026-07-24",
+          "days_out": 2,
+          "pretty": "Jul 24",
+          "price": 293,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 158,
+          "url": "https://www.aviasales.com/search/FLL2407DCA28071?t=B617849265001784935980000158FLLDCA17852184001785227520000152DCAFLL_41cd586fa0d734b4f375f6ccd47d3ca2_22942&search_date=22072026&expected_price_uuid=019f874c-03ee-8040-29f8-821f7fc11c84&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=oSDBsnsY-xaqzJ00ukoJ1Q&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=293&marker=749581"
+        },
+        {
+          "date": "2026-08-06",
+          "days_out": 15,
+          "pretty": "Aug 6",
+          "price": 307,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 474,
+          "url": "https://www.aviasales.com/search/MIA0608DCA07081?t=F917859960001786035540000659MIADENDCA17861256001786168260000711DCADENMIA_0ad78b52c860af3828e17cf9b40ce748_24078&search_date=21072026&expected_price_uuid=019f8263-acce-8040-2fa1-82f4e800d86c&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=aYI9tn61VCJUeByTy8_xGg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=307&marker=749581"
+        },
+        {
+          "date": "2026-07-22",
+          "days_out": 0,
+          "pretty": "Jul 22",
+          "price": 337,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 474,
+          "url": "https://www.aviasales.com/search/MIA2207DCA23071?t=F917847000001784757540000959MIADENDCA17847900001784872260001371DCADENMIA_bbe023a9a50f645b3135db251e84a695_26447&search_date=21072026&expected_price_uuid=019f85a6-e425-8040-6eae-2ffba7bd3030&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=lDJ5O7N-RGUsf4TzbHXdaA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=337&marker=749581"
+        },
+        {
+          "date": "2026-07-23",
+          "days_out": 1,
+          "pretty": "Jul 23",
+          "price": 351,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 477,
+          "url": "https://www.aviasales.com/search/MIA2307DCA26071?t=F917847864001784825940000659MIADENDCA17850492001785131460001371DCADENMIA_0812c51843fbbf4e8c1f67aff0a99467_27606&search_date=20072026&expected_price_uuid=019f8160-da32-8040-2873-ec95133c6858&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=r92Q0nYji_ipxHhcgWLlFg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=351&marker=749581"
+        }
+      ],
       "faster_min": 19
     },
     {
@@ -571,6 +1056,9 @@
           "alt_price": 192,
           "alt_airport": "FLL",
           "saving": 284,
+          "djt_minutes": 257,
+          "alt_minutes": 158,
+          "mins_saved": 99,
           "alt_url": "https://www.aviasales.com/search/FLL2707IAD28071?t=F917851716001785181080000158FLLIAD17852604001785270180000163IADFLL_d5e5ec4306d61cf1eea31a02cf177cc3_15088&search_date=20072026&expected_price_uuid=019f80fa-d239-8040-ab6c-25fa05fc65bc&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=P7yN6JFw1Jc3X2kCGNcN3A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=192&marker=749581"
         }
       ],
@@ -583,6 +1071,9 @@
           "alt_price": 192,
           "alt_airport": "FLL",
           "saving": 284,
+          "djt_minutes": 257,
+          "alt_minutes": 158,
+          "mins_saved": 99,
           "alt_url": "https://www.aviasales.com/search/FLL2707IAD28071?t=F917851716001785181080000158FLLIAD17852604001785270180000163IADFLL_d5e5ec4306d61cf1eea31a02cf177cc3_15088&search_date=20072026&expected_price_uuid=019f80fa-d239-8040-ab6c-25fa05fc65bc&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=P7yN6JFw1Jc3X2kCGNcN3A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=192&marker=749581"
         }
       ],
@@ -594,8 +1085,83 @@
         "alt_price": 192,
         "alt_airport": "FLL",
         "saving": 284,
+        "djt_minutes": 257,
+        "alt_minutes": 158,
+        "mins_saved": 99,
         "alt_url": "https://www.aviasales.com/search/FLL2707IAD28071?t=F917851716001785181080000158FLLIAD17852604001785270180000163IADFLL_d5e5ec4306d61cf1eea31a02cf177cc3_15088&search_date=20072026&expected_price_uuid=019f80fa-d239-8040-ab6c-25fa05fc65bc&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=P7yN6JFw1Jc3X2kCGNcN3A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=192&marker=749581"
       },
+      "best_days": [
+        {
+          "date": "2026-08-19",
+          "days_out": 28,
+          "pretty": "Aug 19",
+          "price": 78,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 158,
+          "url": "https://www.aviasales.com/search/FLL1908IAD26081?t=F917871591601787168640000158FLLIAD17877677401787777520000163IADFLL_30723d8a75d5767348e774a79068d81b_6114&search_date=20072026&expected_price_uuid=019f8005-4528-8040-6e59-e741b54ad67d&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=YB-h7KrtCBYCTe5M1CDNMg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=78&marker=749581"
+        },
+        {
+          "date": "2026-08-11",
+          "days_out": 20,
+          "pretty": "Aug 11",
+          "price": 152,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 158,
+          "url": "https://www.aviasales.com/search/FLL1108IAD13081?t=F917864676001786477080000158FLLIAD17866072801786668120001014IADATLFLL_832ec676a98c8bf9765b7ef12e1d9602_11802&search_date=15072026&expected_price_uuid=019f673e-6f9b-8010-2beb-9beee90d1dbb&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=vCmGoLdBnzZvvb-ckINJQQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=152&marker=749581"
+        },
+        {
+          "date": "2026-07-27",
+          "days_out": 5,
+          "pretty": "Jul 27",
+          "price": 192,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 158,
+          "url": "https://www.aviasales.com/search/FLL2707IAD28071?t=F917851716001785181080000158FLLIAD17852604001785270180000163IADFLL_d5e5ec4306d61cf1eea31a02cf177cc3_15088&search_date=20072026&expected_price_uuid=019f80fa-d239-8040-ab6c-25fa05fc65bc&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=P7yN6JFw1Jc3X2kCGNcN3A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=192&marker=749581"
+        },
+        {
+          "date": "2026-08-06",
+          "days_out": 15,
+          "pretty": "Aug 6",
+          "price": 237,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 158,
+          "url": "https://www.aviasales.com/search/FLL0608IAD07081?t=F917860356001786045080000158FLLIAD17861261401786135920000163IADFLL_72856824f56322c8a1c4f338f583569c_18635&search_date=21072026&expected_price_uuid=019f8263-acce-8040-2fa1-82f4e800d86c&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=SVY_K_BWbYmRWJYMV0an7w&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=237&marker=749581"
+        },
+        {
+          "date": "2026-07-24",
+          "days_out": 2,
+          "pretty": "Jul 24",
+          "price": 245,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 158,
+          "url": "https://www.aviasales.com/search/FLL2407IAD28071?t=F917849124001784921880000158FLLIAD17852604001785270180000163IADFLL_8b783e363fcf4d8d30a2ffdbbfa69a38_19184&search_date=22072026&expected_price_uuid=019f874c-03ee-8040-29f8-821f7fc11c84&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=wc6pfEow0t2u0t2yOoH0VA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=245&marker=749581"
+        },
+        {
+          "date": "2026-07-22",
+          "days_out": 0,
+          "pretty": "Jul 22",
+          "price": 339,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 158,
+          "url": "https://www.aviasales.com/search/FLL2207IAD23071?t=F917847396001784749080000158FLLIAD17848284001784838180000163IADFLL_67e153a88de61094c5cf18141b1ec7a5_26569&search_date=21072026&expected_price_uuid=019f85a7-134f-8040-6a02-8e75ffb85d51&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=P7yN6JFw1Jc3X2kCGNcN3A&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=339&marker=749581"
+        },
+        {
+          "date": "2026-07-23",
+          "days_out": 1,
+          "pretty": "Jul 23",
+          "price": 356,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 222,
+          "url": "https://www.aviasales.com/search/FLL2307IAD23071?t=F917847926401784810280000294FLLCLTIAD17848284001784838180000163IADFLL_8702ab18832d9d282f4d246d3c9e04c0_27767&search_date=15072026&expected_price_uuid=019f660f-e597-8010-2008-39b74dc73538&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=HfPzMg8XkQBp9Gch7uW_9Q&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=356&marker=749581"
+        }
+      ],
       "faster_min": 112
     },
     {
@@ -631,6 +1197,58 @@
       "same_date": [],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-07-23",
+          "days_out": 1,
+          "pretty": "Jul 23",
+          "price": 153,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 270,
+          "url": "https://www.aviasales.com/search/MIA2307PHL11081?t=F917848055401784834400000481MIAATLPHL17864634001786482300000315PHLCLTMIA_88c5f42a3bc8261baa8afe19a5aea130_11936&search_date=16072026&expected_price_uuid=019f6bec-d005-8040-6475-0ef454e7245f&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=CL3O0JN2WLicSmAOVrbJCQ&expected_price_source=share&expected_price_currency=usd&expected_price=153&marker=749581"
+        },
+        {
+          "date": "2026-08-10",
+          "days_out": 19,
+          "pretty": "Aug 10",
+          "price": 155,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 272,
+          "url": "https://www.aviasales.com/search/FLL1008PHL12081?t=F917863416001786402680001018FLLATLPHL17865522001786581840000494PHLATLFLL_87e4be50c88438e2aeb5848dd34d9d71_12144&search_date=18072026&expected_price_uuid=019f76dd-646e-8040-a8b5-c1531bc31b1d&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=0TjLv8qtZj_YagnMl-gOvA&expected_price_source=share&expected_price_currency=usd&expected_price=155&marker=749581"
+        },
+        {
+          "date": "2026-08-13",
+          "days_out": 22,
+          "pretty": "Aug 13",
+          "price": 157,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 180,
+          "url": "https://www.aviasales.com/search/FLL1308PHL16081?t=G417866080001786618800000180FLLTTN17868615001786927320001097PHLATLFLL_f327d8c9ada3c1dbde986caf4e79ab42_12311&search_date=22072026&expected_price_uuid=019f87af-3167-8040-a1fc-2be28e81b8dd&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=7n1t_1nbvar6rCIxFgMdEg&expected_price_source=share&expected_price_currency=usd&expected_price=157&marker=749581"
+        },
+        {
+          "date": "2026-08-14",
+          "days_out": 23,
+          "pretty": "Aug 14",
+          "price": 159,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 268,
+          "url": "https://www.aviasales.com/search/FLL1408PHL16081?t=F917866872001786796520001822FLLATLPHL17868615001786888800000455PHLATLFLL_6c3e1f03651958e97e3b50ea2f26a787_12444&search_date=22072026&expected_price_uuid=019f87ae-c972-8040-611f-d1391703fe47&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=tz8j-2jlqLeaKN5HwNzKxA&expected_price_source=share&expected_price_currency=usd&expected_price=159&marker=749581"
+        },
+        {
+          "date": "2026-07-26",
+          "days_out": 4,
+          "pretty": "Jul 26",
+          "price": 298,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 174,
+          "url": "https://www.aviasales.com/search/FLL2607PHL01081?t=F917851023001785112740000174FLLPHL17855963401785607140000180PHLFLL_cbd6e6c106dd8c1243a7c8eee12f3457_23344&search_date=20072026&expected_price_uuid=019f7cf5-58d2-8040-6c38-96ea99b3e2a8&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=YXnWGZ-fvF0AGtwMTN7QAw&expected_price_source=share&expected_price_currency=usd&expected_price=298&marker=749581"
+        }
+      ],
       "faster_min": null
     },
     {
@@ -678,11 +1296,96 @@
           "alt_price": 281,
           "alt_airport": "FLL",
           "saving": 173,
+          "djt_minutes": 118,
+          "alt_minutes": 133,
+          "mins_saved": -15,
           "alt_url": "https://www.aviasales.com/search/FLL2011CLT21111?t=F917951645401795172520000133FLLCLT17952622201795269900000128CLTFLL_ea976d30957b76f1b5f845bf55ac0416_22059&search_date=21072026&expected_price_uuid=019f8363-8282-8040-64b6-2309d2aa785b&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=dq7R_RdUoH5L2Q2pgka2tg&expected_price_source=share&expected_price_currency=usd&expected_price=281&marker=749581"
         }
       ],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-08-14",
+          "days_out": 23,
+          "pretty": "Aug 14",
+          "price": 144,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 139,
+          "url": "https://www.aviasales.com/search/FLL1408CLT16081?t=F917867336401786741980000139FLLCLT17869056601786913640000133CLTFLL_d167bff4e2ab463207eabbaa0d650880_11286&search_date=21072026&expected_price_uuid=019f860f-8cb0-8040-25e9-560a1850d730&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=NRs8G6k8XWJ-Fkl0xW0L1Q&expected_price_source=share&expected_price_currency=usd&expected_price=144&marker=749581"
+        },
+        {
+          "date": "2026-08-13",
+          "days_out": 22,
+          "pretty": "Aug 13",
+          "price": 147,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 139,
+          "url": "https://www.aviasales.com/search/FLL1308CLT14081?t=F917866472401786655580000139FLLCLT17867328601786740840000133CLTFLL_ec46ad0d8f46d670ad0461be2f6580ba_11512&search_date=21072026&expected_price_uuid=019f86cd-02ba-8040-aa84-d6907ae9267b&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=g4_IeomPnewq2AAnBuXWww&expected_price_source=share&expected_price_currency=usd&expected_price=147&marker=749581"
+        },
+        {
+          "date": "2026-08-06",
+          "days_out": 15,
+          "pretty": "Aug 6",
+          "price": 147,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 139,
+          "url": "https://www.aviasales.com/search/FLL0608CLT07081?t=F917860424401786050780000139FLLCLT17861280601786136040000133CLTFLL_b3710143167f53c90d7590348055f321_11513&search_date=21072026&expected_price_uuid=019f85ea-bf4e-8040-6d26-dece7f600bf6&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=g4_IeomPnewq2AAnBuXWww&expected_price_source=share&expected_price_currency=usd&expected_price=147&marker=749581"
+        },
+        {
+          "date": "2026-07-31",
+          "days_out": 9,
+          "pretty": "Jul 31",
+          "price": 190,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 139,
+          "url": "https://www.aviasales.com/search/MIA3107CLT07081?t=F917855095801785517920000139MIACLT17861284801786136700000137CLTMIA_bfd3499301121f3ea7df139e2547d153_14868&search_date=20072026&expected_price_uuid=019f7e0a-0aca-8040-a821-d787e5355a72&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=G6ZsWTWMGwpMaOcOkbTnEw&expected_price_source=share&expected_price_currency=usd&expected_price=190&marker=749581"
+        },
+        {
+          "date": "2026-07-27",
+          "days_out": 5,
+          "pretty": "Jul 27",
+          "price": 251,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 139,
+          "url": "https://www.aviasales.com/search/MIA2707CLT29071?t=F917851639801785172320000139MIACLT17853508801785359100000137CLTMIA_39cdbdbc8e287f163c117dc0157a347a_19673&search_date=17072026&expected_price_uuid=019f70db-bf60-8040-2f60-4cddf94a2ca6&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=cPT8vw5v090FvBmWHVd9sw&expected_price_source=share&expected_price_currency=usd&expected_price=251&marker=749581"
+        },
+        {
+          "date": "2026-07-29",
+          "days_out": 7,
+          "pretty": "Jul 29",
+          "price": 258,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 139,
+          "url": "https://www.aviasales.com/search/MIA2907CLT30071?t=F917853367801785345120000139MIACLT17854372801785445500000137CLTMIA_261282bbc8c19d2d2bf83f8091da061a_20225&search_date=21072026&expected_price_uuid=019f86c8-a73f-8040-671d-186936c626db&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=g0eJi5Wrqq0lup-eylhf4g&expected_price_source=share&expected_price_currency=usd&expected_price=258&marker=749581"
+        },
+        {
+          "date": "2026-07-30",
+          "days_out": 8,
+          "pretty": "Jul 30",
+          "price": 259,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 133,
+          "url": "https://www.aviasales.com/search/FLL3007CLT31071?t=F917854376401785445620000133FLLCLT17855232601785531000000129CLTFLL_2184d06f9353aef7cbecb918fdd147ae_20306&search_date=21072026&expected_price_uuid=019f85ea-172f-8040-2a4c-1c08a869e546&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=LcGXKLyE907g6cKRTTTfqQ&expected_price_source=share&expected_price_currency=usd&expected_price=259&marker=749581"
+        },
+        {
+          "date": "2026-07-26",
+          "days_out": 4,
+          "pretty": "Jul 26",
+          "price": 307,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 133,
+          "url": "https://www.aviasales.com/search/MIA2607CLT28071?t=F917850526201785060600000133MIACLT17852644801785272700000137CLTMIA_40e9bceff1732ceaa882a882e9b07a54_24039&search_date=17072026&expected_price_uuid=019f70da-8a1f-8040-a83b-c1db19184caf&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=P4y1XLVkbmxgeQjSbQVJxA&expected_price_source=share&expected_price_currency=usd&expected_price=307&marker=749581"
+        }
+      ],
       "faster_min": -21
     },
     {
@@ -730,6 +1433,9 @@
           "alt_price": 123,
           "alt_airport": "FLL",
           "saving": 115,
+          "djt_minutes": 321,
+          "alt_minutes": 132,
+          "mins_saved": 189,
           "alt_url": "https://www.aviasales.com/search/FLL2907ATL31071?t=F917853616201785369540000132FLLATL17855380801785545040000116ATLFLL_de0dca7246178e0e87b6dba57450d843_9533&search_date=15072026&expected_price_uuid=019f6774-fce8-8010-656c-d7dedf605fc3&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=pPid9bsI11fmTuCafeujsw&expected_price_source=share&expected_price_currency=usd&expected_price=123&marker=749581"
         },
         {
@@ -740,6 +1446,9 @@
           "alt_price": 123,
           "alt_airport": "MIA",
           "saving": 184,
+          "djt_minutes": 155,
+          "alt_minutes": 132,
+          "mins_saved": 23,
           "alt_url": "https://www.aviasales.com/search/MIA3007ATL02081?t=F917854103401785418260000132MIAATL17856712201785678780000126ATLMIA_e1c991c1279b17d35c475adb160c1d53_9604&search_date=15072026&expected_price_uuid=019f65f9-b12c-8010-254c-1297904663db&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=THOkzhXNVe4TLxZzBq9Dhw&expected_price_source=share&expected_price_currency=usd&expected_price=123&marker=749581"
         }
       ],
@@ -752,6 +1461,9 @@
           "alt_price": 123,
           "alt_airport": "FLL",
           "saving": 115,
+          "djt_minutes": 321,
+          "alt_minutes": 132,
+          "mins_saved": 189,
           "alt_url": "https://www.aviasales.com/search/FLL2907ATL31071?t=F917853616201785369540000132FLLATL17855380801785545040000116ATLFLL_de0dca7246178e0e87b6dba57450d843_9533&search_date=15072026&expected_price_uuid=019f6774-fce8-8010-656c-d7dedf605fc3&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=pPid9bsI11fmTuCafeujsw&expected_price_source=share&expected_price_currency=usd&expected_price=123&marker=749581"
         },
         {
@@ -762,6 +1474,9 @@
           "alt_price": 123,
           "alt_airport": "MIA",
           "saving": 184,
+          "djt_minutes": 155,
+          "alt_minutes": 132,
+          "mins_saved": 23,
           "alt_url": "https://www.aviasales.com/search/MIA3007ATL02081?t=F917854103401785418260000132MIAATL17856712201785678780000126ATLMIA_e1c991c1279b17d35c475adb160c1d53_9604&search_date=15072026&expected_price_uuid=019f65f9-b12c-8010-254c-1297904663db&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=THOkzhXNVe4TLxZzBq9Dhw&expected_price_source=share&expected_price_currency=usd&expected_price=123&marker=749581"
         }
       ],
@@ -773,8 +1488,93 @@
         "alt_price": 123,
         "alt_airport": "MIA",
         "saving": 184,
+        "djt_minutes": 155,
+        "alt_minutes": 132,
+        "mins_saved": 23,
         "alt_url": "https://www.aviasales.com/search/MIA3007ATL02081?t=F917854103401785418260000132MIAATL17856712201785678780000126ATLMIA_e1c991c1279b17d35c475adb160c1d53_9604&search_date=15072026&expected_price_uuid=019f65f9-b12c-8010-254c-1297904663db&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=THOkzhXNVe4TLxZzBq9Dhw&expected_price_source=share&expected_price_currency=usd&expected_price=123&marker=749581"
       },
+      "best_days": [
+        {
+          "date": "2026-08-21",
+          "days_out": 30,
+          "pretty": "Aug 21",
+          "price": 76,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 132,
+          "url": "https://www.aviasales.com/search/FLL2108ATL25081?t=F917873488201787356740000132FLLATL17876980801787705040000116ATLFLL_a660c1b8be60d122b15295f248e13c2e_5891&search_date=15072026&expected_price_uuid=019f678d-eba7-8010-24fd-fbfcd60941cd&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=beuAZXHyQIdq6YW0grtrGQ&expected_price_source=share&expected_price_currency=usd&expected_price=76&marker=749581"
+        },
+        {
+          "date": "2026-08-09",
+          "days_out": 18,
+          "pretty": "Aug 9",
+          "price": 99,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 138,
+          "url": "https://www.aviasales.com/search/FLL0908ATL12081?t=F917862555001786263780000138FLLATL17865165001786523580000118ATLFLL_5e40704596c02677c746ce97513b7a89_7735&search_date=18072026&expected_price_uuid=019f75fe-812d-8040-a72a-2dbee714d19b&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=fiZlWXquygQ5quvyAFFMlw&expected_price_source=share&expected_price_currency=usd&expected_price=99&marker=749581"
+        },
+        {
+          "date": "2026-07-29",
+          "days_out": 7,
+          "pretty": "Jul 29",
+          "price": 123,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 132,
+          "url": "https://www.aviasales.com/search/FLL2907ATL31071?t=F917853616201785369540000132FLLATL17855380801785545040000116ATLFLL_de0dca7246178e0e87b6dba57450d843_9533&search_date=15072026&expected_price_uuid=019f6774-fce8-8010-656c-d7dedf605fc3&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=pPid9bsI11fmTuCafeujsw&expected_price_source=share&expected_price_currency=usd&expected_price=123&marker=749581"
+        },
+        {
+          "date": "2026-08-01",
+          "days_out": 10,
+          "pretty": "Aug 1",
+          "price": 123,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 145,
+          "url": "https://www.aviasales.com/search/FLL0108ATL01081?t=F917856059401785614640000145FLLATL17856244801785631440000116ATLFLL_e2d47e573fcaa6a1f95edc9b4405cf60_9610&search_date=18072026&expected_price_uuid=019f75a7-fa5d-8040-aeff-e907583659fb&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=nTLav46Y99gm7z83xp6IAw&expected_price_source=share&expected_price_currency=usd&expected_price=123&marker=749581"
+        },
+        {
+          "date": "2026-07-30",
+          "days_out": 8,
+          "pretty": "Jul 30",
+          "price": 123,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 132,
+          "url": "https://www.aviasales.com/search/MIA3007ATL02081?t=F917854103401785418260000132MIAATL17856712201785678780000126ATLMIA_e1c991c1279b17d35c475adb160c1d53_9604&search_date=15072026&expected_price_uuid=019f65f9-b12c-8010-254c-1297904663db&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=THOkzhXNVe4TLxZzBq9Dhw&expected_price_source=share&expected_price_currency=usd&expected_price=123&marker=749581"
+        },
+        {
+          "date": "2026-07-31",
+          "days_out": 9,
+          "pretty": "Jul 31",
+          "price": 129,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 140,
+          "url": "https://www.aviasales.com/search/MIA3107ATL07081?t=F917854866001785495000000140MIAATL17861361601786143960000130ATLMIA_fcfac21732df8dda7b762db90b416f27_10112&search_date=19072026&expected_price_uuid=019f7cc8-111c-8030-2acd-907aeda960ee&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=D5cwsZEm3VhpyDnyuBiLbQ&expected_price_source=share&expected_price_currency=usd&expected_price=129&marker=749581"
+        },
+        {
+          "date": "2026-07-25",
+          "days_out": 3,
+          "pretty": "Jul 25",
+          "price": 147,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 308,
+          "url": "https://www.aviasales.com/search/FLL2507ATL03081?t=F917849790601785001740000378FLLCLEATL17857687801785776040000121ATLFLL_01a1b67f4d14dec1eefbb6243b170b95_11487&search_date=21072026&expected_price_uuid=019f85aa-357d-8040-245c-38061dad9791&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=AW7LDlu1KZpNA7xo9wpIjQ&expected_price_source=share&expected_price_currency=usd&expected_price=147&marker=749581"
+        },
+        {
+          "date": "2026-07-27",
+          "days_out": 5,
+          "pretty": "Jul 27",
+          "price": 165,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 138,
+          "url": "https://www.aviasales.com/search/FLL2707ATL28071?t=F917851323001785140580000138FLLATL17852785201785285720000120ATLFLL_24a5cc921c019fe32a9ee06b4f99576b_12788&search_date=15072026&expected_price_uuid=019f6775-fa02-8010-654b-b28fbb4f2138&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=YoQ3RjQjQGmaW-lpe2fPYA&expected_price_source=share&expected_price_currency=usd&expected_price=165&marker=749581"
+        }
+      ],
       "faster_min": 189
     },
     {
@@ -810,6 +1610,88 @@
       "same_date": [],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-08-08",
+          "days_out": 17,
+          "pretty": "Aug 8",
+          "price": 187,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 212,
+          "url": "https://www.aviasales.com/search/FLL0808ORD11081?t=F917861821801786191300000212FLLORD17864355001786451280000203ORDFLL_427ff5dd592cd11f4aba210f28b8c92e_14657&search_date=17072026&expected_price_uuid=019f7086-b6c1-8040-2782-0be512de6219&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=j4r8Z2imiG85RBTWmFhHWQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=187&marker=749581"
+        },
+        {
+          "date": "2026-08-09",
+          "days_out": 18,
+          "pretty": "Aug 9",
+          "price": 211,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 212,
+          "url": "https://www.aviasales.com/search/FLL0908ORD11081?t=F917862685801786277700000212FLLORD17864355001786451280000203ORDFLL_3f7fa4d2e5fceaf6b32f33355d441401_16538&search_date=17072026&expected_price_uuid=019f7086-e550-8040-afca-aaaa5f71b3d9&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=3slVr8X_RfISjTrMIjZuhA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=211&marker=749581"
+        },
+        {
+          "date": "2026-07-31",
+          "days_out": 9,
+          "pretty": "Jul 31",
+          "price": 284,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 212,
+          "url": "https://www.aviasales.com/search/FLL3107ORD03081?t=F917854909801785500100000212FLLORD17857443001785759720000197ORDFLL_c165b11556081c2299616d332091734b_22295&search_date=21072026&expected_price_uuid=019f8256-4a35-8040-a5dd-84a14f471c4a&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=TeR803gKYamTXDzliAzyeA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=284&marker=749581"
+        },
+        {
+          "date": "2026-08-07",
+          "days_out": 16,
+          "pretty": "Aug 7",
+          "price": 290,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 212,
+          "url": "https://www.aviasales.com/search/FLL0708ORD09081?t=F917860957801786104900000212FLLORD17862627001786278480000203ORDFLL_952cf12c8e4a5f837de61dea4f06a85f_22690&search_date=22072026&expected_price_uuid=019f8890-ee5d-8040-a376-41c8c1996a0b&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=3slVr8X_RfISjTrMIjZuhA&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=290&marker=749581"
+        },
+        {
+          "date": "2026-08-01",
+          "days_out": 10,
+          "pretty": "Aug 1",
+          "price": 310,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 212,
+          "url": "https://www.aviasales.com/search/FLL0108ORD03081?t=F917855773801785586500000212FLLORD17857443001785759720000197ORDFLL_d2d77905f75df75a97f0b75e46fda7c5_24336&search_date=21072026&expected_price_uuid=019f8255-e13e-8040-6709-b4d15cdd51b0&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=L1s4rxTx1Y6n3oPf_d7Obg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=310&marker=749581"
+        },
+        {
+          "date": "2026-07-25",
+          "days_out": 3,
+          "pretty": "Jul 25",
+          "price": 310,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 287,
+          "url": "https://www.aviasales.com/search/MIA2507ORD28071?t=F917849920201785009180000346MIAATLORD17852223001785246780000348ORDATLMIA_d677c3f4b0089ae80b499a58615f749a_24196&search_date=16072026&expected_price_uuid=019f6ade-887f-8040-21d7-0c4981333d5c&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=LPCwTsbiTFIEkDM4W6st_Q&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=310&marker=749581"
+        },
+        {
+          "date": "2026-07-30",
+          "days_out": 8,
+          "pretty": "Jul 30",
+          "price": 311,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 212,
+          "url": "https://www.aviasales.com/search/FLL3007ORD03081?t=F917854045801785413700000212FLLORD17857443001785759720000197ORDFLL_9fd3800f36f1750150b9a30f1e27f41b_24435&search_date=20072026&expected_price_uuid=019f8196-1cf8-8040-6bce-cc39bc76e4e8&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=XabVNvqGXJjz2lLnohTHkg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=311&marker=749581"
+        },
+        {
+          "date": "2026-07-24",
+          "days_out": 2,
+          "pretty": "Jul 24",
+          "price": 325,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 221,
+          "url": "https://www.aviasales.com/search/MIA2407ORD25071?t=UA17849143201784923980000221MIAORD17849874001785022800000530ORDATLMIA_e9e519c52fdfc54f38af77685b99e52c_25556&search_date=20072026&expected_price_uuid=019f812b-369c-8040-6142-1b9309d839e8&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=EDbdDDJG3qFRsGpkOzXRJQ&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=325&marker=749581"
+        }
+      ],
       "faster_min": null
     },
     {
@@ -834,6 +1716,18 @@
       "same_date": [],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-08-01",
+          "days_out": 10,
+          "pretty": "Aug 1",
+          "price": 192,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 315,
+          "url": "https://www.aviasales.com/search/MIA0108DTW05081?t=UA17856006001785622740000369MIAORDDTW17859078001785929040000354DTWORDMIA_9f08c2098e77f5c18ac96cd7c866261b_15075&search_date=21072026&expected_price_uuid=019f8443-b0b9-8040-6cff-a6b61cb34e2f&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=iC6K71MCFw0KxhG2au29xw&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=192&marker=749581"
+        }
+      ],
       "faster_min": null
     },
     {
@@ -869,6 +1763,88 @@
       "same_date": [],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-08-18",
+          "days_out": 27,
+          "pretty": "Aug 18",
+          "price": 191,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 347,
+          "url": "https://www.aviasales.com/search/MIA1808DEN22081?t=F917870514001787090700000775MIAATLDEN17873953801787430540000466DENATLMIA_83aa1d54aa2b5697cc7a9a4b1bbac2bb_14953&search_date=19072026&expected_price_uuid=019f7b40-47c2-8040-6f54-2ca99199011c&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=dOB6gKGONvkblRaNxVoyjw&expected_price_source=share&expected_price_currency=usd&expected_price=191&marker=749581"
+        },
+        {
+          "date": "2026-08-20",
+          "days_out": 29,
+          "pretty": "Aug 20",
+          "price": 231,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 341,
+          "url": "https://www.aviasales.com/search/MIA2008DEN23081?t=F917872086001787229180000463MIAIAHDEN17874817801787526300000622DENATLMIA_fb863d49db80fb16e5c30984218daa9c_17903&search_date=16072026&expected_price_uuid=019f684f-df1e-8010-238f-d2748398dd2d&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=o_P56yQWCQrOU5mjyE2ftA&expected_price_source=share&expected_price_currency=usd&expected_price=231&marker=749581"
+        },
+        {
+          "date": "2026-08-09",
+          "days_out": 18,
+          "pretty": "Aug 9",
+          "price": 281,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 260,
+          "url": "https://www.aviasales.com/search/MIA0908DEN15081?t=F917862552001786263600000260MIADEN17867772001786839660000921DENIAHMIA_1548832770d43dcf168c1da8f95a3e9c_21776&search_date=15072026&expected_price_uuid=019f67fb-9387-8010-6931-aad21120a116&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=1_4bnHyd_b1zkewHNUjlLQ&expected_price_source=share&expected_price_currency=usd&expected_price=281&marker=749581"
+        },
+        {
+          "date": "2026-08-10",
+          "days_out": 19,
+          "pretty": "Aug 10",
+          "price": 283,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 260,
+          "url": "https://www.aviasales.com/search/MIA1008DEN14081?t=F917863416001786350000000260MIADEN17867508001786773060000251DENMIA_b3cdaf91285c06fb9b03c4ed358ae903_21933&search_date=16072026&expected_price_uuid=019f69cf-9dfc-8010-6d04-21e9ca1840c2&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=3TrVGdJYvjMzT1Zonz3gUQ&expected_price_source=share&expected_price_currency=usd&expected_price=283&marker=749581"
+        },
+        {
+          "date": "2026-07-30",
+          "days_out": 8,
+          "pretty": "Jul 30",
+          "price": 313,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 263,
+          "url": "https://www.aviasales.com/search/MIA3007DEN11081?t=F917853912001785399780000263MIADEN17864316001786494060000921DENIAHMIA_56e3fb6142dc55ddb5ceb08573ad84f3_24532&search_date=21072026&expected_price_uuid=019f8565-0a69-8040-6336-328d0b1e6654&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=44Qz8U8x0pQOQlYExB5kBw&expected_price_source=share&expected_price_currency=usd&expected_price=313&marker=749581"
+        },
+        {
+          "date": "2026-07-29",
+          "days_out": 7,
+          "pretty": "Jul 29",
+          "price": 332,
+          "airport": "FLL",
+          "stops": 2,
+          "minutes": 434,
+          "url": "https://www.aviasales.com/search/FLL2907DEN04081?t=F917853051001785340440000709FLLATLAUSDEN17858879401785948840000895DENATLFLL_ea7382a4f48af4093dae474bffab630f_25730&search_date=16072026&expected_price_uuid=019f68e8-31ea-8010-6acf-dd2c1cda9dc7&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=LagrENAU5AY3B1x92XkaoQ&expected_price_source=share&expected_price_currency=usd&expected_price=332&marker=749581"
+        },
+        {
+          "date": "2026-07-23",
+          "days_out": 1,
+          "pretty": "Jul 23",
+          "price": 422,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 263,
+          "url": "https://www.aviasales.com/search/MIA2307DEN26071?t=F917847864001784794980000263MIADEN17851092001785131460000251DENMIA_ed546dd8386373e95bb868a09919e0c3_32705&search_date=16072026&expected_price_uuid=019f684f-2253-8010-2f0c-8d33d09de876&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=-_gqdV2bItGOOSCqsiXvDg&expected_price_source=share&expected_price_currency=usd&expected_price=422&marker=749581"
+        },
+        {
+          "date": "2026-07-24",
+          "days_out": 2,
+          "pretty": "Jul 24",
+          "price": 582,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 313,
+          "url": "https://www.aviasales.com/search/FLL2407DEN26071?t=F917849267401784991780001204FLLAVLDEN17850510001785097380000653DENDCAIADFLL_5558c53d6b59eedbc7110d9e0f4591ab_45687&search_date=21072026&expected_price_uuid=019f82e1-c42c-8040-23df-46db3f5ea0f2&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=fXQHKeLZv3XPcKK6KDqmvA&expected_price_source=share&expected_price_currency=usd&expected_price=582&marker=749581"
+        }
+      ],
       "faster_min": null
     },
     {
@@ -904,6 +1880,48 @@
       "same_date": [],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-08-07",
+          "days_out": 16,
+          "pretty": "Aug 7",
+          "price": 169,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 197,
+          "url": "https://www.aviasales.com/search/MIA0708DFW08081?t=F917860836001786091820000197MIADFW17862057601786233480000402DFWATLMIA_9b81c709051063f4447b6f9d8377b0ef_13204&search_date=19072026&expected_price_uuid=019f7946-110f-8040-611b-100f968caab2&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=O6pphLUq0TrbOT8SY91e4Q&expected_price_source=share&expected_price_currency=usd&expected_price=169&marker=749581"
+        },
+        {
+          "date": "2026-08-17",
+          "days_out": 26,
+          "pretty": "Aug 17",
+          "price": 198,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 197,
+          "url": "https://www.aviasales.com/search/MIA1708DFW22081?t=F917869494001786957620000197MIADFW17873929201787407920000190DFWMIA_d52d75e641f36ebdf9ee60f7825d85c0_15509&search_date=21072026&expected_price_uuid=019f85c5-4e7f-8040-ad38-8dfe6b27fe19&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Z1NEwe_4voBWhK1CIHpKzA&expected_price_source=share&expected_price_currency=usd&expected_price=198&marker=749581"
+        },
+        {
+          "date": "2026-07-25",
+          "days_out": 3,
+          "pretty": "Jul 25",
+          "price": 285,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 371,
+          "url": "https://www.aviasales.com/search/FLL2507DFW28071?t=UA17849629201784992080000546FLLORDDFW17852319601785253620000301DFWIAHFLL_adc39f26b948709853e42e14467429b9_22405&search_date=21072026&expected_price_uuid=019f8324-7ede-8040-a944-bfeeba5399cb&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=j0XiyID0da8hQBaoDy3i_A&expected_price_source=share&expected_price_currency=usd&expected_price=285&marker=749581"
+        },
+        {
+          "date": "2026-07-24",
+          "days_out": 2,
+          "pretty": "Jul 24",
+          "price": 333,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 393,
+          "url": "https://www.aviasales.com/search/MIA2407DFW26071?t=F917848728001784899140000499MIADENDFW17851014601785131460000440DFWDENMIA_bbe792636035ad7332e65f5978e00a1d_26012&search_date=17072026&expected_price_uuid=019f7230-3957-8040-6240-4242d74f67bd&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=4GYqdjMK4OF_JlcauDI9oA&expected_price_source=share&expected_price_currency=usd&expected_price=333&marker=749581"
+        }
+      ],
       "faster_min": null
     },
     {
@@ -939,6 +1957,28 @@
       "same_date": [],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-08-07",
+          "days_out": 16,
+          "pretty": "Aug 7",
+          "price": 125,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 174,
+          "url": "https://www.aviasales.com/search/MIA0708IAH10081?t=F917860842001786091040000174MIAIAH17863942201786407660000164IAHMIA_f60bef10810c8c3dbe4c6c413323e19b_9690&search_date=15072026&expected_price_uuid=019f6775-360b-8010-6cf2-96b41bef8cf5&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=cLe8e-R5zXlrIcDbZE-OMg&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=125&marker=749581"
+        },
+        {
+          "date": "2026-07-22",
+          "days_out": 0,
+          "pretty": "Jul 22",
+          "price": 259,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 174,
+          "url": "https://www.aviasales.com/search/FLL2207IAH25071?t=F917847249601784731800000174FLLIAH17849676001784980860000161IAHFLL_431598cd98a544a98b63993586bbd9c9_20228&search_date=16072026&expected_price_uuid=019f6c65-8aee-8040-2173-355176d10426&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=5w--jj3kGNBbFFIe4Vq2Dw&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=259&marker=749581"
+        }
+      ],
       "faster_min": null
     },
     {
@@ -986,6 +2026,9 @@
           "alt_price": 256,
           "alt_airport": "MIA",
           "saving": 67,
+          "djt_minutes": 390,
+          "alt_minutes": 412,
+          "mins_saved": -22,
           "alt_url": "https://www.aviasales.com/search/MIA0708LAX09081?t=F917860824001786147860001271MIADENLAX17862570001786341060001221LAXDENMIA_1fcf40b990c330d40f8c8fbd1266c896_19995&search_date=17072026&expected_price_uuid=019f70ef-075f-8040-adf3-8cf0b9bfe950&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=4n2KVKRwb5r1YqXr2tQg4Q&expected_price_source=share&expected_price_currency=usd&expected_price=256&marker=749581"
         }
       ],
@@ -998,6 +2041,9 @@
           "alt_price": 256,
           "alt_airport": "MIA",
           "saving": 67,
+          "djt_minutes": 390,
+          "alt_minutes": 412,
+          "mins_saved": -22,
           "alt_url": "https://www.aviasales.com/search/MIA0708LAX09081?t=F917860824001786147860001271MIADENLAX17862570001786341060001221LAXDENMIA_1fcf40b990c330d40f8c8fbd1266c896_19995&search_date=17072026&expected_price_uuid=019f70ef-075f-8040-adf3-8cf0b9bfe950&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=4n2KVKRwb5r1YqXr2tQg4Q&expected_price_source=share&expected_price_currency=usd&expected_price=256&marker=749581"
         }
       ],
@@ -1009,8 +2055,93 @@
         "alt_price": 256,
         "alt_airport": "MIA",
         "saving": 67,
+        "djt_minutes": 390,
+        "alt_minutes": 412,
+        "mins_saved": -22,
         "alt_url": "https://www.aviasales.com/search/MIA0708LAX09081?t=F917860824001786147860001271MIADENLAX17862570001786341060001221LAXDENMIA_1fcf40b990c330d40f8c8fbd1266c896_19995&search_date=17072026&expected_price_uuid=019f70ef-075f-8040-adf3-8cf0b9bfe950&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=4n2KVKRwb5r1YqXr2tQg4Q&expected_price_source=share&expected_price_currency=usd&expected_price=256&marker=749581"
       },
+      "best_days": [
+        {
+          "date": "2026-08-11",
+          "days_out": 20,
+          "pretty": "Aug 11",
+          "price": 254,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 412,
+          "url": "https://www.aviasales.com/search/MIA1108LAX13081?t=F917864280001786493460001271MIADENLAX17866425001786686660000556LAXDENMIA_07954c010ad01f644533f9a2f2f72ff8_19873&search_date=21072026&expected_price_uuid=019f866c-1b20-8040-6330-0a2aa16274fd&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=WSl4bsWmWgnoBL3PYsMyUQ&expected_price_source=share&expected_price_currency=usd&expected_price=254&marker=749581"
+        },
+        {
+          "date": "2026-08-20",
+          "days_out": 29,
+          "pretty": "Aug 20",
+          "price": 254,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 411,
+          "url": "https://www.aviasales.com/search/MIA2008LAX24081?t=F917872242001787244840000524MIAATLLAX17875959001787668380001028LAXIAHMIA_7bca0e20c7259af54592533f75368b98_19864&search_date=17072026&expected_price_uuid=019f7134-5f3d-8040-20fe-640a80ab96d8&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=jF-4fI7gDVObIe34XkuaUQ&expected_price_source=share&expected_price_currency=usd&expected_price=254&marker=749581"
+        },
+        {
+          "date": "2026-08-14",
+          "days_out": 23,
+          "pretty": "Aug 14",
+          "price": 256,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 389,
+          "url": "https://www.aviasales.com/search/MIA1408LAX20081?t=F917867457001786806300001190MIALASLAX17872601401787374320001723LAXDENMIA_93da9a84e7592aa407abe9624a211ad6_20041&search_date=19072026&expected_price_uuid=019f7c36-d6b0-8040-2bd6-f1303d380aab&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=0aSsh-PyLL4wwtvCI9YKFw&expected_price_source=share&expected_price_currency=usd&expected_price=256&marker=749581"
+        },
+        {
+          "date": "2026-08-07",
+          "days_out": 16,
+          "pretty": "Aug 7",
+          "price": 256,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 412,
+          "url": "https://www.aviasales.com/search/MIA0708LAX09081?t=F917860824001786147860001271MIADENLAX17862570001786341060001221LAXDENMIA_1fcf40b990c330d40f8c8fbd1266c896_19995&search_date=17072026&expected_price_uuid=019f70ef-075f-8040-adf3-8cf0b9bfe950&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=4n2KVKRwb5r1YqXr2tQg4Q&expected_price_source=share&expected_price_currency=usd&expected_price=256&marker=749581"
+        },
+        {
+          "date": "2026-08-19",
+          "days_out": 28,
+          "pretty": "Aug 19",
+          "price": 272,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 411,
+          "url": "https://www.aviasales.com/search/MIA1908LAX26081?t=F917871378001787158440000524MIAATLLAX17877372001787806320000972LAXDENMIA_62d4c0ad0407782adc6d2845265ec592_21294&search_date=19072026&expected_price_uuid=019f7b03-7a5b-8040-2e46-fc6d87341380&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Iz7-xRNEe4uq7Sb5lmtMZw&expected_price_source=share&expected_price_currency=usd&expected_price=272&marker=749581"
+        },
+        {
+          "date": "2026-08-13",
+          "days_out": 22,
+          "pretty": "Aug 13",
+          "price": 274,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 412,
+          "url": "https://www.aviasales.com/search/MIA1308LAX16081?t=F917866008001786666260001271MIADENLAX17868618001786945860001221LAXDENMIA_0a0caf90ef0b2877c9f6612befcc0e13_21401&search_date=17072026&expected_price_uuid=019f6dc7-d47e-8040-abba-ea920cba09ce&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=pQp2yyZf4qe1NSDjCAuxnw&expected_price_source=share&expected_price_currency=usd&expected_price=274&marker=749581"
+        },
+        {
+          "date": "2026-08-10",
+          "days_out": 19,
+          "pretty": "Aug 10",
+          "price": 280,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 385,
+          "url": "https://www.aviasales.com/search/MIA1008LAX11081?t=F917864001001786440600000855MIALASLAX17864912401786542780000679LAXATLMIA_7d9641e78e70aeda80f894cecc960e67_21874&search_date=18072026&expected_price_uuid=019f74a6-b397-8040-a6d2-852a4261c318&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=_fnM9L52wm-bEXtY_xmDiQ&expected_price_source=share&expected_price_currency=usd&expected_price=280&marker=749581"
+        },
+        {
+          "date": "2026-08-06",
+          "days_out": 15,
+          "pretty": "Aug 6",
+          "price": 281,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 389,
+          "url": "https://www.aviasales.com/search/MIA0608LAX09081?t=F917860545001786116000001205MIALASLAX17862570001786341060001221LAXDENMIA_cfcef672f3efff7906d1309fcab03466_22084&search_date=20072026&expected_price_uuid=019f814f-f858-8040-6963-384839cbc13e&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=EfdgrTihYv7-Z6vqcYx1gA&expected_price_source=share&expected_price_currency=usd&expected_price=281&marker=749581"
+        }
+      ],
       "faster_min": -30
     },
     {
@@ -1058,6 +2189,9 @@
           "alt_price": 308,
           "alt_airport": "MIA",
           "saving": 184,
+          "djt_minutes": 507,
+          "alt_minutes": 415,
+          "mins_saved": 92,
           "alt_url": "https://www.aviasales.com/search/MIA2407SFO27071?t=F917849313001784969280000813MIALASSFO17851883401785304260001752SFODENMIA_66820a13c1043497e250894edbcbfb49_24213&search_date=20072026&expected_price_uuid=019f81eb-2462-8040-6aab-80f04da70cd3&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=bplNJFCndH_Kc09FxGmr5Q&expected_price_source=share&expected_price_currency=usd&expected_price=308&marker=749581"
         }
       ],
@@ -1070,6 +2204,9 @@
           "alt_price": 308,
           "alt_airport": "MIA",
           "saving": 184,
+          "djt_minutes": 507,
+          "alt_minutes": 415,
+          "mins_saved": 92,
           "alt_url": "https://www.aviasales.com/search/MIA2407SFO27071?t=F917849313001784969280000813MIALASSFO17851883401785304260001752SFODENMIA_66820a13c1043497e250894edbcbfb49_24213&search_date=20072026&expected_price_uuid=019f81eb-2462-8040-6aab-80f04da70cd3&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=bplNJFCndH_Kc09FxGmr5Q&expected_price_source=share&expected_price_currency=usd&expected_price=308&marker=749581"
         }
       ],
@@ -1081,8 +2218,83 @@
         "alt_price": 308,
         "alt_airport": "MIA",
         "saving": 184,
+        "djt_minutes": 507,
+        "alt_minutes": 415,
+        "mins_saved": 92,
         "alt_url": "https://www.aviasales.com/search/MIA2407SFO27071?t=F917849313001784969280000813MIALASSFO17851883401785304260001752SFODENMIA_66820a13c1043497e250894edbcbfb49_24213&search_date=20072026&expected_price_uuid=019f81eb-2462-8040-6aab-80f04da70cd3&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=bplNJFCndH_Kc09FxGmr5Q&expected_price_source=share&expected_price_currency=usd&expected_price=308&marker=749581"
       },
+      "best_days": [
+        {
+          "date": "2026-08-15",
+          "days_out": 24,
+          "pretty": "Aug 15",
+          "price": 242,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 427,
+          "url": "https://www.aviasales.com/search/MIA1508SFO19081?t=F917867736001786813740000849MIADENSFO17871609001787201520000497SFODENMIA_c8daf8fa4a13a262d7b5efda1ecdf767_19016&search_date=20072026&expected_price_uuid=019f8166-057a-8040-63cd-d80e05d9fa3d&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=xT7ziWA8-gTg8-Q7c27T0Q&expected_price_source=share&expected_price_currency=usd&expected_price=242&marker=749581"
+        },
+        {
+          "date": "2026-07-24",
+          "days_out": 2,
+          "pretty": "Jul 24",
+          "price": 308,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 415,
+          "url": "https://www.aviasales.com/search/MIA2407SFO27071?t=F917849313001784969280000813MIALASSFO17851883401785304260001752SFODENMIA_66820a13c1043497e250894edbcbfb49_24213&search_date=20072026&expected_price_uuid=019f81eb-2462-8040-6aab-80f04da70cd3&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=bplNJFCndH_Kc09FxGmr5Q&expected_price_source=share&expected_price_currency=usd&expected_price=308&marker=749581"
+        },
+        {
+          "date": "2026-07-29",
+          "days_out": 7,
+          "pretty": "Jul 29",
+          "price": 322,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 437,
+          "url": "https://www.aviasales.com/search/MIA2907SFO14081?t=F917853048001785324420000507MIADENSFO17867306401786773060000527SFODENMIA_1354670be8fefc58a4542cc98b344716_25157&search_date=18072026&expected_price_uuid=019f75a8-fd97-8030-e0ac-17e7ef061f52&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=MZ0qVcYRPTx4oYY0gxytFA&expected_price_source=share&expected_price_currency=usd&expected_price=322&marker=749581"
+        },
+        {
+          "date": "2026-08-10",
+          "days_out": 19,
+          "pretty": "Aug 10",
+          "price": 334,
+          "airport": "FLL",
+          "stops": 2,
+          "minutes": 563,
+          "url": "https://www.aviasales.com/search/FLL1008SFO16081?t=F917863915201786530300002493FLLCLELASSFO17869143001787055600002175SFOLASIAHFLL_4184230eb289c9e80400fd02f15c5630_26086&search_date=17072026&expected_price_uuid=019f6d9c-1450-8040-2a4f-798eb8726676&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=93FxM38tLPhAkwHjfIrNkw&expected_price_source=share&expected_price_currency=usd&expected_price=334&marker=749581"
+        },
+        {
+          "date": "2026-07-27",
+          "days_out": 5,
+          "pretty": "Jul 27",
+          "price": 361,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 418,
+          "url": "https://www.aviasales.com/search/MIA2707SFO31071?t=F917851905001785234600000915MIALASSFO17855388001785592380000713SFOATLMIA_1c9c8c1eda79d562479f0743dc4b03fa_27996&search_date=15072026&expected_price_uuid=019f66c8-ead2-8010-afea-1466bfdc5ae5&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=_TFd3evWGtBkB2h5eHulcw&expected_price_source=share&expected_price_currency=usd&expected_price=361&marker=749581"
+        },
+        {
+          "date": "2026-07-25",
+          "days_out": 3,
+          "pretty": "Jul 25",
+          "price": 416,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 415,
+          "url": "https://www.aviasales.com/search/MIA2507SFO31071?t=F917850177001785055680000813MIALASSFO17855388001785592380000713SFOATLMIA_ac214dc672dee120ea1d04a43426f754_32240&search_date=15072026&expected_price_uuid=019f66c8-3cef-8010-2bbc-214a489cbb8c&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=B32XLEQhKqv-OAqXOC4hMw&expected_price_source=share&expected_price_currency=usd&expected_price=416&marker=749581"
+        },
+        {
+          "date": "2026-07-23",
+          "days_out": 1,
+          "pretty": "Jul 23",
+          "price": 422,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 463,
+          "url": "https://www.aviasales.com/search/MIA2307SFO23071?t=F917847954001784834280000828MIAATLSFO17848427401784958660001752SFODENMIA_cc57319b43fa641b6676f7819cf0ff5b_32990&search_date=19072026&expected_price_uuid=019f790b-c3ad-8030-21e9-0f3431d150b5&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=RPLFurHkX1oj2s3Jq4g_uQ&expected_price_source=share&expected_price_currency=usd&expected_price=422&marker=749581"
+        }
+      ],
       "faster_min": 57
     },
     {
@@ -1107,6 +2319,28 @@
       "same_date": [],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-08-02",
+          "days_out": 11,
+          "pretty": "Aug 2",
+          "price": 396,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 447,
+          "url": "https://www.aviasales.com/search/MIA0208SEA03081?t=F917856504001785748620001817MIADENSEA17857839601785822660000465SEADENMIA_fde3a487e03dc20062fec5778815486b_30940&search_date=15072026&expected_price_uuid=019f64d7-ddeb-8010-af01-18e027922aa0&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=dOUd7mYH8LU-Mh00V3GRMQ&expected_price_source=share&expected_price_currency=usd&expected_price=396&marker=749581"
+        },
+        {
+          "date": "2026-07-27",
+          "days_out": 5,
+          "pretty": "Jul 27",
+          "price": 415,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 450,
+          "url": "https://www.aviasales.com/search/MIA2707SEA02081?t=F917851320001785151200000500MIADENSEA17857039801785825000001837SEALASMIA_6bd406bb0191ce65c07bf5373470a7c3_32408&search_date=15072026&expected_price_uuid=019f64c2-7718-8010-2825-09fb08f6f82d&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=43__5BYTBrQ3XVBCRlj-0g&expected_price_source=share&expected_price_currency=usd&expected_price=415&marker=749581"
+        }
+      ],
       "faster_min": null
     },
     {
@@ -1142,6 +2376,88 @@
       "same_date": [],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-08-04",
+          "days_out": 13,
+          "pretty": "Aug 4",
+          "price": 249,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 307,
+          "url": "https://www.aviasales.com/search/MIA0408LAS12081?t=F917858817001785889320000307MIALAS17865183001786580460000856LASIAHMIA_57e0b56cae7d3db3aa22072f94c9d905_19447&search_date=16072026&expected_price_uuid=019f6c18-0a69-8030-adfa-ed9a321bc1fd&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=5k9AV7qXQ0UipUMJAoHaew&expected_price_source=share&expected_price_currency=usd&expected_price=249&marker=749581"
+        },
+        {
+          "date": "2026-08-21",
+          "days_out": 30,
+          "pretty": "Aug 21",
+          "price": 255,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 418,
+          "url": "https://www.aviasales.com/search/FLL2108LAS25081?t=F917873342401787351640000470FLLCVGLAS17876977801787742360000563LASPHLFLL_8fc89002d2fff188170a04e94c3fc17a_19763&search_date=15072026&expected_price_uuid=019f678c-95df-8010-6333-488ccd79188b&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=UVHMRtGGRAF_h5ggLSg_vQ&expected_price_source=share&expected_price_currency=usd&expected_price=255&marker=749581"
+        },
+        {
+          "date": "2026-08-10",
+          "days_out": 19,
+          "pretty": "Aug 10",
+          "price": 265,
+          "airport": "MIA",
+          "stops": 2,
+          "minutes": 463,
+          "url": "https://www.aviasales.com/search/MIA1008LAS11081?t=F917863506001786456020001937MIAATLDENLAS17864732401786580460001607LASDENIAHMIA_2ecdabc6e9997e07e9fb2f863e6dee3b_20703&search_date=17072026&expected_price_uuid=019f6ed6-e83c-8040-6020-5b82b5a8b148&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=8blfeTChlbfg2xgPD0rmUw&expected_price_source=share&expected_price_currency=usd&expected_price=265&marker=749581"
+        },
+        {
+          "date": "2026-08-18",
+          "days_out": 27,
+          "pretty": "Aug 18",
+          "price": 272,
+          "airport": "FLL",
+          "stops": 1,
+          "minutes": 453,
+          "url": "https://www.aviasales.com/search/FLL1808LAS21081?t=F917870727601787136840001248FLLIADLAS17873236801787432280001630LASTYSFLL_647c0a9f00a90a6fba3e66602f7cff91_21369&search_date=21072026&expected_price_uuid=019f836d-422d-8030-2901-e8620a28b911&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=gvTzJXKa-oT2Lg_sseu0Wg&expected_price_source=share&expected_price_currency=usd&expected_price=272&marker=749581"
+        },
+        {
+          "date": "2026-08-05",
+          "days_out": 14,
+          "pretty": "Aug 5",
+          "price": 276,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 307,
+          "url": "https://www.aviasales.com/search/MIA0508LAS12081?t=F917859681001785975720000307MIALAS17865737401786602600000301LASMIA_5e371a9210bd08fd22df07d854f387ce_21607&search_date=19072026&expected_price_uuid=019f7ab3-a91a-8040-699b-f1d7bd7b3ef5&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=VydLXuP3yJypFAwhDfH-ig&expected_price_source=share&expected_price_currency=usd&expected_price=276&marker=749581"
+        },
+        {
+          "date": "2026-08-02",
+          "days_out": 11,
+          "pretty": "Aug 2",
+          "price": 315,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 307,
+          "url": "https://www.aviasales.com/search/MIA0208LAS11081?t=F917857089001785716520000307MIALAS17864873401786516200000301LASMIA_6e626ed8d1b37ff2bcabdb5adf875ce1_24610&search_date=19072026&expected_price_uuid=019f7847-6749-8040-260b-8ed5315c155f&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=QXH_6UVuhU7qmQQ6o3Gz2Q&expected_price_source=share&expected_price_currency=usd&expected_price=315&marker=749581"
+        },
+        {
+          "date": "2026-08-03",
+          "days_out": 12,
+          "pretty": "Aug 3",
+          "price": 341,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 307,
+          "url": "https://www.aviasales.com/search/MIA0308LAS07081?t=F917857953001785802920000307MIALAS17861417401786170600000301LASMIA_8e8605c66acadeddc8d6bddb5cc2297e_26796&search_date=20072026&expected_price_uuid=019f80f1-82a8-8030-a377-c6b0bb0aabcc&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=dlQKFiM9PNpUKpuzX-noQQ&expected_price_source=share&expected_price_currency=usd&expected_price=341&marker=749581"
+        },
+        {
+          "date": "2026-07-22",
+          "days_out": 0,
+          "pretty": "Jul 22",
+          "price": 415,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 307,
+          "url": "https://www.aviasales.com/search/MIA2207LAS24071?t=F917847585001784766120000307MIALAS17849321401784961000000301LASMIA_1a4cacd23e00e4102a7f16c2a27abb1f_32610&search_date=20072026&expected_price_uuid=019f81ce-2888-8030-2300-790728d055d9&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=RS0ADhIvcRWvvAAOZULUTg&expected_price_source=share&expected_price_currency=usd&expected_price=415&marker=749581"
+        }
+      ],
       "faster_min": null
     },
     {
@@ -1172,6 +2488,18 @@
       "same_date": [],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-08-13",
+          "days_out": 22,
+          "pretty": "Aug 13",
+          "price": 312,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 349,
+          "url": "https://www.aviasales.com/search/MIA1308PHX14081?t=F917866038001786623960000516MIADFWPHX17867335801786773060000478PHXDENMIA_407345b03c86ac39b791798a6830b268_24425&search_date=19072026&expected_price_uuid=019f7b92-6638-8040-ae1a-0eba54ac2356&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=GIL58kg2M9ZVoWhTkxc2sw&expected_price_source=share&expected_price_currency=usd&expected_price=312&marker=749581"
+        }
+      ],
       "faster_min": -7
     },
     {
@@ -1207,6 +2535,68 @@
       "same_date": [],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-08-14",
+          "days_out": 23,
+          "pretty": "Aug 14",
+          "price": 366,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 60,
+          "url": "https://www.aviasales.com/search/MIA1408NAS17081?t=UP17867367001786740300000060MIANAS17869878001786991700000065NASMIA_6989455659e9499d66f5a3dfdd10bfe1_28594&search_date=18072026&expected_price_uuid=019f72ce-9e47-8040-69ec-a63a782ca767&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=VlbNcGO1XlAS6FO6mI5Jbg&expected_price_source=share&expected_price_currency=usd&expected_price=366&marker=749581"
+        },
+        {
+          "date": "2026-07-24",
+          "days_out": 2,
+          "pretty": "Jul 24",
+          "price": 370,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 60,
+          "url": "https://www.aviasales.com/search/MIA2407NAS28071?t=UP17849223001784925900000060MIANAS17852598001785263700000065NASMIA_68b2061069f5e26aa64f2f734ab0ff87_29072&search_date=20072026&expected_price_uuid=019f81f5-307c-8040-23e1-31f71baa817d&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=umbOmM3XVx_ZKOSNfQXyXg&expected_price_source=share&expected_price_currency=usd&expected_price=370&marker=749581"
+        },
+        {
+          "date": "2026-08-06",
+          "days_out": 15,
+          "pretty": "Aug 6",
+          "price": 378,
+          "airport": "MIA",
+          "stops": 0,
+          "minutes": 60,
+          "url": "https://www.aviasales.com/search/MIA0608NAS12081?t=UP17860455001786049100000060MIANAS17865558001786559700000065NASMIA_88c582d6e3fdfa78d1648a9c6d2b50e2_29532&search_date=17072026&expected_price_uuid=019f7237-16cd-8040-a13e-2240ac81ef66&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=PeZWdFs0gXTV-ZAeEV8CZg&expected_price_source=share&expected_price_currency=usd&expected_price=378&marker=749581"
+        },
+        {
+          "date": "2026-07-30",
+          "days_out": 8,
+          "pretty": "Jul 30",
+          "price": 393,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 50,
+          "url": "https://www.aviasales.com/search/FLL3007NAS03081?t=UP17854164001785419400000050FLLNAS17857728001785776700000065NASFLL_27c1db09b0061acb56dbc7fad32e09a3_30767&search_date=19072026&expected_price_uuid=019f7c2a-b8f0-8040-6486-580ab5b595b9&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=HTeuv1xuZWvrdkVzdwbJ9w&expected_price_source=share&expected_price_currency=usd&expected_price=393&marker=749581"
+        },
+        {
+          "date": "2026-07-31",
+          "days_out": 9,
+          "pretty": "Jul 31",
+          "price": 440,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 60,
+          "url": "https://www.aviasales.com/search/FLL3107NAS03081?t=UP17855055001785509100000060FLLNAS17857728001785776700000065NASFLL_9367b412206fd8f5ac90527445f98a45_34488&search_date=19072026&expected_price_uuid=019f7c2a-8f53-8040-2b29-823680a7e6a9&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=RxhiqFVg9iLRgxtN4oeg5g&expected_price_source=share&expected_price_currency=usd&expected_price=440&marker=749581"
+        },
+        {
+          "date": "2026-07-23",
+          "days_out": 1,
+          "pretty": "Jul 23",
+          "price": 454,
+          "airport": "FLL",
+          "stops": 0,
+          "minutes": 75,
+          "url": "https://www.aviasales.com/search/FLL2307NAS27071?t=UP17848305001784835000000075FLLNAS17851338001785151800000300NASFPOFLL_b7fb64677bdf0a0be2f4df3cc53c93d0_35585&search_date=19072026&expected_price_uuid=019f7c2a-144b-8040-277b-65ae74f79aa0&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=-mulDJ-ssy40RNdT-ifyTQ&expected_price_source=share&expected_price_currency=usd&expected_price=454&marker=749581"
+        }
+      ],
       "faster_min": null
     },
     {
@@ -1231,6 +2621,18 @@
       "same_date": [],
       "in_window": [],
       "best_deal": null,
+      "best_days": [
+        {
+          "date": "2026-07-25",
+          "days_out": 3,
+          "pretty": "Jul 25",
+          "price": 1260,
+          "airport": "MIA",
+          "stops": 1,
+          "minutes": 665,
+          "url": "https://www.aviasales.com/search/MIA2507LHR01081?t=AA17849388001785005400000810MIALISLHR17855649001785600300000890LHRMADMIA_65c23b4f22e23e1d83f94cb79b9c878a_98412&search_date=18072026&expected_price_uuid=019f7659-ff1e-8040-ac8b-a8edf7b73742&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=yf_F64N_lZdV7GCHNNT78g&origin_airports=1&destination_airports=0&expected_price_source=share&expected_price_currency=usd&expected_price=1260&marker=749581"
+        }
+      ],
       "faster_min": null
     }
   ]

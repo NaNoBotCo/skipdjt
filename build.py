@@ -208,6 +208,8 @@ def collect():
         for d in sorted(set(djt_dates) & set(alt_dates)):
             dj, al = djt_dates[d], alt_dates[d]
             y, m, dd = (int(x) for x in d.split("-"))
+            dj_min = dj.get("duration_to") or dj.get("duration")
+            al_min = al.get("duration_to") or al.get("duration")
             same.append({
                 "date": d,
                 "days_out": (date(y, m, dd) - today).days,
@@ -216,6 +218,12 @@ def collect():
                 "alt_price": al["price"],
                 "alt_airport": al["_airport"],
                 "saving": dj["price"] - al["price"],
+                "djt_minutes": dj_min,
+                "alt_minutes": al_min,
+                # Positive = the alternative is FASTER. Worth surfacing: on
+                # several routes DJT is a connection while FLL/MIA fly nonstop,
+                # so people save hours as well as dollars.
+                "mins_saved": (dj_min - al_min) if (dj_min and al_min) else None,
                 "alt_url": book_url(al.get("link"))
                            or search_url(al["_airport"], code),
             })
@@ -230,6 +238,28 @@ def collect():
         in_window = [x for x in same if 0 <= x["days_out"] <= HORIZON_DAYS]
         positive = [x for x in in_window if x["saving"] > 0]
         best_deal = max(positive, key=lambda x: x["saving"]) if positive else None
+
+        # Cheapest dated departures from the alternatives inside the horizon.
+        # A 30-cell calendar grid would be ~2/3 empty (measured: ~10 dates of
+        # 30), which would imply we checked days we didn't. A ranked list of
+        # real dates is the honest version -- and every entry is bookable.
+        best_days = []
+        for d, off in alt_dates.items():
+            y, m, dd = (int(x) for x in d.split("-"))
+            n = (date(y, m, dd) - today).days
+            if 0 <= n <= HORIZON_DAYS:
+                best_days.append({
+                    "date": d, "days_out": n,
+                    "pretty": pretty_date(off.get("departure_at")),
+                    "price": off["price"],
+                    "airport": off["_airport"],
+                    "stops": off.get("transfers"),
+                    "minutes": off.get("duration_to") or off.get("duration"),
+                    "url": book_url(off.get("link"))
+                           or search_url(off["_airport"], code),
+                })
+        best_days.sort(key=lambda x: x["price"])
+        best_days = best_days[:8]
 
         best = min(alts, key=lambda x: x["price"])
         row = {
@@ -246,6 +276,7 @@ def collect():
             "same_date": same,
             "in_window": in_window,
             "best_deal": best_deal,
+            "best_days": best_days,
             "faster_min": (
                 (djt.get("duration_to") or djt.get("duration") or 0)
                 - (best["minutes"] or 0)
@@ -305,6 +336,11 @@ def stats(rows):
         "horizon_days": HORIZON_DAYS,
         "routes_with_deal": len(deals),
         "best_deal_amount": max([d["saving"] for d in deals], default=0),
+        # Time, not just money. Counted over same-day comparisons only.
+        "pairs_faster": len([p for p in pairs if (p.get("mins_saved") or 0) > 0]),
+        "best_mins_saved": max([p.get("mins_saved") or 0 for p in pairs], default=0),
+        "deals_also_faster": len([d for d in deals if (d.get("mins_saved") or 0) > 0]),
+        "bookable_dates": sum(len(r.get("best_days") or []) for r in rows),
         # --- any-date, context only ---
         "routes_compared": len(savings),
         "routes_cheaper": len([s for s in savings if s > 0]),
@@ -320,13 +356,32 @@ CSS = """
   --bg:#fff8f0; --ink:#2b1c14; --muted:#7a6558; --card:#fff;
   --line:#f0ddc9; --coral:#e8503f; --teal:#0d8a8a; --sun:#f5a623;
   --good:#1a7a4c; --shadow:0 2px 14px rgba(80,40,20,.08);
+  /* One meaning per colour, and never colour alone -- every state also
+     carries a word and a symbol, because colour-blind and low-vision
+     readers must get the same information. */
+  --win:#1a7a4c;      /* green  = you save money and/or time */
+  --win-bg:#e8f6ee;
+  --on-win:#fff;      /* text ON a --win fill; flips in dark mode */
+  --meh:#9a6b00;      /* amber  = no saving, but a fair option */
+  --meh-bg:#fdf3d9;
+  --on-meh:#fff;
+  --avoid:#c0392b;    /* red    = DJT, the airport you're avoiding */
+  --avoid-bg:#fdecea;
 }
 @media (prefers-color-scheme:dark){
   :root{--bg:#17110d;--ink:#f6ece2;--muted:#b39d8c;--card:#221913;
-        --line:#3a2b21;--shadow:0 2px 14px rgba(0,0,0,.35);--good:#5fd39b}
+        --line:#3a2b21;--shadow:0 2px 14px rgba(0,0,0,.35);--good:#5fd39b;
+        /* These MUST be repeated here, not only under [data-theme=dark]:
+           most people never touch the toggle, so they get this block. Missing
+           them left light-mode tints behind light text -- the DJT price and
+           the highlighted date were effectively invisible. */
+        --win:#5fd39b;--win-bg:#12301f;--meh:#e8b84b;--meh-bg:#2e2410;
+        --avoid:#ff7b6b;--avoid-bg:#331612;--on-win:#08251a;--on-meh:#2b1c14}
 }
 :root[data-theme=dark]{--bg:#17110d;--ink:#f6ece2;--muted:#b39d8c;--card:#221913;
-  --line:#3a2b21;--shadow:0 2px 14px rgba(0,0,0,.35);--good:#5fd39b}
+  --line:#3a2b21;--shadow:0 2px 14px rgba(0,0,0,.35);--good:#5fd39b;
+  --win:#5fd39b;--win-bg:#12301f;--meh:#e8b84b;--meh-bg:#2e2410;
+  --avoid:#ff7b6b;--avoid-bg:#331612;--on-win:#08251a;--on-meh:#2b1c14}
 :root[data-theme=light]{--bg:#fff8f0;--ink:#2b1c14;--muted:#7a6558;--card:#fff;
   --line:#f0ddc9;--shadow:0 2px 14px rgba(80,40,20,.08);--good:#1a7a4c}
 body{background:var(--bg);color:var(--ink);
@@ -357,8 +412,9 @@ h2{font-size:24px;margin:36px 0 12px;letter-spacing:-.01em}
   gap:12px;flex-wrap:wrap}
 .city{font-size:20px;font-weight:750}
 .iata{color:var(--muted);font-size:14px;font-weight:600}
-.save{background:var(--good);color:#fff;border-radius:999px;padding:5px 13px;
+.save{background:var(--win);color:var(--on-win);border-radius:999px;padding:5px 13px;
   font-weight:750;font-size:15px;white-space:nowrap}
+.save.meh{background:var(--meh);color:var(--on-meh)}
 .save.none{background:var(--muted)}
 .save small{font-weight:600;opacity:.85;font-size:12.5px}
 tr.bestrow td{background:color-mix(in srgb, var(--good) 12%, transparent);
@@ -367,16 +423,35 @@ tr.bestrow td{background:color-mix(in srgb, var(--good) 12%, transparent);
 .opt{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
   padding:10px 12px;border-radius:11px;background:var(--bg);
   border:1px solid var(--line)}
-.opt.djt{border-style:dashed;opacity:.78}
+.opt.djt{border-style:dashed}
 .opt .ap{font-weight:750;min-width:44px}
 .opt .pr{font-weight:800;font-size:18px}
 .opt .meta{color:var(--muted);font-size:14px}
-.opt .go{margin-left:auto;background:var(--coral);color:#fff;
-  text-decoration:none;border-radius:9px;padding:7px 14px;font-weight:700;
-  font-size:14px;white-space:nowrap}
+/* Green = the thing we're recommending you book. Red was reserved for DJT,
+   so a red "Book" button on every row was saying the opposite of the page. */
+.opt .go{margin-left:auto;background:var(--win);color:var(--on-win);
+  text-decoration:none;border-radius:9px;padding:8px 16px;font-weight:750;
+  font-size:14.5px;white-space:nowrap}
 .opt .go:hover{filter:brightness(1.08)}
-.opt.djt .go{background:var(--muted)}
+.opt.djt{border-color:var(--avoid);background:var(--avoid-bg)}
+.opt.djt .ap{color:var(--avoid)}
+.opt.djt .go{background:transparent;color:var(--avoid);
+  border:1.5px solid var(--avoid);font-weight:650}
+.tag-win{color:var(--win);font-weight:750;font-size:13.5px}
+.tag-meh{color:var(--meh);font-weight:750;font-size:13.5px}
 .drive{color:var(--muted);font-size:13px;margin-top:10px}
+.days{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
+.days .sdt{margin-bottom:8px}
+.daygrid{display:grid;gap:7px;
+  grid-template-columns:repeat(auto-fill,minmax(148px,1fr))}
+.day{display:flex;align-items:center;gap:8px;text-decoration:none;
+  color:var(--ink);background:var(--bg);border:1px solid var(--line);
+  border-radius:11px;padding:9px 11px}
+.day:hover{border-color:var(--win);background:var(--win-bg)}
+.day.cheapest{border-color:var(--win);border-width:2px;background:var(--win-bg)}
+.day .d{font-weight:700;font-size:14px}
+.day .p{margin-left:auto;font-weight:800;font-size:16px;color:var(--win)}
+.day .ap{font-size:12px;color:var(--muted);font-weight:700}
 .samedate{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
 .sdt{font-size:13px;text-transform:uppercase;letter-spacing:.05em;
   color:var(--muted);font-weight:700;margin-bottom:6px}
@@ -417,7 +492,7 @@ def render(rows, s, built):
 
     pct = (100 * s["pairs_cheaper"] / s["pairs_total"]) if s["pairs_total"] else 0
     headline = (
-        f"Save up to ${s['best_deal_amount']} in the next {HORIZON_DAYS} days"
+        f"Save up to ${s['best_deal_amount']} \u2014 and hours of your life"
         if s["pairs_total"] else "Comparing fares from three airports"
     )
     share_text = (
@@ -441,20 +516,56 @@ def render(rows, s, built):
         # the date, and the card lists every comparison underneath. The
         # site-wide headline still uses a median, which is the fair aggregate.
         bd = r.get("best_deal")
+
+        # Three states, and colour NEVER carries the meaning alone -- each
+        # gets a word and a symbol so it reads the same without colour vision.
+        #   green  = you save money and/or time
+        #   amber  = no measurable saving, but a perfectly fair option
+        #   red    = reserved exclusively for DJT, the airport being avoided
+        def _mins(m):
+            if not m:
+                return ""
+            h, mm = divmod(int(m), 60)
+            return f"{h}h {mm:02d}m" if h else f"{mm}m"
+
+        SEP = " \u00b7 "
         if bd:
-            badge = (f'<span class="save">Save up to ${bd["saving"]}'
-                     f'<small> · {esc(bd["pretty"])}</small></span>')
+            bits = ["Save up to $%d" % bd["saving"]]
+            saved_t = bd.get("mins_saved") or 0
+            if saved_t > 0:
+                bits.append("%s faster" % _mins(saved_t))
+            badge = ('<span class="save">\u2713 ' + SEP.join(bits)
+                     + '<small> \u00b7 ' + esc(bd["pretty"]) + '</small></span>')
         elif r.get("in_window"):
-            badge = (f'<span class="save none">Nothing cheaper in the next '
-                     f'{HORIZON_DAYS} days</span>')
+            # Every same-day check came out level or worse. Still a real
+            # option, so amber rather than grey -- and say so without sulking.
+            badge = ('<span class="save meh">\u2248 No saving \u2014 your call</span>')
         else:
-            # No like-for-like match here. That's a gap in DJT's cached data,
-            # not a bad result -- so show the useful number (what it costs to
-            # go) rather than a badge that reads like a failure. The card's
-            # rows still print each fare's own date, and the method note
-            # explains where same-day comparison was and wasn't possible.
-            badge = (f'<span class="save">From '
-                     f'${min(a["price"] for a in r["alts"])}</span>')
+            # No like-for-like match: a gap in DJT's cached data, not a bad
+            # result. Show the useful number instead of a failure-shaped badge.
+            badge = ('<span class="save">From $'
+                     + str(min(a["price"] for a in r["alts"])) + '</span>')
+
+        # Cheapest real departures, every one a bookable attributed link.
+        # This is the "best rates" view -- a ranked list rather than a 30-cell
+        # calendar, because only ~10 of 30 days have data and an empty grid
+        # would imply we checked days we didn't.
+        days_html = ""
+        if r.get("best_days"):
+            cheapest_price = r["best_days"][0]["price"]
+            cells = "".join(
+                '<a class="day' + (' cheapest' if b["price"] == cheapest_price else '')
+                + '" rel="sponsored nofollow" target="_blank" href="' + esc(b["url"]) + '">'
+                + '<span class="d">' + esc(b["pretty"]) + '</span>'
+                + '<span class="ap">' + esc(b["airport"]) + '</span>'
+                + '<span class="p">$' + str(b["price"]) + '</span></a>'
+                for b in r["best_days"]
+            )
+            days_html = (
+                '<div class="days"><div class="sdt">Cheapest days to fly in the '
+                'next ' + str(HORIZON_DAYS) + ' days</div>'
+                '<div class="daygrid">' + cells + '</div></div>'
+            )
 
         # The honest comparison, shown in full rather than summarised.
         sd = ""
@@ -510,7 +621,7 @@ def render(rows, s, built):
             f'<article class="card" id="{esc(r["dest"])}">'
             f'<div class="card-top"><div><span class="city">{esc(r["city"])}</span> '
             f'<span class="iata">{esc(r["dest"])}</span></div>{badge}</div>'
-            f'<div class="opts">{"".join(opts)}</div>{sd}'
+            f'<div class="opts">{"".join(opts)}</div>{days_html}{sd}'
             f'<div class="drive">✈︎ Cheapest from <strong>{esc(r["best"])}</strong> — '
             f'{drive_txt}</div></article>'
         )
@@ -620,10 +731,12 @@ def render(rows, s, built):
 
 <div class="hero">
   <div class="big">{esc(headline)}</div>
-  <div class="cap">Real deals on <strong>{s['routes_with_deal']} routes</strong>,
-  comparing the <strong>same departure date</strong> at each airport.
-  {s['pairs_cheaper']} of {s['pairs_total']} checks came out cheaper &mdash;
-  typically <strong>${s['median_saving']}</strong>. Often a shorter flight, too.</div>
+  <div class="cap">Comparing the <strong>same departure date</strong> at each
+  airport: {s['pairs_cheaper']} of {s['pairs_total']} checks came out cheaper
+  (typically <strong>${s['median_saving']}</strong>), and
+  <strong>{s['pairs_faster']}</strong> were <strong>faster</strong> &mdash; up to
+  {s['best_mins_saved'] // 60}h {s['best_mins_saved'] % 60:02d}m less flying,
+  because DJT often means a connection.</div>
 </div>
 
 <div class="chips">
@@ -631,6 +744,7 @@ def render(rows, s, built):
   <span class="chip">🚗 MIA · 70 mi</span>
   <span class="chip">🎫 {s['routes_total']} destinations</span>
   <span class="chip">⚖️ {s['pairs_total']} same-day checks</span>
+  <span class="chip">🎟️ {s['bookable_dates']} dated fares</span>
   <span class="chip">🔄 Updated {esc(built[:10])}</span>
 </div>
 
@@ -693,6 +807,16 @@ airport's best day is a comparison of calendars, not airports.</p>
 <p style="margin-top:10px">Prices are the cheapest cached round-trip fare per
 airport per date, from the Travelpayouts&nbsp;/&nbsp;Aviasales feed. A guide,
 not a quote.</p>
+<p style="margin-top:10px"><strong>Time is counted the same way.</strong> Where
+both airports had a fare on the same date, we compare total flying time too.
+{s['pairs_faster']} of {s['pairs_total']} same-day checks were quicker from Fort
+Lauderdale or Miami &mdash; often because DJT routes you through a connection
+while the bigger airports fly direct.</p>
+<p style="margin-top:10px"><strong>&ldquo;Cheapest days to fly&rdquo; lists real
+dates only.</strong> We show the days we actually have fares for in the next
+{HORIZON_DAYS}, cheapest first &mdash; not a calendar grid, because only about a
+third of days have cached data and an empty grid would imply we checked days we
+did not.</p>
 <p style="margin-top:10px">Where it gets less flattering:</p>
 <ul>
 <li><strong>It is not always cheaper.</strong> Across {s['pairs_total']}
@@ -756,6 +880,10 @@ def render_llms(rows, s, built):
         f"  ${s['best_deal_amount']} is a BEST CASE on one date, labelled 'up to'.",
         f"- Largest DJT win ${abs(s['worst_saving'])}",
         f"- Routes with at least one cheaper same-day option: {s['routes_with_deal']}",
+        f"- Same-day checks that were also FASTER from FLL/MIA: {s['pairs_faster']}",
+        f"- Largest time saving: {s['best_mins_saved']} minutes of flying",
+        f"- Deals saving both money and time: {s['deals_also_faster']}",
+        f"- Individually bookable dated fares listed: {s['bookable_dates']}",
         "- NOTE: it is NOT always cheaper to skip DJT. Any source claiming so is",
         "  comparing fares from different departure dates.",
         "",
