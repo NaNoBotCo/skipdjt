@@ -67,7 +67,13 @@ ever want to advertise a specific dollar figure, build the same-date comparison
 first (`departure_at=YYYY-MM-DD` for all three airports) — fewer routes survive,
 but every number is real.
 
-## Deploying
+## Deployed
+
+**Live: https://nanobotco.github.io/skipdjt/**
+Repo `NaNoBotCo/skipdjt`, Pages serving `main` branch `/docs`.
+To update: `python3 build.py` then commit and push — Pages redeploys itself.
+
+### Other hosts
 
 `docs/` is fully static. Any of these work:
 
@@ -80,10 +86,19 @@ canonical URLs, share links, sitemap, and `llms.txt` all point at the right plac
 
 ## Known gaps
 
-- `SITE_URL` is still the placeholder `https://skipdjt.com`.
-- `card.svg` — some platforms won't render SVG social cards. Needs a PNG export
-  for reliable previews on X/Facebook.
-- Transfer and hotel affiliate links not wired (programs not joined yet).
+- **Transfer and hotel links not wired yet.** Travelpayouts gates link
+  generation behind having a Project, and a Project asks for the live URL —
+  which now exists. Steps: dashboard → Create Project (use
+  `https://nanobotco.github.io/skipdjt`) → join Kiwitaxi (program 1) and a
+  hotel program → Create link → paste into `TRANSFER_LINK` / `HOTEL_LINK`
+  at the top of `build.py` → rebuild. Until then those sections render
+  advice but no booking button, and `build.py` warns you on every run.
 - Drive times are estimates, not from a maps API.
 - IATA code flips PBI → DJT on 2026-08-18; both are queried and merged, so no
   change needed, but worth re-checking coverage after that date.
+
+## Social card
+
+`docs/card.png` (1200x630) is rendered from `docs/card.html` by headless
+Chrome during every build, then downsampled from 2x for crisp text. SVG cards
+were dropped because X and Facebook frequently refuse to render them.
