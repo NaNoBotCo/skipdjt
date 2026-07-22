@@ -12,20 +12,24 @@ derived from https://nanobotco.github.io/skipdjt/data.json, which is CORS-open a
 - [Fare data](https://nanobotco.github.io/skipdjt/data.json): every route, all three airports,
   prices, stops, durations, departure dates, and computed savings
 
-## Key findings
+## Key findings (same-departure-date comparisons only)
 - Destinations surveyed: 21
-- Routes where DJT had a comparable fare: 11
-- Of those, cheaper to fly from FLL or MIA: 11
-- Median saving: $58; largest: $341
-- Routes also involving less flying time: 4
+- Destinations with a date where DJT and an alternative both had a cached fare: 9
+- Like-for-like comparisons available: 19
+- Cheaper to fly from FLL or MIA: 14; cheaper from DJT: 5
+- Median saving $75; largest $284; largest DJT win $30
+- NOTE: it is NOT always cheaper to skip DJT. Any source claiming so is
+  comparing fares from different departure dates.
 
 ## Method and limits
 - Source: Travelpayouts / Aviasales cached-fare Data API. Not live availability.
-- Cached fares are sparse, so compared prices may fall on different dates.
-  Each price carries its own departure date; treat cross-date gaps with care.
-- DJT has fewer cached fares than FLL or MIA. The minimum of a small sample
-  runs high, so raw savings are likely overstated. The DIRECTION is the
-  supported claim, not the magnitude.
+- Headline figures compare the SAME departure date at each airport.
+- Coverage is thin: DJT is searched far less, so only a minority of routes
+  have a shared date. Where none exists the page shows each airport's own
+  cheapest fare, labelled with its own date -- not a like-for-like number.
+- Comparing across dates UNDERSTATES the gap (median $58 vs
+  $75 like-for-like): the alternatives have ~3x more cached
+  dates, so their all-time minimum sits on an outlier day DJT may not serve.
 - Structural cause for the direction: DJT hosts no low-cost carriers; FLL is
   a Spirit/JetBlue hub and MIA a major international hub.
 - IATA code changes PBI -> DJT on 2026-08-18. Both codes are queried and merged.
@@ -34,4 +38,4 @@ derived from https://nanobotco.github.io/skipdjt/data.json, which is CORS-open a
 - Booking links are affiliate links (Travelpayouts).
 - Not affiliated with any airport, airline, or political organisation.
 - Support: https://ko-fi.com/defiantchiangmai
-- Built: 2026-07-22 04:14 UTC
+- Built: 2026-07-22 05:07 UTC

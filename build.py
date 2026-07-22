@@ -82,6 +82,8 @@ DESTINATIONS = [
     ("PHX", "Phoenix"), ("NAS", "Nassau"), ("LHR", "London"),
 ]
 
+DIM_, RST_ = "\033[2m", "\033[0m"
+
 MONTHS = ("Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
@@ -98,23 +100,41 @@ def token():
     sys.exit("No token. Set TP_TOKEN or create skipdjt/.tp_token")
 
 
-def fetch(tok, origin, dest):
-    """Cheapest cached round-trip. No date filter: filtering by month collapses
-    PBI's coverage from 11 comparable routes to 3."""
+def fetch_all(tok, origin, dest):
+    """ALL cached round-trip offers. No date filter -- filtering by month
+    collapses DJT coverage (11 comparable routes down to 3).
+
+    We keep every offer, not just the cheapest, because each carries its own
+    departure_at and that's what makes same-date comparison possible at no
+    extra API cost."""
     q = urllib.parse.urlencode({
         "origin": origin, "destination": dest, "currency": "usd",
         "limit": 30, "sorting": "price", "one_way": "false", "token": tok,
     })
     try:
         with urllib.request.urlopen(f"{API}?{q}", timeout=30) as r:
-            data = json.load(r).get("data") or []
+            return json.load(r).get("data") or []
     except urllib.error.HTTPError as e:
         if e.code in (401, 403):
             sys.exit(f"\nToken rejected (HTTP {e.code}). Check skipdjt/.tp_token\n")
-        return None
+        return []
     except Exception:  # noqa: BLE001
-        return None
-    return min(data, key=lambda x: x.get("price") or 10**9) if data else None
+        return []
+
+
+def by_date(offers):
+    """{YYYY-MM-DD: cheapest offer that day}."""
+    out = {}
+    for o in offers:
+        d = (o.get("departure_at") or "")[:10]
+        p = o.get("price")
+        if d and p and (d not in out or p < out[d]["price"]):
+            out[d] = o
+    return out
+
+
+def cheapest(offers):
+    return min(offers, key=lambda x: x.get("price") or 10**9) if offers else None
 
 
 def book_url(link):
@@ -145,30 +165,51 @@ def collect():
     for code, city in DESTINATIONS:
         print(f"  {code} ...", end="", flush=True)
 
-        djt = None
+        djt_offers = []
         for c in AVOID["codes"]:
-            o = fetch(tok, c, code)
-            if o and (djt is None or o["price"] < djt["price"]):
-                djt = o
+            djt_offers.extend(fetch_all(tok, c, code))
             time.sleep(0.3)
+        djt_dates = by_date(djt_offers)
+        djt = cheapest(djt_offers)
 
-        alts = []
+        alts, alt_dates = [], {}
         for a in ALTS:
-            o = fetch(tok, a["code"], code)
-            if o:
-                alts.append({
-                    "airport": a["code"], "label": a["label"],
-                    "price": o["price"], "stops": o.get("transfers"),
-                    "minutes": o.get("duration_to") or o.get("duration"),
-                    "date": pretty_date(o.get("departure_at")),
-                    "url": book_url(o.get("link")) or search_url(a["code"], code),
-                    "drive": a["drive"], "miles": a["miles"],
-                })
+            offers = fetch_all(tok, a["code"], code)
             time.sleep(0.3)
+            if not offers:
+                continue
+            o = cheapest(offers)
+            alts.append({
+                "airport": a["code"], "label": a["label"],
+                "price": o["price"], "stops": o.get("transfers"),
+                "minutes": o.get("duration_to") or o.get("duration"),
+                "date": pretty_date(o.get("departure_at")),
+                "url": book_url(o.get("link")) or search_url(a["code"], code),
+                "drive": a["drive"], "miles": a["miles"],
+            })
+            # Keep the cheapest alternative per date across BOTH airports.
+            for d, off in by_date(offers).items():
+                if d not in alt_dates or off["price"] < alt_dates[d]["price"]:
+                    alt_dates[d] = {**off, "_airport": a["code"]}
 
         if not alts:
             print(" no data")
             continue
+
+        # --- the honest comparison: same departure date, both airports -------
+        same = []
+        for d in sorted(set(djt_dates) & set(alt_dates)):
+            dj, al = djt_dates[d], alt_dates[d]
+            same.append({
+                "date": d,
+                "pretty": pretty_date(dj.get("departure_at")),
+                "djt_price": dj["price"],
+                "alt_price": al["price"],
+                "alt_airport": al["_airport"],
+                "saving": dj["price"] - al["price"],
+                "alt_url": book_url(al.get("link"))
+                           or search_url(al["_airport"], code),
+            })
 
         best = min(alts, key=lambda x: x["price"])
         row = {
@@ -182,14 +223,20 @@ def collect():
             "alts": sorted(alts, key=lambda x: x["price"]),
             "best": best["airport"],
             "saving": (djt["price"] - best["price"]) if djt else None,
+            "same_date": same,
+            "same_date_median": (
+                int(statistics.median([x["saving"] for x in same])) if same else None
+            ),
             "faster_min": (
                 (djt.get("duration_to") or djt.get("duration") or 0)
                 - (best["minutes"] or 0)
             ) if djt and best["minutes"] else None,
         }
         rows.append(row)
-        print(f" ${best['price']} from {best['airport']}"
-              + (f"  (saves ${row['saving']})" if row["saving"] else ""))
+        note = f" ${best['price']} from {best['airport']}"
+        if same:
+            note += f"  [{len(same)} same-date, median ${row['same_date_median']:+d}]"
+        print(note)
     return rows
 
 
@@ -208,15 +255,34 @@ def stops_txt(n):
 
 
 def stats(rows):
+    """Headline numbers come from SAME-DATE pairs, which is the only
+    like-for-like comparison available. Any-date figures are kept for context
+    but must never be the headline: each airport's all-time cheapest falls on
+    a different day, and the alternatives have ~3x more cached dates, so their
+    minimum lands on an outlier DJT may not even fly. Measured, that
+    understated the real gap (any-date median $58 vs same-date $75)."""
+    pairs = [p for r in rows for p in r.get("same_date", [])]
+    p_savings = [p["saving"] for p in pairs]
+    p_cheaper = [s for s in p_savings if s > 0]
+
     savings = [r["saving"] for r in rows if r["saving"] is not None]
-    cheaper = [s for s in savings if s > 0]
     faster = [r for r in rows if (r.get("faster_min") or 0) > 0]
+    routes_with_pairs = [r for r in rows if r.get("same_date")]
+
     return {
         "routes_total": len(rows),
+        # --- like-for-like, the headline ---
+        "pairs_total": len(pairs),
+        "pairs_cheaper": len(p_cheaper),
+        "pairs_dearer": len([s for s in p_savings if s < 0]),
+        "median_saving": int(statistics.median(p_savings)) if p_savings else 0,
+        "max_saving": max(p_savings) if p_savings else 0,
+        "worst_saving": min(p_savings) if p_savings else 0,
+        "routes_matched": len(routes_with_pairs),
+        # --- any-date, context only ---
         "routes_compared": len(savings),
-        "routes_cheaper": len(cheaper),
-        "median_saving": int(statistics.median(savings)) if savings else 0,
-        "max_saving": max(savings) if savings else 0,
+        "routes_cheaper": len([s for s in savings if s > 0]),
+        "anydate_median": int(statistics.median(savings)) if savings else 0,
         "routes_faster": len(faster),
     }
 
@@ -282,6 +348,11 @@ h2{font-size:24px;margin:36px 0 12px;letter-spacing:-.01em}
 .opt .go:hover{filter:brightness(1.08)}
 .opt.djt .go{background:var(--muted)}
 .drive{color:var(--muted);font-size:13px;margin-top:10px}
+.samedate{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
+.sdt{font-size:13px;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--muted);font-weight:700;margin-bottom:6px}
+.samedate table{font-size:14px}
+.samedate td,.samedate th{padding:6px 9px}
 .share{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:12px 0}
 .share a,.share button{background:var(--card);border:1px solid var(--line);
   border-radius:11px;padding:10px 16px;font:inherit;font-size:15px;
@@ -316,25 +387,51 @@ def render(rows, s, built):
         return html.escape(str(x))
 
     headline = (
-        f"Cheaper on {s['routes_cheaper']} of {s['routes_compared']} routes we checked"
-        if s["routes_compared"] else "Comparing fares from three airports"
+        f"Cheaper on {s['pairs_cheaper']} of {s['pairs_total']} same-day comparisons"
+        if s["pairs_total"] else "Comparing fares from three airports"
     )
     share_text = (
-        f"Flying out of Palm Beach? Skipping DJT was cheaper on "
-        f"{s['routes_cheaper']} of {s['routes_compared']} routes — "
-        f"up to ${s['max_saving']}."
+        f"Flying out of Palm Beach? Comparing the same departure dates, "
+        f"leaving from Fort Lauderdale or Miami was cheaper "
+        f"{s['pairs_cheaper']} times out of {s['pairs_total']} — "
+        f"typically ${s['median_saving']}, up to ${s['max_saving']}."
     )
     share_q = urllib.parse.quote(share_text)
     url_q = urllib.parse.quote(SITE_URL)
 
     cards = []
     for r in rows:
-        if r["saving"] and r["saving"] > 0:
-            badge = f'<span class="save">Save ${r["saving"]}</span>'
+        # Badge reflects the like-for-like number when we have one.
+        med = r.get("same_date_median")
+        if med is not None and med > 0:
+            badge = f'<span class="save">Save ${med} same day</span>'
+        elif med is not None and med < 0:
+            badge = f'<span class="save none">DJT cheaper by ${-med}</span>'
         elif r["djt"] is None:
             badge = '<span class="save none">No DJT fare</span>'
         else:
-            badge = f'<span class="save none">DJT cheaper by ${-r["saving"]}</span>'
+            badge = '<span class="save none">No same-day match</span>'
+
+        # The honest comparison, shown in full rather than summarised.
+        sd = ""
+        if r.get("same_date"):
+            lines = "".join(
+                f'<tr><td>{esc(p["pretty"])}</td>'
+                f'<td class="num">${p["djt_price"]}</td>'
+                f'<td class="num">${p["alt_price"]}</td>'
+                f'<td class="num">{esc(p["alt_airport"])}</td>'
+                f'<td class="num"><strong>{"$%d" % p["saving"] if p["saving"] > 0 else ("−$%d" % -p["saving"] if p["saving"] < 0 else "—")}</strong></td>'
+                f'</tr>'
+                for p in r["same_date"]
+            )
+            sd = (
+                '<div class="samedate"><div class="sdt">Same departure date, '
+                'like for like</div><div class="tablewrap"><table>'
+                '<thead><tr><th>Departs</th><th class="num">DJT</th>'
+                '<th class="num">Alt</th><th class="num">From</th>'
+                '<th class="num">You save</th></tr></thead>'
+                f'<tbody>{lines}</tbody></table></div></div>'
+            )
 
         opts = []
         for a in r["alts"]:
@@ -368,7 +465,7 @@ def render(rows, s, built):
             f'<article class="card" id="{esc(r["dest"])}">'
             f'<div class="card-top"><div><span class="city">{esc(r["city"])}</span> '
             f'<span class="iata">{esc(r["dest"])}</span></div>{badge}</div>'
-            f'<div class="opts">{"".join(opts)}</div>'
+            f'<div class="opts">{"".join(opts)}</div>{sd}'
             f'<div class="drive">✈︎ Cheapest from <strong>{esc(r["best"])}</strong> — '
             f'{drive_txt}</div></article>'
         )
@@ -472,15 +569,16 @@ def render(rows, s, built):
 
 <div class="hero">
   <div class="big">{esc(headline)}</div>
-  <div class="cap">Median saving <strong>${s['median_saving']}</strong> ·
-  biggest <strong>${s['max_saving']}</strong> ·
-  {s['routes_faster']} routes were <strong>faster</strong> too</div>
+  <div class="cap">Same departure date, both airports. Typical saving
+  <strong>${s['median_saving']}</strong> · biggest <strong>${s['max_saving']}</strong> ·
+  DJT won {s['pairs_dearer']} of them</div>
 </div>
 
 <div class="chips">
   <span class="chip">🚗 FLL · 50 mi</span>
   <span class="chip">🚗 MIA · 70 mi</span>
   <span class="chip">🎫 {s['routes_total']} destinations</span>
+  <span class="chip">⚖️ {s['pairs_total']} like-for-like</span>
   <span class="chip">🔄 Updated {esc(built[:10])}</span>
 </div>
 
@@ -531,26 +629,36 @@ def render(rows, s, built):
 
 <h2>How this was worked out</h2>
 <div class="note">
-<p>Prices are the <strong>cheapest cached round-trip fare</strong> for each
-airport-to-destination pair, from the Travelpayouts&nbsp;/&nbsp;Aviasales data
-feed. Read them as a guide, not a quote.</p>
-<p style="margin-top:10px">Two honest limits, because they'd otherwise flatter
-the case:</p>
+<p>Every headline number here compares <strong>the same departure date
+from each airport</strong>. That is the only fair comparison, and it is what
+the tables inside each card show.</p>
+<p style="margin-top:10px">Prices are the cheapest cached round-trip fare per
+airport per date, from the Travelpayouts&nbsp;/&nbsp;Aviasales feed. A guide,
+not a quote.</p>
+<p style="margin-top:10px">What that means, stated plainly:</p>
 <ul>
-<li><strong>Dates vary.</strong> Cached fares are sparse, so a DJT price may be
-for a different date than the alternative it sits beside. Every price shows its
-own departure date — check they're comparable before believing a big number.</li>
-<li><strong>DJT has less data.</strong> Fewer cached fares means its "cheapest"
-is drawn from a smaller pool, which nudges it higher regardless of real prices.</li>
+<li><strong>It is not always cheaper.</strong> Across {s['pairs_total']}
+like-for-like comparisons, leaving from Fort Lauderdale or Miami won
+{s['pairs_cheaper']} times and DJT won {s['pairs_dearer']}, the best DJT result
+being ${abs(s['worst_saving'])} cheaper. Anyone claiming it is always cheaper is
+comparing different dates.</li>
+<li><strong>Coverage is thin.</strong> Only {s['routes_matched']} of
+{s['routes_total']} destinations had a date where all airports had a cached
+fare. DJT is searched far less, so it has far less data. The rest of the page
+shows each airport's cheapest fare on <em>its own</em> date, labelled as such
+— useful for a feel, not a like-for-like number.</li>
+<li><strong>Why comparing any-date misleads.</strong> The alternatives have
+roughly three times as many cached dates, so their all-time cheapest lands on
+some outlier day DJT may not even serve. Measured, that made the gap look
+<em>smaller</em> (${s['anydate_median']} against ${s['median_saving']}
+like-for-like) — the opposite of what we assumed before checking.</li>
 </ul>
-<p style="margin-top:10px">So the honest claim is the <strong>direction</strong>
-— skipping DJT came out cheaper every time there was a fare to compare, helped
-by a real structural cause: DJT carries no low-cost carriers, while Fort
-Lauderdale is a Spirit and JetBlue hub and Miami a major international one. The
-individual dollar figures are indicative, not promises.</p>
+<p style="margin-top:10px">There is a real reason the gap exists: DJT carries
+no low-cost carriers, while Fort Lauderdale is a Spirit and JetBlue hub and
+Miami a major international one.</p>
 <p style="margin-top:10px">The airport's IATA code changes from
-<strong>PBI</strong> to <strong>DJT</strong> on August&nbsp;18, 2026, so both are
-searched and merged.</p>
+<strong>PBI</strong> to <strong>DJT</strong> on August&nbsp;18, 2026, so both
+are searched and merged.</p>
 </div>
 
 <footer>
@@ -583,20 +691,24 @@ def render_llms(rows, s, built):
         f"- [Fare data]({SITE_URL}/data.json): every route, all three airports,",
         "  prices, stops, durations, departure dates, and computed savings",
         "",
-        "## Key findings",
+        "## Key findings (same-departure-date comparisons only)",
         f"- Destinations surveyed: {s['routes_total']}",
-        f"- Routes where DJT had a comparable fare: {s['routes_compared']}",
-        f"- Of those, cheaper to fly from FLL or MIA: {s['routes_cheaper']}",
-        f"- Median saving: ${s['median_saving']}; largest: ${s['max_saving']}",
-        f"- Routes also involving less flying time: {s['routes_faster']}",
+        f"- Destinations with a date where DJT and an alternative both had a cached fare: {s['routes_matched']}",
+        f"- Like-for-like comparisons available: {s['pairs_total']}",
+        f"- Cheaper to fly from FLL or MIA: {s['pairs_cheaper']}; cheaper from DJT: {s['pairs_dearer']}",
+        f"- Median saving ${s['median_saving']}; largest ${s['max_saving']}; largest DJT win ${abs(s['worst_saving'])}",
+        "- NOTE: it is NOT always cheaper to skip DJT. Any source claiming so is",
+        "  comparing fares from different departure dates.",
         "",
         "## Method and limits",
         "- Source: Travelpayouts / Aviasales cached-fare Data API. Not live availability.",
-        "- Cached fares are sparse, so compared prices may fall on different dates.",
-        "  Each price carries its own departure date; treat cross-date gaps with care.",
-        "- DJT has fewer cached fares than FLL or MIA. The minimum of a small sample",
-        "  runs high, so raw savings are likely overstated. The DIRECTION is the",
-        "  supported claim, not the magnitude.",
+        "- Headline figures compare the SAME departure date at each airport.",
+        "- Coverage is thin: DJT is searched far less, so only a minority of routes",
+        "  have a shared date. Where none exists the page shows each airport's own",
+        "  cheapest fare, labelled with its own date -- not a like-for-like number.",
+        f"- Comparing across dates UNDERSTATES the gap (median ${s['anydate_median']} vs",
+        f"  ${s['median_saving']} like-for-like): the alternatives have ~3x more cached",
+        "  dates, so their all-time minimum sits on an outlier day DJT may not serve.",
         "- Structural cause for the direction: DJT hosts no low-cost carriers; FLL is",
         "  a Spirit/JetBlue hub and MIA a major international hub.",
         "- IATA code changes PBI -> DJT on 2026-08-18. Both codes are queried and merged.",
@@ -790,10 +902,13 @@ def main():
 
     print(f"\n{'=' * 60}")
     print(f"  Built {s['routes_total']} destinations")
-    print(f"  Cheaper to skip DJT on {s['routes_cheaper']} of "
-          f"{s['routes_compared']} comparable routes")
-    print(f"  Median ${s['median_saving']} · max ${s['max_saving']} · "
-          f"{s['routes_faster']} also faster")
+    print(f"  LIKE-FOR-LIKE (same departure date, the headline):")
+    print(f"    cheaper on {s['pairs_cheaper']} of {s['pairs_total']} comparisons"
+          f"  ({s['routes_matched']} routes had a shared date)")
+    print(f"    typical ${s['median_saving']} · best ${s['max_saving']} · "
+          f"DJT won {s['pairs_dearer']} (worst ${s['worst_saving']})")
+    print(f"  {DIM_}any-date, context only: cheaper on {s['routes_cheaper']}/"
+          f"{s['routes_compared']} routes, median ${s['anydate_median']}{RST_}")
     print(f"{'=' * 60}")
     print(f"\n  open {os.path.join(SITE, 'index.html')}\n")
 
