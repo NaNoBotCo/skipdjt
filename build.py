@@ -386,15 +386,16 @@ def render(rows, s, built):
     def esc(x):
         return html.escape(str(x))
 
+    pct = (100 * s["pairs_cheaper"] / s["pairs_total"]) if s["pairs_total"] else 0
     headline = (
-        f"Cheaper on {s['pairs_cheaper']} of {s['pairs_total']} same-day comparisons"
+        f"Cheaper about {pct:.0f}% of the time \u2014 typically ${s['median_saving']}"
         if s["pairs_total"] else "Comparing fares from three airports"
     )
     share_text = (
-        f"Flying out of Palm Beach? Comparing the same departure dates, "
-        f"leaving from Fort Lauderdale or Miami was cheaper "
-        f"{s['pairs_cheaper']} times out of {s['pairs_total']} — "
-        f"typically ${s['median_saving']}, up to ${s['max_saving']}."
+        f"Don't want to fly out of DJT? You usually don't have to pay for the "
+        f"privilege — leaving from Fort Lauderdale or Miami came out cheaper on "
+        f"{s['pairs_cheaper']} of {s['pairs_total']} same-day comparisons, "
+        f"typically ${s['median_saving']} and up to ${s['max_saving']}."
     )
     share_q = urllib.parse.quote(share_text)
     url_q = urllib.parse.quote(SITE_URL)
@@ -407,10 +408,14 @@ def render(rows, s, built):
             badge = f'<span class="save">Save ${med} same day</span>'
         elif med is not None and med < 0:
             badge = f'<span class="save none">DJT cheaper by ${-med}</span>'
-        elif r["djt"] is None:
-            badge = '<span class="save none">No DJT fare</span>'
         else:
-            badge = '<span class="save none">No same-day match</span>'
+            # No like-for-like match here. That's a gap in DJT's cached data,
+            # not a bad result -- so show the useful number (what it costs to
+            # go) rather than a badge that reads like a failure. The card's
+            # rows still print each fare's own date, and the method note
+            # explains where same-day comparison was and wasn't possible.
+            badge = (f'<span class="save">From '
+                     f'${min(a["price"] for a in r["alts"])}</span>')
 
         # The honest comparison, shown in full rather than summarised.
         sd = ""
@@ -569,9 +574,10 @@ def render(rows, s, built):
 
 <div class="hero">
   <div class="big">{esc(headline)}</div>
-  <div class="cap">Same departure date, both airports. Typical saving
-  <strong>${s['median_saving']}</strong> · biggest <strong>${s['max_saving']}</strong> ·
-  DJT won {s['pairs_dearer']} of them</div>
+  <div class="cap">Comparing the <strong>same departure date</strong> at each
+  airport &mdash; {s['pairs_cheaper']} of {s['pairs_total']} like-for-like checks
+  came out cheaper, the best by <strong>${s['max_saving']}</strong>.
+  Often a shorter flight, too.</div>
 </div>
 
 <div class="chips">
