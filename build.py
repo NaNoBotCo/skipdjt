@@ -61,8 +61,8 @@ BOOK_HOST = "https://www.aviasales.com"
 #     GetTransfer     4-25%   program 147
 #     Vio.com         40-64% rev share     (hotels; best terms in the catalog)
 #     Agoda           6%      (1-day cookie; Booking.com's is one session only)
-TRANSFER_LINK = ""
-HOTEL_LINK = ""
+TRANSFER_LINK = "https://kiwitaxi.tpx.li/x22JWqrE"   # Kiwitaxi, sub_id skipdjt-transfer
+HOTEL_LINK = ""   # Vio.com(638)/Agoda(104) pending Project review — "a few days"
 KIWITAXI_PROMO = "TPO5"   # public 5% user discount, valid to 2026-12-31
 # -----------------------------------------------------------------------------
 
