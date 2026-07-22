@@ -12,23 +12,31 @@ derived from https://nanobotco.github.io/skipdjt/data.json, which is CORS-open a
 - [Fare data](https://nanobotco.github.io/skipdjt/data.json): every route, all three airports,
   prices, stops, durations, departure dates, and computed savings
 
-## Key findings (same-departure-date comparisons only)
+## Key findings (same departure date, within 30 days)
 - Destinations surveyed: 21
-- Destinations with a date where DJT and an alternative both had a cached fare: 9
-- Like-for-like comparisons available: 19
-- Cheaper to fly from FLL or MIA: 14; cheaper from DJT: 5
-- Median saving $75; largest $284; largest DJT win $30
+- Destinations with a date where DJT and an alternative both had a cached fare: 8
+- Like-for-like comparisons available: 15
+- Cheaper to fly from FLL or MIA: 13; cheaper from DJT: 2
+- TYPICAL saving $106 (median). The headline figure
+  $284 is a BEST CASE on one date, labelled 'up to'.
+- Largest DJT win $30
+- Routes with at least one cheaper same-day option: 8
 - NOTE: it is NOT always cheaper to skip DJT. Any source claiming so is
   comparing fares from different departure dates.
 
 ## Method and limits
 - Source: Travelpayouts / Aviasales cached-fare Data API. Not live availability.
+- Only departures within 30 days are compared; fares months
+  out are not a decision anyone is making today.
+- Per-route badges show the BEST single-date saving ('up to'), not an
+  average. The median above is the fair aggregate. Every comparison is
+  published in this data.json under routes[].in_window.
 - Headline figures compare the SAME departure date at each airport.
 - Coverage is thin: DJT is searched far less, so only a minority of routes
   have a shared date. Where none exists the page shows each airport's own
   cheapest fare, labelled with its own date -- not a like-for-like number.
 - Comparing across dates UNDERSTATES the gap (median $58 vs
-  $75 like-for-like): the alternatives have ~3x more cached
+  $106 like-for-like): the alternatives have ~3x more cached
   dates, so their all-time minimum sits on an outlier day DJT may not serve.
 - Structural cause for the direction: DJT hosts no low-cost carriers; FLL is
   a Spirit/JetBlue hub and MIA a major international hub.
@@ -38,4 +46,4 @@ derived from https://nanobotco.github.io/skipdjt/data.json, which is CORS-open a
 - Booking links are affiliate links (Travelpayouts).
 - Not affiliated with any airport, airline, or political organisation.
 - Support: https://ko-fi.com/defiantchiangmai
-- Built: 2026-07-22 07:23 UTC
+- Built: 2026-07-22 07:34 UTC

@@ -37,7 +37,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.join(HERE, "docs")   # docs/ = what GitHub Pages serves
@@ -64,6 +64,12 @@ BOOK_HOST = "https://www.aviasales.com"
 TRANSFER_LINK = "https://kiwitaxi.tpx.li/x22JWqrE"   # Kiwitaxi, sub_id skipdjt-transfer
 HOTEL_LINK = ""   # Vio.com(638)/Agoda(104) pending Project review — "a few days"
 KIWITAXI_PROMO = "TPO5"   # public 5% user discount, valid to 2026-12-31
+
+# Only compare departures within this many days. Fares four months out are not
+# a decision anyone is making today, and one stale comparison (Nov 20) was
+# skewing a card. Measured at 30 days: 15 of 19 comparisons survive and NO
+# route with a real saving is lost.
+HORIZON_DAYS = 30
 # -----------------------------------------------------------------------------
 
 AVOID = {"label": "Palm Beach", "codes": ["PBI", "DJT"], "drive": 0, "miles": 0}
@@ -197,11 +203,14 @@ def collect():
             continue
 
         # --- the honest comparison: same departure date, both airports -------
+        today = datetime.now(timezone.utc).date()
         same = []
         for d in sorted(set(djt_dates) & set(alt_dates)):
             dj, al = djt_dates[d], alt_dates[d]
+            y, m, dd = (int(x) for x in d.split("-"))
             same.append({
                 "date": d,
+                "days_out": (date(y, m, dd) - today).days,
                 "pretty": pretty_date(dj.get("departure_at")),
                 "djt_price": dj["price"],
                 "alt_price": al["price"],
@@ -210,6 +219,17 @@ def collect():
                 "alt_url": book_url(al.get("link"))
                            or search_url(al["_airport"], code),
             })
+
+        # The badge shows the BEST saving inside the horizon, labelled "up to"
+        # and stamped with its date. A median was worse than useless here: on
+        # JFK it read $28 while the real spread was -$25..$142, i.e. it hid the
+        # actual deal behind a number matching no bookable flight.
+        # Using the max is only honest because it says "up to", names the date,
+        # and the card lists every comparison. The site-wide headline still
+        # uses a median across all comparisons, which is the fair aggregate.
+        in_window = [x for x in same if 0 <= x["days_out"] <= HORIZON_DAYS]
+        positive = [x for x in in_window if x["saving"] > 0]
+        best_deal = max(positive, key=lambda x: x["saving"]) if positive else None
 
         best = min(alts, key=lambda x: x["price"])
         row = {
@@ -224,9 +244,8 @@ def collect():
             "best": best["airport"],
             "saving": (djt["price"] - best["price"]) if djt else None,
             "same_date": same,
-            "same_date_median": (
-                int(statistics.median([x["saving"] for x in same])) if same else None
-            ),
+            "in_window": in_window,
+            "best_deal": best_deal,
             "faster_min": (
                 (djt.get("duration_to") or djt.get("duration") or 0)
                 - (best["minutes"] or 0)
@@ -234,8 +253,11 @@ def collect():
         }
         rows.append(row)
         note = f" ${best['price']} from {best['airport']}"
-        if same:
-            note += f"  [{len(same)} same-date, median ${row['same_date_median']:+d}]"
+        if best_deal:
+            note += (f"  [save up to ${best_deal['saving']} on "
+                     f"{best_deal['date']}, {len(in_window)} compared]")
+        elif in_window:
+            note += f"  [{len(in_window)} compared, none cheaper]"
         print(note)
     return rows
 
@@ -261,13 +283,14 @@ def stats(rows):
     a different day, and the alternatives have ~3x more cached dates, so their
     minimum lands on an outlier DJT may not even fly. Measured, that
     understated the real gap (any-date median $58 vs same-date $75)."""
-    pairs = [p for r in rows for p in r.get("same_date", [])]
+    pairs = [p for r in rows for p in r.get("in_window", [])]
     p_savings = [p["saving"] for p in pairs]
     p_cheaper = [s for s in p_savings if s > 0]
 
     savings = [r["saving"] for r in rows if r["saving"] is not None]
     faster = [r for r in rows if (r.get("faster_min") or 0) > 0]
-    routes_with_pairs = [r for r in rows if r.get("same_date")]
+    routes_with_pairs = [r for r in rows if r.get("in_window")]
+    deals = [r["best_deal"] for r in rows if r.get("best_deal")]
 
     return {
         "routes_total": len(rows),
@@ -279,6 +302,9 @@ def stats(rows):
         "max_saving": max(p_savings) if p_savings else 0,
         "worst_saving": min(p_savings) if p_savings else 0,
         "routes_matched": len(routes_with_pairs),
+        "horizon_days": HORIZON_DAYS,
+        "routes_with_deal": len(deals),
+        "best_deal_amount": max([d["saving"] for d in deals], default=0),
         # --- any-date, context only ---
         "routes_compared": len(savings),
         "routes_cheaper": len([s for s in savings if s > 0]),
@@ -334,6 +360,9 @@ h2{font-size:24px;margin:36px 0 12px;letter-spacing:-.01em}
 .save{background:var(--good);color:#fff;border-radius:999px;padding:5px 13px;
   font-weight:750;font-size:15px;white-space:nowrap}
 .save.none{background:var(--muted)}
+.save small{font-weight:600;opacity:.85;font-size:12.5px}
+tr.bestrow td{background:color-mix(in srgb, var(--good) 12%, transparent);
+  font-weight:750}
 .opts{margin-top:14px;display:grid;gap:8px}
 .opt{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
   padding:10px 12px;border-radius:11px;background:var(--bg);
@@ -388,7 +417,7 @@ def render(rows, s, built):
 
     pct = (100 * s["pairs_cheaper"] / s["pairs_total"]) if s["pairs_total"] else 0
     headline = (
-        f"Cheaper about {pct:.0f}% of the time \u2014 typically ${s['median_saving']}"
+        f"Save up to ${s['best_deal_amount']} in the next {HORIZON_DAYS} days"
         if s["pairs_total"] else "Comparing fares from three airports"
     )
     share_text = (
@@ -402,12 +431,22 @@ def render(rows, s, built):
 
     cards = []
     for r in rows:
-        # Badge reflects the like-for-like number when we have one.
-        med = r.get("same_date_median")
-        if med is not None and med > 0:
-            badge = f'<span class="save">Save ${med} same day</span>'
-        elif med is not None and med < 0:
-            badge = f'<span class="save none">DJT cheaper by ${-med}</span>'
+        # ONE number per route, used by the badge AND the summary table below.
+        # These used to disagree on 9 routes (IAD's badge said $284 while the
+        # table said $204) because the table still used the old any-date figure.
+        #
+        # "Up to" + the max is honest here, where a median was not: the median
+        # read $28 on JFK while the real spread was -$25..$142, describing no
+        # bookable flight and hiding the actual deal. This says "up to", names
+        # the date, and the card lists every comparison underneath. The
+        # site-wide headline still uses a median, which is the fair aggregate.
+        bd = r.get("best_deal")
+        if bd:
+            badge = (f'<span class="save">Save up to ${bd["saving"]}'
+                     f'<small> · {esc(bd["pretty"])}</small></span>')
+        elif r.get("in_window"):
+            badge = (f'<span class="save none">Nothing cheaper in the next '
+                     f'{HORIZON_DAYS} days</span>')
         else:
             # No like-for-like match here. That's a gap in DJT's cached data,
             # not a bad result -- so show the useful number (what it costs to
@@ -419,19 +458,20 @@ def render(rows, s, built):
 
         # The honest comparison, shown in full rather than summarised.
         sd = ""
-        if r.get("same_date"):
+        if r.get("in_window"):
             lines = "".join(
-                f'<tr><td>{esc(p["pretty"])}</td>'
+                f'<tr class="{"bestrow" if bd and p["date"] == bd["date"] else ""}">'
+                f'<td>{esc(p["pretty"])}</td>'
                 f'<td class="num">${p["djt_price"]}</td>'
                 f'<td class="num">${p["alt_price"]}</td>'
                 f'<td class="num">{esc(p["alt_airport"])}</td>'
                 f'<td class="num"><strong>{"$%d" % p["saving"] if p["saving"] > 0 else ("−$%d" % -p["saving"] if p["saving"] < 0 else "—")}</strong></td>'
                 f'</tr>'
-                for p in r["same_date"]
+                for p in sorted(r["in_window"], key=lambda x: x["date"])
             )
             sd = (
-                '<div class="samedate"><div class="sdt">Same departure date, '
-                'like for like</div><div class="tablewrap"><table>'
+                '<div class="samedate"><div class="sdt">Every same-day comparison '
+                f'in the next {HORIZON_DAYS} days</div><div class="tablewrap"><table>'
                 '<thead><tr><th>Departs</th><th class="num">DJT</th>'
                 '<th class="num">Alt</th><th class="num">From</th>'
                 '<th class="num">You save</th></tr></thead>'
@@ -475,12 +515,18 @@ def render(rows, s, built):
             f'{drive_txt}</div></article>'
         )
 
+    # "You save" here MUST be the badge's number, or the page contradicts
+    # itself. It previously showed the any-date figure while badges showed a
+    # same-date median.
     trows = "".join(
         f'<tr><td>{esc(r["city"])} <span class="iata">{esc(r["dest"])}</span></td>'
         f'<td class="num">{"$" + str(r["djt"]["price"]) if r["djt"] else "—"}</td>'
         f'<td class="num">${min(a["price"] for a in r["alts"])}</td>'
         f'<td class="num">{esc(r["best"])}</td>'
-        f'<td class="num">{"$" + str(r["saving"]) if r["saving"] and r["saving"] > 0 else "—"}</td></tr>'
+        f'<td class="num">' +
+        (f'<strong>${r["best_deal"]["saving"]}</strong> <span class="iata">'
+         f'{esc(r["best_deal"]["pretty"])}</span>' if r.get("best_deal") else "—") +
+        '</td></tr>'
         for r in rows
     )
 
@@ -574,17 +620,17 @@ def render(rows, s, built):
 
 <div class="hero">
   <div class="big">{esc(headline)}</div>
-  <div class="cap">Comparing the <strong>same departure date</strong> at each
-  airport &mdash; {s['pairs_cheaper']} of {s['pairs_total']} like-for-like checks
-  came out cheaper, the best by <strong>${s['max_saving']}</strong>.
-  Often a shorter flight, too.</div>
+  <div class="cap">Real deals on <strong>{s['routes_with_deal']} routes</strong>,
+  comparing the <strong>same departure date</strong> at each airport.
+  {s['pairs_cheaper']} of {s['pairs_total']} checks came out cheaper &mdash;
+  typically <strong>${s['median_saving']}</strong>. Often a shorter flight, too.</div>
 </div>
 
 <div class="chips">
   <span class="chip">🚗 FLL · 50 mi</span>
   <span class="chip">🚗 MIA · 70 mi</span>
   <span class="chip">🎫 {s['routes_total']} destinations</span>
-  <span class="chip">⚖️ {s['pairs_total']} like-for-like</span>
+  <span class="chip">⚖️ {s['pairs_total']} same-day checks</span>
   <span class="chip">🔄 Updated {esc(built[:10])}</span>
 </div>
 
@@ -635,29 +681,33 @@ def render(rows, s, built):
 
 <h2>How this was worked out</h2>
 <div class="note">
-<p>Every headline number here compares <strong>the same departure date
-from each airport</strong>. That is the only fair comparison, and it is what
-the tables inside each card show.</p>
+<p><strong>&ldquo;Save up to&rdquo; means exactly that</strong> &mdash; the
+biggest saving we found on a single departure date in the next
+{HORIZON_DAYS} days, with that date printed next to it. It is a best case, not
+an average, and the table inside each card lists <em>every</em> comparison we
+made so you can see the range for yourself. The highlighted row is the one the
+headline number comes from.</p>
+<p style="margin-top:10px">Every comparison prices <strong>the same departure
+date at each airport</strong>. Comparing an airport's best day against another
+airport's best day is a comparison of calendars, not airports.</p>
 <p style="margin-top:10px">Prices are the cheapest cached round-trip fare per
 airport per date, from the Travelpayouts&nbsp;/&nbsp;Aviasales feed. A guide,
 not a quote.</p>
-<p style="margin-top:10px">What that means, stated plainly:</p>
+<p style="margin-top:10px">Where it gets less flattering:</p>
 <ul>
 <li><strong>It is not always cheaper.</strong> Across {s['pairs_total']}
-like-for-like comparisons, leaving from Fort Lauderdale or Miami won
+same-day comparisons, leaving from Fort Lauderdale or Miami won
 {s['pairs_cheaper']} times and DJT won {s['pairs_dearer']}, the best DJT result
-being ${abs(s['worst_saving'])} cheaper. Anyone claiming it is always cheaper is
-comparing different dates.</li>
+being ${abs(s['worst_saving'])} cheaper. The typical gap is
+${s['median_saving']} &mdash; well below the headline, which is why the headline
+says <em>up to</em>.</li>
 <li><strong>Coverage is thin.</strong> Only {s['routes_matched']} of
-{s['routes_total']} destinations had a date where all airports had a cached
-fare. DJT is searched far less, so it has far less data. The rest of the page
-shows each airport's cheapest fare on <em>its own</em> date, labelled as such
-— useful for a feel, not a like-for-like number.</li>
-<li><strong>Why comparing any-date misleads.</strong> The alternatives have
-roughly three times as many cached dates, so their all-time cheapest lands on
-some outlier day DJT may not even serve. Measured, that made the gap look
-<em>smaller</em> (${s['anydate_median']} against ${s['median_saving']}
-like-for-like) — the opposite of what we assumed before checking.</li>
+{s['routes_total']} destinations had a date in the next {HORIZON_DAYS} days
+where every airport had a cached fare. DJT is searched far less, so it has far
+less data. Other cards show each airport's cheapest fare on <em>its own</em>
+date, labelled as such &mdash; useful for a feel, not a like-for-like number.</li>
+<li><strong>Nothing here is a live quote.</strong> Fares move constantly. The
+page rebuilds itself every Monday; always check the real price before booking.</li>
 </ul>
 <p style="margin-top:10px">There is a real reason the gap exists: DJT carries
 no low-cost carriers, while Fort Lauderdale is a Spirit and JetBlue hub and
@@ -697,17 +747,25 @@ def render_llms(rows, s, built):
         f"- [Fare data]({SITE_URL}/data.json): every route, all three airports,",
         "  prices, stops, durations, departure dates, and computed savings",
         "",
-        "## Key findings (same-departure-date comparisons only)",
+        f"## Key findings (same departure date, within {HORIZON_DAYS} days)",
         f"- Destinations surveyed: {s['routes_total']}",
         f"- Destinations with a date where DJT and an alternative both had a cached fare: {s['routes_matched']}",
         f"- Like-for-like comparisons available: {s['pairs_total']}",
         f"- Cheaper to fly from FLL or MIA: {s['pairs_cheaper']}; cheaper from DJT: {s['pairs_dearer']}",
-        f"- Median saving ${s['median_saving']}; largest ${s['max_saving']}; largest DJT win ${abs(s['worst_saving'])}",
+        f"- TYPICAL saving ${s['median_saving']} (median). The headline figure",
+        f"  ${s['best_deal_amount']} is a BEST CASE on one date, labelled 'up to'.",
+        f"- Largest DJT win ${abs(s['worst_saving'])}",
+        f"- Routes with at least one cheaper same-day option: {s['routes_with_deal']}",
         "- NOTE: it is NOT always cheaper to skip DJT. Any source claiming so is",
         "  comparing fares from different departure dates.",
         "",
         "## Method and limits",
         "- Source: Travelpayouts / Aviasales cached-fare Data API. Not live availability.",
+        f"- Only departures within {HORIZON_DAYS} days are compared; fares months",
+        "  out are not a decision anyone is making today.",
+        "- Per-route badges show the BEST single-date saving ('up to'), not an",
+        "  average. The median above is the fair aggregate. Every comparison is",
+        "  published in this data.json under routes[].in_window.",
         "- Headline figures compare the SAME departure date at each airport.",
         "- Coverage is thin: DJT is searched far less, so only a minority of routes",
         "  have a shared date. Where none exists the page shows each airport's own",
