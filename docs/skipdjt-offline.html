@@ -169,13 +169,8 @@ th{font-size:13px;text-transform:uppercase;letter-spacing:.05em;
   color:var(--muted)}
 td.num{text-align:right;font-variant-numeric:tabular-nums}
 </style>
-<link rel="manifest" href="./manifest.webmanifest">
-<meta name="theme-color" content="#e8503f">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" href="./icon.svg">
 </head><body>
-<div class="wrap">
+<div class="wrap"><div style="background:#fdecea;color:#7a1d12;border:2px solid #c0392b;border-radius:14px;padding:14px 18px;margin:0 0 18px;font-weight:650">&#9888;&#65039; Saved copy &mdash; fares frozen on 2026-07-22 07:43 UTC.<br><span style="font-weight:500">Prices change constantly. This file cannot refresh itself. For current fares open <a href="https://nanobotco.github.io/skipdjt/" style="color:#c0392b">nanobotco.github.io/skipdjt</a>.</span></div>
 
 <header>
   <span class="plane">✈️</span>
@@ -324,20 +319,4 @@ constantly; always confirm before booking.<br>
 Built 2026-07-22 07:43 UTC
 </footer>
 
-</div><script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
-}
-// Browsers only fire this when the app genuinely qualifies to be installed,
-// so the button appears exactly when tapping it will work.
-let _ip = null;
-window.addEventListener('beforeinstallprompt', e => {
-  e.preventDefault(); _ip = e;
-  const b = document.createElement('button');
-  b.textContent = 'Install app';
-  b.style.cssText = 'position:fixed;right:14px;bottom:14px;z-index:99;padding:12px 18px;border-radius:999px;border:0;background:#1a7a4c;color:#fff;font:inherit;font-weight:750;font-size:15px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35)';
-  b.onclick = async () => { b.remove(); _ip.prompt(); await _ip.userChoice; _ip = null; };
-  document.body.appendChild(b);
-});
-</script>
-</body></html>
+</div></body></html>

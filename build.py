@@ -783,6 +783,21 @@ def render(rows, s, built):
 
 {hotel_block}
 
+<h2>Keep it on your phone</h2>
+<div class="card">
+  <p><strong>Install it.</strong> This page works as an app. On iPhone tap
+  <em>Share &rarr; Add to Home Screen</em>; on Android use <em>Install app</em> in
+  the browser menu (or the button that appears bottom-right). It then opens
+  full-screen, works with no signal, and refreshes itself whenever you do have
+  one.</p>
+  <p style="margin-top:12px"><strong>Or take a copy.</strong>
+  <a href="./skipdjt-offline.html" download>Download the whole thing as one file</a>
+  &mdash; every fare, every comparison, no internet needed. Fair warning: a saved
+  copy can&rsquo;t update, so its prices are frozen at the moment you downloaded
+  it. It says so at the top of itself, loudly, so nobody mistakes an old number
+  for a live one.</p>
+</div>
+
 <a class="kofi" href="https://ko-fi.com/{KOFI}" target="_blank" rel="noopener">
   ☕ Enjoyed this? Buy me a coffee on Ko-fi</a>
 
@@ -1039,6 +1054,121 @@ Sitemap: {SITE_URL}/sitemap.xml
 """
 
 
+
+# ------------------------------------------------------------------ PWA / app
+# Two shapes of "app", matching the pattern build_wats_app.py uses on wichaa.net:
+#   index.html + manifest + sw.js  -> installable, works offline, updates itself
+#   skipdjt-offline.html           -> ONE file you can download, mail, keep
+#
+# The offline copy is deliberately stamped and warned: its fares are frozen at
+# build time and cannot refresh. A stale fare comparison presented as current is
+# the exact failure this project has been guarding against all along, so the
+# downloadable build says so at the top of the page, in words, not small print.
+
+ICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="112" fill="#e8503f"/>
+<text x="256" y="300" font-size="240" text-anchor="middle" fill="#fff8f0"
+      font-family="system-ui,sans-serif" font-weight="800">S</text>
+<rect x="120" y="252" width="272" height="26" rx="13" fill="#fff8f0"
+      transform="rotate(-12 256 265)"/>
+</svg>
+"""
+
+SW = r"""// sw.js - offline shell for Skip DJT. Cache-first, refreshed each build.
+const SHELL = 'skipdjt-__VER__';
+const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.svg',
+                './data.json', './card.png'];
+self.addEventListener('install', e => {
+  e.waitUntil(caches.open(SHELL).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(caches.keys().then(ks =>
+    Promise.all(ks.filter(k => k !== SHELL).map(k => caches.delete(k)))
+  ).then(() => self.clients.claim()));
+});
+self.addEventListener('fetch', e => {
+  if (e.request.method !== 'GET') return;
+  // Never intercept the outbound affiliate links - they must hit the network
+  // so the booking is attributed. A cached redirect would earn nothing.
+  if (new URL(e.request.url).origin !== self.location.origin) return;
+  e.respondWith(
+    caches.match(e.request).then(hit => hit ||
+      fetch(e.request).catch(() => caches.match('./index.html')))
+  );
+});
+"""
+
+PWA_HEAD = """<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#e8503f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="./icon.svg">
+"""
+
+PWA_TAIL = """<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
+// Browsers only fire this when the app genuinely qualifies to be installed,
+// so the button appears exactly when tapping it will work.
+let _ip = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault(); _ip = e;
+  const b = document.createElement('button');
+  b.textContent = 'Install app';
+  b.style.cssText = 'position:fixed;right:14px;bottom:14px;z-index:99;padding:12px 18px;border-radius:999px;border:0;background:#1a7a4c;color:#fff;font:inherit;font-weight:750;font-size:15px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35)';
+  b.onclick = async () => { b.remove(); _ip.prompt(); await _ip.userChoice; _ip = null; };
+  document.body.appendChild(b);
+});
+</script>
+"""
+
+
+def build_app(page_html, built):
+    """Write the installable wiring and the single-file download."""
+    ver = built.replace("-", "").replace(":", "").replace(" ", "")[:12]
+
+    app = page_html.replace("</head>", PWA_HEAD + "</head>", 1)
+    app = app.replace("</body>", PWA_TAIL + "</body>", 1)
+    with open(os.path.join(SITE, "index.html"), "w") as f:
+        f.write(app)
+
+    with open(os.path.join(SITE, "icon.svg"), "w") as f:
+        f.write(ICON)
+    with open(os.path.join(SITE, "sw.js"), "w") as f:
+        f.write(SW.replace("__VER__", ver))
+    with open(os.path.join(SITE, "manifest.webmanifest"), "w") as f:
+        json.dump({
+            "name": "Skip DJT \u2014 South Florida airport fares",
+            "short_name": "Skip DJT",
+            "description": ("Compare fares from Palm Beach, Fort Lauderdale and "
+                            "Miami on the same departure date."),
+            "start_url": "./", "scope": "./", "display": "standalone",
+            "orientation": "any", "background_color": "#fff8f0",
+            "theme_color": "#e8503f",
+            "icons": [{"src": "./icon.svg", "sizes": "any",
+                       "type": "image/svg+xml", "purpose": "any maskable"}],
+        }, f, indent=2)
+
+    # --- the downloadable single file ---------------------------------------
+    warn = (
+        '<div style="background:#fdecea;color:#7a1d12;border:2px solid #c0392b;'
+        'border-radius:14px;padding:14px 18px;margin:0 0 18px;font-weight:650">'
+        '&#9888;&#65039; Saved copy &mdash; fares frozen on ' + built + '.<br>'
+        '<span style="font-weight:500">Prices change constantly. This file cannot '
+        'refresh itself. For current fares open '
+        '<a href="' + SITE_URL + '/" style="color:#c0392b">' +
+        SITE_URL.replace("https://", "") + '</a>.</span></div>'
+    )
+    offline = page_html.replace('<div class="wrap">', '<div class="wrap">' + warn, 1)
+    offline = offline.replace('<link rel="manifest"', '<link rel="prefetch"')
+    with open(os.path.join(SITE, "skipdjt-offline.html"), "w") as f:
+        f.write(offline)
+
+    kb = len(offline.encode()) / 1024
+    print(f"  app: installable (sw v{ver}) + skipdjt-offline.html ({kb:.0f} KB)")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--offline", action="store_true",
@@ -1082,8 +1212,9 @@ def main():
             "routes": rows,
         }, f, indent=2)
 
+    page_html = render(rows, s, built)
     for name, content in (
-        ("index.html", render(rows, s, built)),
+        ("index.html", page_html),
         ("llms.txt", render_llms(rows, s, built)),
         ("robots.txt", ROBOTS),
         ("card.svg", render_card(s)),
@@ -1097,6 +1228,9 @@ def main():
             f.write(content)
 
     build_card_png()
+    # Must run AFTER index.html is written -- it rewrites that file to add the
+    # install wiring, and emits the single-file download alongside it.
+    build_app(page_html, built)
 
     if not TRANSFER_LINK or not HOTEL_LINK:
         missing = [n for n, v in (("TRANSFER_LINK", TRANSFER_LINK),

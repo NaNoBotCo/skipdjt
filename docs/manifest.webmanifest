@@ -1,0 +1,19 @@
+{
+  "name": "Skip DJT \u2014 South Florida airport fares",
+  "short_name": "Skip DJT",
+  "description": "Compare fares from Palm Beach, Fort Lauderdale and Miami on the same departure date.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff8f0",
+  "theme_color": "#e8503f",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
