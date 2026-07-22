@@ -84,6 +84,26 @@ To update: `python3 build.py` then commit and push — Pages redeploys itself.
 Then set `SITE_URL` at the top of `build.py` to the real domain and rebuild, so
 canonical URLs, share links, sitemap, and `llms.txt` all point at the right place.
 
+## Weekly auto-refresh
+
+`.github/workflows/weekly-rebuild.yml` rebuilds from fresh fares every Monday
+09:17 UTC and pushes, so Pages redeploys itself. Runs in the cloud deliberately —
+a local cron only fires when the laptop is open.
+
+It **refuses to publish** unless the build passes a sanity check: route count,
+card/route parity, enough attributed links, **zero unattributed booking links**,
+and the method note still present. A partial API failure fails the job instead of
+overwriting a good site with a degraded one.
+
+The token lives in GitHub Secrets as `TP_TOKEN`. **If you rotate the Travelpayouts
+token, update both** `.tp_token` locally and the secret:
+
+```
+gh secret set TP_TOKEN --repo NaNoBotCo/skipdjt --body "<new token>"
+```
+
+Run it by hand any time from the Actions tab, or `gh workflow run "Weekly fare refresh"`.
+
 ## Known gaps
 
 - **Transfer and hotel links not wired yet.** Travelpayouts gates link
