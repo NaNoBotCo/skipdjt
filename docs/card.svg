@@ -4,7 +4,7 @@
 <text x="600" y="150" font-family="system-ui,sans-serif" font-size="60" text-anchor="middle" fill="#7a6558">✈️</text>
 <text x="600" y="270" font-family="system-ui,sans-serif" font-size="104" font-weight="800" text-anchor="middle" fill="#2b1c14">Skip <tspan fill="#c0521a" text-decoration="line-through">DJT</tspan></text>
 <text x="600" y="345" font-family="system-ui,sans-serif" font-size="52" font-weight="700" text-anchor="middle" fill="#c0521a">It's cheaper anyway.</text>
-<text x="600" y="440" font-family="system-ui,sans-serif" font-size="38" text-anchor="middle" fill="#2b1c14">Cheaper on 11 of 11 routes we checked</text>
-<text x="600" y="500" font-family="system-ui,sans-serif" font-size="32" text-anchor="middle" fill="#7a6558">Median $106 · up to $284 · Fort Lauderdale &amp; Miami</text>
+<text x="600" y="440" font-family="system-ui,sans-serif" font-size="38" text-anchor="middle" fill="#2b1c14">Cheaper on 7 of 8 routes we checked</text>
+<text x="600" y="500" font-family="system-ui,sans-serif" font-size="32" text-anchor="middle" fill="#7a6558">Median $4 · up to $132 · Fort Lauderdale &amp; Miami</text>
 <text x="600" y="580" font-family="system-ui,sans-serif" font-size="28" text-anchor="middle" fill="#0d8a8a">nanobotco.github.io/skipdjt</text>
 </svg>

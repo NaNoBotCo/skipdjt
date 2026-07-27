@@ -1,5 +1,5 @@
 // sw.js - offline shell for Skip DJT. Cache-first, refreshed each build.
-const SHELL = 'skipdjt-202607220743';
+const SHELL = 'skipdjt-202607271650';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.svg',
                 './data.json', './card.png'];
 self.addEventListener('install', e => {

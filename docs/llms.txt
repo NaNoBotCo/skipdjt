@@ -2,7 +2,7 @@
 
 > Fare comparison for travellers who would rather not fly from President
 > Donald J. Trump International Airport (PBI/DJT) in Palm Beach, Florida.
-> Compares cheapest cached round-trip fares across 21
+> Compares cheapest cached round-trip fares across 19
 > destinations against Fort Lauderdale (FLL, 50 miles) and Miami (MIA, 70 miles).
 
 **Agents: read the JSON, not the HTML.** Every fact on the page is
@@ -13,18 +13,18 @@ derived from https://nanobotco.github.io/skipdjt/data.json, which is CORS-open a
   prices, stops, durations, departure dates, and computed savings
 
 ## Key findings (same departure date, within 30 days)
-- Destinations surveyed: 21
-- Destinations with a date where DJT and an alternative both had a cached fare: 8
-- Like-for-like comparisons available: 15
-- Cheaper to fly from FLL or MIA: 13; cheaper from DJT: 2
-- TYPICAL saving $106 (median). The headline figure
-  $284 is a BEST CASE on one date, labelled 'up to'.
-- Largest DJT win $30
-- Routes with at least one cheaper same-day option: 8
-- Same-day checks that were also FASTER from FLL/MIA: 9
-- Largest time saving: 189 minutes of flying
-- Deals saving both money and time: 4
-- Individually bookable dated fares listed: 123
+- Destinations surveyed: 19
+- Destinations with a date where DJT and an alternative both had a cached fare: 4
+- Like-for-like comparisons available: 6
+- Cheaper to fly from FLL or MIA: 3; cheaper from DJT: 3
+- TYPICAL saving $4 (median). The headline figure
+  $132 is a BEST CASE on one date, labelled 'up to'.
+- Largest DJT win $60
+- Routes with at least one cheaper same-day option: 3
+- Same-day checks that were also FASTER from FLL/MIA: 1
+- Largest time saving: 192 minutes of flying
+- Deals saving both money and time: 1
+- Individually bookable dated fares listed: 104
 - NOTE: it is NOT always cheaper to skip DJT. Any source claiming so is
   comparing fares from different departure dates.
 
@@ -39,8 +39,8 @@ derived from https://nanobotco.github.io/skipdjt/data.json, which is CORS-open a
 - Coverage is thin: DJT is searched far less, so only a minority of routes
   have a shared date. Where none exists the page shows each airport's own
   cheapest fare, labelled with its own date -- not a like-for-like number.
-- Comparing across dates UNDERSTATES the gap (median $58 vs
-  $106 like-for-like): the alternatives have ~3x more cached
+- Comparing across dates UNDERSTATES the gap (median $53 vs
+  $4 like-for-like): the alternatives have ~3x more cached
   dates, so their all-time minimum sits on an outlier day DJT may not serve.
 - Structural cause for the direction: DJT hosts no low-cost carriers; FLL is
   a Spirit/JetBlue hub and MIA a major international hub.
@@ -50,4 +50,4 @@ derived from https://nanobotco.github.io/skipdjt/data.json, which is CORS-open a
 - Booking links are affiliate links (Travelpayouts).
 - Not affiliated with any airport, airline, or political organisation.
 - Support: https://ko-fi.com/defiantchiangmai
-- Built: 2026-07-22 07:43 UTC
+- Built: 2026-07-27 16:50 UTC
