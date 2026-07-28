@@ -509,6 +509,13 @@ th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);
 th{font-size:13px;text-transform:uppercase;letter-spacing:.05em;
   color:var(--muted)}
 td.num{text-align:right;font-variant-numeric:tabular-nums}
+.sponsor{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:14px 18px;margin:22px 0;box-shadow:var(--shadow);text-align:center;font-size:14.5px}
+.sponsor .tag2{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--muted);margin-bottom:5px}
+.sponsor a.pitch{color:var(--teal);font-weight:700;text-decoration:none}
+.sponsor a.pitch:hover{text-decoration:underline}
+.sponsor a.buyad{color:var(--muted);font-size:12.5px;margin-left:10px;text-decoration:underline dotted}
 """
 
 
@@ -915,6 +922,12 @@ Miami a major international one.</p>
 <p style="margin-top:10px">The airport's IATA code changes from
 <strong>PBI</strong> to <strong>DJT</strong> on August&nbsp;18, 2026, so both
 are searched and merged.</p>
+</div>
+
+<div class="sponsor">
+<span class="tag2">sponsor</span>
+<a class="pitch" href="https://motdang.net" rel="noopener">มดแดง Mot Dang — the Chiang Mai · Chiang Rai city directory, the 1997 way</a>
+<a class="buyad" href="https://ko-fi.com/{KOFI}" title="โฆษณาที่นี่ได้เจ้า">buy an ad here</a>
 </div>
 
 <footer>
