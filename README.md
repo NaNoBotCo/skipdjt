@@ -140,3 +140,7 @@ carried in from elsewhere keeps its own terms — see [LICENSE](LICENSE).
 **Commercial licence.** If share-alike doesn't fit your use — a corpus, a
 product, a model — a commercial licence is available.
 [Open an issue](https://github.com/NaNoBotCo/skipdjt/issues) and say what you need.
+
+---
+
+Contact: Nan · nan@motdang.net · Sponsor: [Ko-fi](https://ko-fi.com/defiantchiangmai) · [Patreon](https://www.patreon.com/nanobotco)
