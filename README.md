@@ -130,3 +130,13 @@ Run it by hand any time from the Actions tab, or `gh workflow run "Weekly fare r
 `docs/card.png` (1200x630) is rendered from `docs/card.html` by headless
 Chrome during every build, then downsampled from 2x for crisp text. SVG cards
 were dropped because X and Facebook frequently refuse to render them.
+
+
+## Licence
+
+Records, prose and pages: CC BY-SA 4.0. Code: AGPL-3.0-or-later. Anything
+carried in from elsewhere keeps its own terms — see [LICENSE](LICENSE).
+
+**Commercial licence.** If share-alike doesn't fit your use — a corpus, a
+product, a model — a commercial licence is available.
+[Open an issue](https://github.com/NaNoBotCo/skipdjt/issues) and say what you need.
