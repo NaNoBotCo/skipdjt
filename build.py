@@ -738,7 +738,7 @@ def render(rows, s, built):
     }, indent=2)
 
     return f"""<!doctype html>
-<html lang="en"><head>
+<html lang="en" translate="no" class="notranslate"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Skip DJT — it's cheaper anyway</title>
@@ -757,6 +757,9 @@ def render(rows, s, built):
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>%E2%9C%88%EF%B8%8F</text></svg>">
 <script type="application/ld+json">{jsonld}</script>
 <style>{CSS}</style>
+<meta name="google" content="notranslate">
+<meta name="robots" content="notranslate">
+<script>if(/[.]translate[.]goog$/.test(location.hostname))location.replace("https://"+location.hostname.slice(0,-15).replace(/--/g,"~").replace(/-/g,".").replace(/~/g,"-")+location.pathname+location.search.replace(/([?&])_x_tr_[^&]*/g,"$1").replace(/[?&]+$/,"").replace(/[?]&+/,"?")+location.hash)</script>
 </head><body>
 <div class="wrap">
 
@@ -1032,7 +1035,7 @@ def render_card_html(s, rows=None):
         h, m = divmod(int(deal["mins"]), 60)
         faster = f"and {h}h {m:02d}m sooner" if h else f"and {m}m sooner"
 
-    return f"""<!doctype html><html><head><meta charset="utf-8"><style>
+    return f"""<!doctype html><html translate="no" class="notranslate"><head><meta charset="utf-8"><style>
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{width:1200px;height:630px;background:#fff8f0;position:relative;overflow:hidden;
   font-family:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}}
@@ -1058,7 +1061,11 @@ h1 s{{color:#c0521a;text-decoration-thickness:8px}}
 .save b{{display:block;font-size:44px;font-weight:800;line-height:1}}
 .save span{{font-size:21px;font-weight:600;opacity:.95}}
 .foot{{position:absolute;left:64px;bottom:44px;font-size:24px;color:#0d8a8a;font-weight:700}}
-</style></head><body>
+</style>
+<meta name="google" content="notranslate">
+<meta name="robots" content="notranslate">
+<script>if(/[.]translate[.]goog$/.test(location.hostname))location.replace("https://"+location.hostname.slice(0,-15).replace(/--/g,"~").replace(/-/g,".").replace(/~/g,"-")+location.pathname+location.search.replace(/([?&])_x_tr_[^&]*/g,"$1").replace(/[?&]+$/,"").replace(/[?]&+/,"?")+location.hash)</script>
+</head><body>
 <div class="bar"></div>
 <div class="L">
   <div class="plane">&#9992;&#65039;</div>
