@@ -139,7 +139,7 @@ def fetch_all(tok, origin, dest):
             return json.load(r).get("data") or []
     except urllib.error.HTTPError as e:
         if e.code in (401, 403):
-            sys.exit(f"\nToken rejected (HTTP {e.code}). Check skipdjt/.tp_token\n")
+            sys.exit(f"\nToken rejected (HTTP {e.code}). Check skipdjt/.tp_token\n")  # stylecheck: allow — operator error message
         return []
     except Exception:  # noqa: BLE001
         return []
