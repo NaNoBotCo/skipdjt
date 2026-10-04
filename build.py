@@ -65,6 +65,19 @@ BOOK_HOST = "https://www.aviasales.com"
 #     GetTransfer     4-25%   program 147
 #     Vio.com         40-64% rev share     (hotels; best terms in the catalog)
 #     Agoda           6%      (1-day cookie; Booking.com's is one session only)
+# More paid links live in data/affiliate.json, written by affiliate-slots/sync.py; a null url renders nothing.
+AFF = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "affiliate.json"), encoding="utf-8"))
+
+
+def paid(slot):
+    s = AFF["slots"].get(slot) or {}
+    if not s.get("url"):
+        return ""
+    e = lambda x: html.escape(str(x), quote=True)
+    return (f' &nbsp;<a rel="sponsored nofollow" target="_blank" href="{e(s["url"])}">{e(s["en"])}</a>'
+            f' <small>{e(AFF["label_en"])}</small>')
+
+
 TRANSFER_LINK = "https://kiwitaxi.tpx.li/x22JWqrE"   # Kiwitaxi, sub_id skipdjt-transfer
 HOTEL_LINK = ""   # Vio.com(638)/Agoda(104) pending Project review — "a few days"
 KIWITAXI_PROMO = "TPO5"   # public 5% user discount, valid to 2026-12-31
@@ -693,7 +706,7 @@ def render(rows, s, built):
             f'or an early flight.{promo}</p>'
             f'<p style="margin-top:10px"><a class="go" style="display:inline-block" '
             f'rel="sponsored nofollow" target="_blank" href="{esc(TRANSFER_LINK)}">'
-            f'Book a transfer →</a></p>'
+            f'Book a transfer →</a>{paid("sdj-welcome")}</p>'
         )
     else:
         transfer_block = (

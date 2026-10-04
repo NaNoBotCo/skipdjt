@@ -1,0 +1,11 @@
+{
+ "_what": "Paid links, written by affiliate-slots/sync.py from slots.json. Edit there, not here. A slot with url null renders nothing.",
+ "slots": {
+  "sdj-welcome": {
+   "brand": "Welcome Pickups",
+   "url": null,
+   "en": "Driver at MIA arrivals · Welcome Pickups"
+  }
+ },
+ "label_en": "Paid link: this site earns a fee if you book. · ลิงก์มีค่าตอบแทน"
+}
