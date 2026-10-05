@@ -78,8 +78,8 @@ def paid(slot):
             f' <small>{e(AFF["label_en"])}</small>')
 
 
-TRANSFER_LINK = ""   # off: Nan 2026-10-05, no aggregator links (was Kiwitaxi)
-HOTEL_LINK = ""   # off: Nan 2026-10-05, no aggregator links
+TRANSFER_LINK = "https://kiwitaxi.tpx.li/x22JWqrE"   # Kiwitaxi, sub_id skipdjt-transfer
+HOTEL_LINK = ""   # Vio.com(638)/Agoda(104) pending Project review — "a few days"
 KIWITAXI_PROMO = "TPO5"   # public 5% user discount, valid to 2026-12-31
 
 # Only compare departures within this many days. Fares four months out are not
@@ -1366,6 +1366,13 @@ def main():
     # Must run AFTER index.html is written -- it rewrites that file to add the
     # install wiring, and emits the single-file download alongside it.
     build_app(page_html, built)
+
+    if not TRANSFER_LINK or not HOTEL_LINK:
+        missing = [n for n, v in (("TRANSFER_LINK", TRANSFER_LINK),
+                                  ("HOTEL_LINK", HOTEL_LINK)) if not v]
+        print(f"\n  ! {' and '.join(missing)} still empty — those sections show "
+              f"advice but no\n    booking button, so they earn nothing yet. "
+              f"Fill them in at the top of build.py.")
 
     print(f"\n{'=' * 60}")
     print(f"  Built {s['routes_total']} destinations")
