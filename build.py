@@ -762,7 +762,11 @@ def render(rows, s, built):
 <meta property="og:description" content="{esc(share_text)}">
 <meta property="og:url" content="{SITE_URL}/">
 <meta property="og:image" content="{SITE_URL}/card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Card: Skip DJT, it's cheaper anyway, a struck-through DJT fare beside a Fort Lauderdale fare and the saving, on cream">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Card: Skip DJT, it's cheaper anyway, a struck-through DJT fare beside a Fort Lauderdale fare and the saving, on cream">
 <meta name="twitter:title" content="Skip DJT — it's cheaper anyway">
 <meta name="twitter:description" content="{esc(share_text)}">
 <link rel="alternate" type="application/json" href="{SITE_URL}/data.json"
