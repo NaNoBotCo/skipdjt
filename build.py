@@ -762,6 +762,7 @@ def render(rows, s, built):
 <meta property="og:description" content="{esc(share_text)}">
 <meta property="og:url" content="{SITE_URL}/">
 <meta property="og:image" content="{SITE_URL}/card.png">
+<meta property="og:image:alt" content="Card: Skip DJT, it's cheaper anyway, a Palm Beach fare crossed out beside the cheaper Fort Lauderdale fare">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Skip DJT — it's cheaper anyway">
 <meta name="twitter:description" content="{esc(share_text)}">
@@ -1127,30 +1128,45 @@ def build_card_png():
     if not chrome:
         print("  ! No Chrome/Chromium found — keeping SVG card only.")
         return False
-    src = os.path.join(SITE, "card.html")
-    out = os.path.join(SITE, "card.png")
     import subprocess
-    try:
-        subprocess.run([
-            chrome, "--headless", "--disable-gpu", "--no-sandbox",
-            "--hide-scrollbars", "--force-device-scale-factor=2",
-            "--window-size=1200,630", f"--screenshot={out}", f"file://{src}",
-        ], capture_output=True, timeout=90, check=False)
-    except Exception as e:  # noqa: BLE001
-        print(f"  ! Card render failed: {e}")
-        return False
-    if not os.path.exists(out):
-        print("  ! Chrome produced no PNG — keeping SVG card only.")
-        return False
-    try:
-        from PIL import Image
-        im = Image.open(out)
-        if im.size != (1200, 630):
-            im.resize((1200, 630), Image.LANCZOS).save(out, optimize=True)
-    except ImportError:
-        pass  # 2x card still works, just heavier
-    print(f"  card.png {os.path.getsize(out):,} bytes")
-    return True
+    ok = True
+    # card.png for the page; card-offline.png for the one-file copy, with that file's address at the foot
+    for name, foot in (("card", "nanobotco.github.io/skipdjt"),
+                       ("card-offline", "nanobotco.github.io/skipdjt/skipdjt-offline.html")):
+        src = os.path.join(SITE, "card.html")
+        if name != "card":
+            src = os.path.join(SITE, name + ".html")
+            with open(os.path.join(SITE, "card.html"), encoding="utf-8") as f:
+                html = f.read().replace("nanobotco.github.io/skipdjt</div>", foot + "</div>")
+            with open(src, "w", encoding="utf-8") as f:
+                f.write(html)
+        out = os.path.join(SITE, name + ".png")
+        try:
+            subprocess.run([
+                chrome, "--headless", "--disable-gpu", "--no-sandbox",
+                "--hide-scrollbars", "--force-device-scale-factor=2",
+                "--window-size=1200,630", f"--screenshot={out}", f"file://{src}",
+            ], capture_output=True, timeout=90, check=False)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ! Card render failed: {e}")
+            ok = False
+            continue
+        finally:
+            if name != "card" and os.path.exists(src):
+                os.remove(src)
+        if not os.path.exists(out):
+            print("  ! Chrome produced no PNG — keeping SVG card only.")
+            ok = False
+            continue
+        try:
+            from PIL import Image
+            im = Image.open(out)
+            if im.size != (1200, 630):
+                im.resize((1200, 630), Image.LANCZOS).save(out, optimize=True)
+        except ImportError:
+            pass  # 2x card still works, just heavier
+        print(f"  {name}.png {os.path.getsize(out):,} bytes")
+    return ok
 
 
 def render_card(s):
@@ -1297,6 +1313,7 @@ def build_app(page_html, built):
     )
     offline = page_html.replace('<div class="wrap">', '<div class="wrap">' + warn, 1)
     offline = offline.replace('<link rel="manifest"', '<link rel="prefetch"')
+    offline = offline.replace(f'{SITE_URL}/card.png', f'{SITE_URL}/card-offline.png')
     with open(os.path.join(SITE, "skipdjt-offline.html"), "w") as f:
         f.write(offline)
 
